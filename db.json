@@ -1,0 +1,174 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "userName": "islom",
+      "password": "123456",
+      "name": "Ислом Каримов",
+      "phoneNumber": "+992 987 65 43 21",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "userName": "ali",
+      "password": "654321",
+      "name": "Алиджон",
+      "phoneNumber": "+992 987 12 34 56",
+      "role": "user"
+    },
+    {
+      "id": "1a6f",
+      "userName": "tom1122",
+      "password": "123456",
+      "name": "salim",
+      "phoneNumber": "987654321123",
+      "role": "user"
+    }
+  ],
+  "doctors": [
+    {
+      "id": "1",
+      "name": "Доктор Саидовa",
+      "specialization": "Кардиолог",
+      "experience": 5,
+      "image": "",
+      "price": 40
+    },
+    {
+      "id": "2",
+      "name": "Доктор Алиев",
+      "specialization": "Диетолог",
+      "experience": 10,
+      "image": "",
+      "price": 30
+    }
+  ],
+  "appointments": [],
+  "reviews": [
+    {
+      "id": "f544",
+      "doctorId": 2,
+      "patientName": "tom1122",
+      "patientId": "1a6f",
+      "rating": "4",
+      "comment": "qw"
+    },
+    {
+      "id": "a8c8",
+      "doctorId": 2,
+      "patientName": "tom1122",
+      "patientId": "1a6f",
+      "rating": "1",
+      "comment": "bot bday"
+    },
+    {
+      "id": "30ef",
+      "doctorId": 2,
+      "patientName": "tom1122",
+      "patientId": "1a6f",
+      "rating": 5,
+      "comment": "qqqqq"
+    }
+  ],
+  "schedules": [
+    {
+      "id": "1",
+      "doctorId": 1,
+      "dayOfWeek": "Monday",
+      "startTime": "08:00",
+      "endTime": "19:00",
+      "breakStart": "13:00",
+      "breakEnd": "14:00"
+    },
+    {
+      "id": "2",
+      "doctorId": 2,
+      "dayOfWeek": "Monday",
+      "startTime": "09:00",
+      "endTime": "21:00",
+      "breakStart": "13:00",
+      "breakEnd": "14:00"
+    }
+  ],
+  "faq": [
+    {
+      "id": "1",
+      "question": "Как записаться на приём?",
+      "answer": "Выберите врача и подходящее время, затем подтвердите запись."
+    },
+    {
+      "id": "2",
+      "question": "Можно ли отменить запись?",
+      "answer": "Да, за 24 часа до начала приёма."
+    },
+    {
+      "id": "3",
+      "question": "Принимаете ли вы без записи?",
+      "answer": "Да, но приём без записи возможен только при наличии свободного времени у врача."
+    },
+    {
+      "id": "4",
+      "question": "Какие способы оплаты вы принимаете?",
+      "answer": "Мы принимаем наличные, банковские карты и онлайн-оплату."
+    },
+    {
+      "id": "5",
+      "question": "Можно ли получить результаты анализов онлайн?",
+      "answer": "Да, результаты доступны в личном кабинете на сайте."
+    },
+    {
+      "id": "6",
+      "question": "Есть ли скидки для постоянных клиентов?",
+      "answer": "Да, у нас действует программа лояльности с накопительными скидками."
+    },
+    {
+      "id": "7",
+      "question": "Работаете ли вы в выходные?",
+      "answer": "Да, клиника открыта и в субботу, и в воскресенье."
+    }
+  ],
+  "services": [
+    {
+      "id": "1",
+      "title": "Терапия",
+      "description": "Комплексная диагностика и лечение заболеваний внутренних органов.",
+      "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    },
+    {
+      "id": "2",
+      "title": "Кардиология",
+      "description": "Диагностика, лечение и профилактика заболеваний сердечно-сосудистой системы.",
+      "image": "https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    },
+    {
+      "id": "3",
+      "title": "Неврология",
+      "description": "Лечение заболеваний нервной системы, головных болей, нарушений сна.",
+      "image": "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    },
+    {
+      "id": "4",
+      "title": "Педиатрия",
+      "description": "Медицинская помощь детям: профилактика, диагностика и лечение заболеваний.",
+      "image": "https://images.unsplash.com/photo-1612277795421-5e3c9f82f09d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+    },
+    {
+      "id": "5",
+      "title": "Стоматология",
+      "description": "Лечение зубов и десен, протезирование и профилактика стоматологических заболеваний.",
+      "image": "https://images.unsplash.com/photo-1629909615184-74f495363b0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+    },
+    {
+      "id": "6",
+      "title": "Гинекология",
+      "description": "Диагностика и лечение женских заболеваний, сопровождение беременности.",
+      "image": "https://images.unsplash.com/photo-1580281657525-91e25d3a4b57?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+    },
+    {
+      "id": "7",
+      "title": "Офтальмология",
+      "description": "Диагностика и лечение заболеваний глаз, подбор очков и контактных линз.",
+      "image": "https://images.unsplash.com/photo-1625134673337-519d4d10b313?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+    }
+  ]
+}
