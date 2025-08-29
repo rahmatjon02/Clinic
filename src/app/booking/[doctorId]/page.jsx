@@ -101,10 +101,6 @@ export default function BookingClient({ params }) {
       return;
     }
 
-
-
-    
-
     const interval = 30;
     const allSlots = [];
 
@@ -307,7 +303,9 @@ export default function BookingClient({ params }) {
                 className="border px-3 py-2 rounded"
                 defaultValue={(() => {
                   try {
-                    const u = JSON.parse(localStorage.getItem("current_user") || "{}");
+                    const u = JSON.parse(
+                      localStorage.getItem("current_user") || "{}"
+                    );
                     return u?.userName || "";
                   } catch {
                     return "";

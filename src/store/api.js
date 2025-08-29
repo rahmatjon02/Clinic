@@ -4,6 +4,16 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000" }),
+  tagTypes: [
+    "Users",
+    "Doctors",
+    "Clinics",
+    "Appointments",
+    "Schedules",
+    "Services",
+    "Reviews",
+    "Faq",
+  ],
   endpoints: (builder) => ({
     // логин
     login: builder.mutation({
@@ -21,23 +31,33 @@ export const api = createApi({
         method: "POST",
         body: newUser,
       }),
+      invalidatesTags: ["Users"],
     }),
 
-    getDoctors: builder.query({ query: () => "/doctors" }),
+    getDoctors: builder.query({
+      query: () => "/doctors",
+      providesTags: ["Doctors"],
+    }),
 
-    getDoctorById: builder.query({ query: (id) => `/doctors/${id}` }),
+    getDoctorById: builder.query({
+      query: (id) => `/doctors/${id}`,
+      providesTags: (result, error, id) => [{ type: "Doctors", id }],
+    }),
 
-    getClinics: builder.query({ query: () => "/clinics" }),
+    getClinics: builder.query({
+      query: () => "/clinics",
+      providesTags: ["Clinics"],
+    }),
 
-    getClinicById: builder.query({ query: (id) => `/clinics/${id}` }),
+    getClinicById: builder.query({
+      query: (id) => `/clinics/${id}`,
+      providesTags: (result, error, id) => [{ type: "Clinics", id }],
+    }),
 
-    getAppointments: builder.query({ query: () => "/appointments" }),
-
-    getSchedules: builder.query({ query: () => "/schedules" }),
-
-    getServices: builder.query({ query: () => "/services" }),
-
-    getFaq: builder.query({ query: () => "/faq" }),
+    getAppointments: builder.query({
+      query: () => "/appointments",
+      providesTags: ["Appointments"],
+    }),
 
     addAppointment: builder.mutation({
       query: (newAppointment) => ({
@@ -45,9 +65,28 @@ export const api = createApi({
         method: "POST",
         body: newAppointment,
       }),
+      invalidatesTags: ["Appointments"],
     }),
 
-    getReviews: builder.query({ query: () => "/reviews" }),
+    getSchedules: builder.query({
+      query: () => "/schedules",
+      providesTags: ["Schedules"],
+    }),
+
+    getServices: builder.query({
+      query: () => "/services",
+      providesTags: ["Services"],
+    }),
+
+    getFaq: builder.query({
+      query: () => "/faq",
+      providesTags: ["Faq"],
+    }),
+
+    getReviews: builder.query({
+      query: () => "/reviews",
+      providesTags: ["Reviews"],
+    }),
 
     addReview: builder.mutation({
       query: (newReview) => ({
@@ -55,10 +94,12 @@ export const api = createApi({
         method: "POST",
         body: newReview,
       }),
+      invalidatesTags: ["Reviews"],
     }),
 
     getUsers: builder.query({
       query: () => "/users",
+      providesTags: ["Users"],
     }),
 
     deleteUser: builder.mutation({
@@ -66,6 +107,7 @@ export const api = createApi({
         url: `/users/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["Users"],
     }),
   }),
 });
