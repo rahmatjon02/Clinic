@@ -7,7 +7,6 @@ export const api = createApi({
   tagTypes: [
     "Users",
     "Doctors",
-    "Clinics",
     "Appointments",
     "Schedules",
     "Services",
@@ -44,14 +43,8 @@ export const api = createApi({
       providesTags: (result, error, id) => [{ type: "Doctors", id }],
     }),
 
-    getClinics: builder.query({
-      query: () => "/clinics",
-      providesTags: ["Clinics"],
-    }),
-
-    getClinicById: builder.query({
-      query: (id) => `/clinics/${id}`,
-      providesTags: (result, error, id) => [{ type: "Clinics", id }],
+    getContact: builder.query({
+      query: () => "/contact",
     }),
 
     getAppointments: builder.query({
@@ -83,6 +76,8 @@ export const api = createApi({
       providesTags: ["Faq"],
     }),
 
+    //-----------------------------
+
     getReviews: builder.query({
       query: () => "/reviews",
       providesTags: ["Reviews"],
@@ -97,9 +92,42 @@ export const api = createApi({
       invalidatesTags: ["Reviews"],
     }),
 
+    deleteReview: builder.mutation({
+      query: (id) => ({
+        url: `/reviews/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Reviews"],
+    }),
+
+    updateReview: builder.mutation({
+      query: (rev) => ({
+        url: `/reviews/${rev.id}`,
+        method: "Put",
+        body: rev
+      }),
+      invalidatesTags: ["Reviews"],
+    }),
+
+    //-----------------------------
+
     getUsers: builder.query({
       query: () => "/users",
       providesTags: ["Users"],
+    }),
+
+    getUserById: builder.query({
+      query: (id) => `/users/${id}`,
+      providesTags: ["Users"],
+    }),
+
+    editProfile: builder.mutation({
+      query: (user) => ({
+        url: `/users/${user.id}`,
+        method: "PUT",
+        body: user,
+      }),
+      invalidatesTags: ["Users"],
     }),
 
     deleteUser: builder.mutation({
@@ -116,16 +144,19 @@ export const {
   useGetDoctorsQuery,
   useGetSchedulesQuery,
   useGetDoctorByIdQuery,
-  useGetClinicsQuery,
-  useGetClinicByIdQuery,
   useGetAppointmentsQuery,
   useAddAppointmentMutation,
   useGetReviewsQuery,
   useAddReviewMutation,
+  useDeleteReviewMutation,
+  useUpdateReviewMutation,
   useLoginMutation,
   useRegisterUserMutation,
   useGetUsersQuery,
+  useGetUserByIdQuery,
   useDeleteUserMutation,
   useGetFaqQuery,
   useGetServicesQuery,
+  useGetContactQuery,
+  useEditProfileMutation,
 } = api;

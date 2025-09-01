@@ -46,10 +46,12 @@ export default function Doctors() {
               <div className="overflow-hidden h-64">
                 <div className="relative w-full h-full">
                   <Image
-                    src={doc.image ? doc.image : image}
+                    src={doc.image || image}
                     alt={doc.name}
-                    className="object-cover smooth-transition"
-                    sizes="(max-width: 768px) 100vw, 300px"
+                    fill
+                    sizes="100vw"
+                    style={{ objectFit: "cover" }}
+                    className="smooth-transition"
                   />
                 </div>
               </div>
@@ -82,7 +84,7 @@ export default function Doctors() {
 
         <div className="text-center mt-10">
           <Link
-            href="/doctors"
+            href="/allDoctors"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full smooth-transition"
           >
             Все врачи

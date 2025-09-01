@@ -3,10 +3,11 @@
     {
       "id": "1",
       "userName": "islom",
-      "password": "123456",
+      "password": "123123",
       "name": "Ислом Каримов",
       "phoneNumber": "+992 987 65 43 21",
-      "role": "admin"
+      "bio": "не забалей",
+      "image": "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?semt=ais_hybrid&w=740&q=80"
     },
     {
       "id": "2",
@@ -14,24 +15,99 @@
       "password": "654321",
       "name": "Алиджон",
       "phoneNumber": "+992 987 12 34 56",
-      "role": "user"
+      "role": "user",
+      "bio": "1",
+      "image": ""
     },
     {
       "id": "1a6f",
-      "userName": "tom1122",
+      "userName": "tom",
       "password": "123456",
-      "name": "salim",
-      "phoneNumber": "987654321123",
-      "role": "user"
+      "name": "tom john",
+      "phoneNumber": "992 948 77 33 99",
+      "role": "user",
+      "bio": "i am frontend",
+      "image": ""
+    },
+    {
+      "id": "4",
+      "userName": "nargiz",
+      "password": "111222",
+      "name": "Наргиза",
+      "phoneNumber": "+992 900 11 22 33",
+      "role": "user",
+      "bio": "1",
+      "image": ""
+    },
+    {
+      "id": "5",
+      "userName": "shah",
+      "password": "333444",
+      "name": "Шахром",
+      "phoneNumber": "+992 901 44 55 66",
+      "role": "user",
+      "bio": "1",
+      "image": ""
+    },
+    {
+      "id": "6",
+      "userName": "ruz",
+      "password": "555666",
+      "name": "Рузие",
+      "phoneNumber": "+992 902 77 88 99",
+      "role": "user",
+      "bio": "1",
+      "image": ""
+    },
+    {
+      "id": "7",
+      "userName": "farid",
+      "password": "777888",
+      "name": "Фарид",
+      "phoneNumber": "+992 903 11 22 33",
+      "role": "user",
+      "bio": "1",
+      "image": ""
+    },
+    {
+      "id": "8",
+      "userName": "lola",
+      "password": "999000",
+      "name": "Лола",
+      "phoneNumber": "+992 904 44 55 66",
+      "role": "user",
+      "bio": "1",
+      "image": ""
+    },
+    {
+      "id": "9",
+      "userName": "daler",
+      "password": "121212",
+      "name": "Далер",
+      "phoneNumber": "+992 905 77 88 99",
+      "role": "user",
+      "bio": "1",
+      "image": ""
+    },
+    {
+      "id": "10",
+      "userName": "malika",
+      "password": "343434",
+      "name": "Малика",
+      "phoneNumber": "+992 906 22 33 44",
+      "role": "user",
+      "bio": "1",
+      "image": ""
     }
   ],
   "doctors": [
     {
       "id": "1",
-      "name": "Доктор Саидовa",
+      "name": "Доктор Саидова",
       "specialization": "Кардиолог",
       "experience": 5,
-      "image": "",
+      "bio": "",
+      "image": "https://images.unsplash.com/photo-1612363584451-cd060fb62018?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "price": 40
     },
     {
@@ -39,35 +115,179 @@
       "name": "Доктор Алиев",
       "specialization": "Диетолог",
       "experience": 10,
-      "image": "",
+      "bio": "",
+      "image": "https://images.unsplash.com/photo-1659353885824-1199aeeebfc6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "price": 30
-    }
-  ],
-  "appointments": [],
-  "reviews": [
-    {
-      "id": "f544",
-      "doctorId": 2,
-      "patientName": "tom1122",
-      "patientId": "1a6f",
-      "rating": "4",
-      "comment": "qw"
     },
     {
-      "id": "a8c8",
+      "id": "3",
+      "name": "Доктор Хусейн",
+      "specialization": "Невролог",
+      "experience": 8,
+      "bio": "",
+      "image": "https://plus.unsplash.com/premium_photo-1723514536306-26fe5c4adeb7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 50
+    },
+    {
+      "id": "4",
+      "name": "Доктор Гули",
+      "specialization": "Педиатр",
+      "experience": 6,
+      "bio": "",
+      "image": "https://plus.unsplash.com/premium_photo-1664475543697-229156438e1e?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 35
+    },
+    {
+      "id": "5",
+      "name": "Доктор Мирзоев",
+      "specialization": "Стоматолог",
+      "experience": 12,
+      "bio": "",
+      "image": "https://images.unsplash.com/photo-1623261794928-8d9d0646bda1?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 45
+    },
+    {
+      "id": "6",
+      "name": "Доктор Зулайхо",
+      "specialization": "Гинеколог",
+      "experience": 9,
+      "bio": "",
+      "image": "https://images.unsplash.com/photo-1736289173074-df6009da27c9?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 40
+    },
+    {
+      "id": "7",
+      "name": "Доктор Омар",
+      "specialization": "Офтальмолог",
+      "experience": 7,
+      "bio": "",
+      "image": "https://plus.unsplash.com/premium_photo-1661580632282-c56b1bfc0489?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 50
+    },
+    {
+      "id": "8",
+      "name": "Доктор Шахноза",
+      "specialization": "Терапевт",
+      "experience": 4,
+      "bio": "",
+      "image": "https://images.unsplash.com/photo-1706958581603-dffa91fec580?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 30
+    },
+    {
+      "id": "9",
+      "name": "Доктор Бобур",
+      "specialization": "Кардиолог",
+      "experience": 11,
+      "bio": "",
+      "image": "https://images.unsplash.com/photo-1641723345378-a701b30b2d36?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 55
+    },
+    {
+      "id": "10",
+      "name": "Доктор Лола",
+      "specialization": "Диетолог",
+      "experience": 5,
+      "bio": "",
+      "image": "",
+      "price": 35
+    }
+  ],
+  "appointments": [
+    {
+      "id": "06e1",
       "doctorId": 2,
-      "patientName": "tom1122",
       "patientId": "1a6f",
+      "patientName": "tom john",
+      "patientPhone": "992 948 77 33 99",
+      "date": "2025-08-30",
+      "time": "15:00",
+      "status": false
+    },
+    {
+      "id": "8781",
+      "doctorId": 7,
+      "patientId": "1a6f",
+      "patientName": "tom john",
+      "patientPhone": "992 948 77 33 99",
+      "date": "2025-08-30",
+      "time": "18:00",
+      "status": false
+    },
+    {
+      "id": "cde2",
+      "doctorId": 2,
+      "patientId": "1",
+      "patientName": "Ислом Каримов",
+      "patientPhone": "+992 987 65 43 21",
+      "date": "2025-09-01",
+      "time": "14:00",
+      "status": false
+    },
+    {
+      "id": "8205",
+      "doctorId": 2,
+      "patientId": "1",
+      "patientName": "Ислом Каримов",
+      "patientPhone": "+992 987 65 43 21",
+      "date": "2025-09-02",
+      "time": "14:00",
+      "status": false
+    }
+  ],
+  "reviews": [
+    {
+      "id": "d3f8",
+      "doctorId": 2,
+      "patientName": "tom john",
+      "patientId": "1a6f",
+      "patientPhoneNumber": "992 948 77 33 99",
+      "rating": "5",
+      "comment": ""
+    },
+    {
+      "id": "c853",
+      "doctorId": 1,
+      "patientName": "tom john",
+      "patientId": "1a6f",
+      "patientPhoneNumber": "992 948 77 33 99",
       "rating": "1",
       "comment": "bot bday"
     },
     {
-      "id": "30ef",
-      "doctorId": 2,
-      "patientName": "tom1122",
+      "id": "46c5",
+      "doctorId": 3,
+      "patientName": "tom john",
       "patientId": "1a6f",
-      "rating": 5,
-      "comment": "qqqqq"
+      "patientPhoneNumber": "992 948 77 33 99",
+      "rating": "5",
+      "comment": "zur"
+    },
+    {
+      "id": "6366",
+      "doctorId": 2,
+      "patientName": "Ислом Каримов",
+      "patientId": "1",
+      "patientPhoneNumber": "+992 987 65 43 21",
+      "rating": "5",
+      "comment": ""
+    },
+    {
+      "id": "1b62",
+      "doctorId": 2,
+      "patientName": "Ислом Каримов",
+      "patientId": "1",
+      "patientPhoneNumber": "+992 987 65 43 21",
+      "rating": "4",
+      "comment": "qqqq 1122"
+    },
+    {
+      "id": "8ded",
+      "doctorId": 2,
+      "patientName": "Ислом Каримов",
+      "patientId": "1",
+      "patientPhoneNumber": "+992 987 65 43 21",
+      "rating": "5",
+      "comment": "sd"
     }
   ],
   "schedules": [
@@ -88,6 +308,78 @@
       "endTime": "21:00",
       "breakStart": "13:00",
       "breakEnd": "14:00"
+    },
+    {
+      "id": "3",
+      "doctorId": 3,
+      "dayOfWeek": "Tuesday",
+      "startTime": "08:00",
+      "endTime": "18:00",
+      "breakStart": "12:00",
+      "breakEnd": "13:00"
+    },
+    {
+      "id": "4",
+      "doctorId": 4,
+      "dayOfWeek": "Tuesday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30"
+    },
+    {
+      "id": "5",
+      "doctorId": 5,
+      "dayOfWeek": "Wednesday",
+      "startTime": "10:00",
+      "endTime": "20:00",
+      "breakStart": "14:00",
+      "breakEnd": "15:00"
+    },
+    {
+      "id": "6",
+      "doctorId": 6,
+      "dayOfWeek": "Wednesday",
+      "startTime": "08:30",
+      "endTime": "18:30",
+      "breakStart": "13:00",
+      "breakEnd": "14:00"
+    },
+    {
+      "id": "7",
+      "doctorId": 7,
+      "dayOfWeek": "Thursday",
+      "startTime": "09:00",
+      "endTime": "19:00",
+      "breakStart": "12:00",
+      "breakEnd": "13:00"
+    },
+    {
+      "id": "8",
+      "doctorId": 8,
+      "dayOfWeek": "Thursday",
+      "startTime": "10:00",
+      "endTime": "20:00",
+      "breakStart": "14:00",
+      "breakEnd": "15:00"
+    },
+    {
+      "id": "9",
+      "doctorId": 9,
+      "dayOfWeek": "Friday",
+      "startTime": "08:00",
+      "endTime": "18:00",
+      "breakStart": "12:00",
+      "breakEnd": "13:00"
+    },
+    {
+      "id": "10",
+      "doctorId": 10,
+      "dayOfWeek": "Friday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30"
     }
   ],
   "faq": [
@@ -125,6 +417,21 @@
       "id": "7",
       "question": "Работаете ли вы в выходные?",
       "answer": "Да, клиника открыта и в субботу, и в воскресенье."
+    },
+    {
+      "id": "8",
+      "question": "Можно ли изменить дату приёма?",
+      "answer": "Да, через личный кабинет или по телефону."
+    },
+    {
+      "id": "9",
+      "question": "Есть ли у вас парковка?",
+      "answer": "Да, бесплатная парковка для пациентов."
+    },
+    {
+      "id": "10",
+      "question": "Можно ли привести ребёнка на приём без взрослых?",
+      "answer": "Нет, ребёнок должен приходить с родителем или опекуном."
     }
   ],
   "services": [
@@ -138,7 +445,7 @@
       "id": "2",
       "title": "Кардиология",
       "description": "Диагностика, лечение и профилактика заболеваний сердечно-сосудистой системы.",
-      "image": "https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      "image": "https://images.unsplash.com/photo-1638202993928-7267aad84c31?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": "3",
@@ -150,25 +457,89 @@
       "id": "4",
       "title": "Педиатрия",
       "description": "Медицинская помощь детям: профилактика, диагностика и лечение заболеваний.",
-      "image": "https://images.unsplash.com/photo-1612277795421-5e3c9f82f09d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+      "image": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": "5",
       "title": "Стоматология",
       "description": "Лечение зубов и десен, протезирование и профилактика стоматологических заболеваний.",
-      "image": "https://images.unsplash.com/photo-1629909615184-74f495363b0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+      "image": "https://images.unsplash.com/photo-1663151064065-cb334788f77d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": "6",
       "title": "Гинекология",
       "description": "Диагностика и лечение женских заболеваний, сопровождение беременности.",
-      "image": "https://images.unsplash.com/photo-1580281657525-91e25d3a4b57?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+      "image": "https://plus.unsplash.com/premium_photo-1661757209301-841e1fe196ec?q=80&w=1954&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": "7",
       "title": "Офтальмология",
       "description": "Диагностика и лечение заболеваний глаз, подбор очков и контактных линз.",
       "image": "https://images.unsplash.com/photo-1625134673337-519d4d10b313?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+    },
+    {
+      "id": "8",
+      "title": "Дерматология",
+      "description": "Лечение кожных заболеваний, аллергий и дерматологических проблем.",
+      "image": "https://plus.unsplash.com/premium_photo-1681966907271-1e350ec3bb95?q=80&w=1193&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": "9",
+      "title": "Оториноларингология",
+      "description": "Лечение ушей, носа и горла, профилактика заболеваний дыхательных путей.",
+      "image": "https://media.istockphoto.com/id/2170836563/photo/doctor-performs-tuning-fork-test-with-patient.jpg?s=1024x1024&w=is&k=20&c=aD7wnGEZbcbtFnbrnRDyHm90bsnwhmdzoDeuiyj5Bg4="
     }
-  ]
+  ],
+  "contact": {
+    "nameClinic": "Клиника Будь Здоров",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSn7RcaDkqzG1ilmRUs1Oo0Z93fSkjJovaFw&s",
+    "address": "улица Дехоти, Душанбе, Таджикистан",
+    "phones": [
+      "+992 923-45-67-22",
+      "+992 965-43-21-22"
+    ],
+    "email": "info@klinikabudzdorov.tj",
+    "schedule": {
+      "weekdays": "Пн-Пт: 8:00 - 20:00",
+      "weekend": "Сб-Вс: 9:00 - 18:00"
+    },
+    "socials": {
+      "vk": "#",
+      "telegram": "#",
+      "whatsapp": "#",
+      "instagram": "#"
+    },
+    "about": {
+      "title": "О нашей клинике",
+      "paragraphs": [
+        "Клиника \"Будь Здоров\" - это современный медицинский центр, где работают высококвалифицированные специалисты с многолетним опытом.",
+        "Наша команда имеет более 15 лет практического опыта в различных областях медицины, включая терапию, кардиологию, неврологию и офтальмологию.",
+        "Мы используем передовые методы диагностики и лечения, чтобы обеспечить нашим пациентам качественную медицинскую помощь в комфортных условиях.",
+        "Клиника оснащена современным оборудованием, что позволяет проводить точные обследования и быстро ставить диагноз.",
+        "Мы ценим индивидуальный подход к каждому пациенту и обеспечиваем персональное внимание в ходе всей диагностики и лечения."
+      ]
+    },
+    "features": [
+      {
+        "icon": "fas fa-user-md",
+        "title": "Опытные врачи",
+        "description": "Высококвалифицированные специалисты с более чем 15-летним опытом работы"
+      },
+      {
+        "icon": "fas fa-flask",
+        "title": "Современное оборудование",
+        "description": "Точная диагностика с использованием новейших технологий"
+      },
+      {
+        "icon": "fas fa-heart",
+        "title": "Индивидуальный подход",
+        "description": "Персональное внимание к каждому пациенту"
+      },
+      {
+        "icon": "fas fa-calendar-check",
+        "title": "Удобное время",
+        "description": "Запись на удобное время, включая вечерние и выходные часы"
+      }
+    ]
+  }
 }

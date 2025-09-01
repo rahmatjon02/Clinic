@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff, User, Loader2 } from "lucide-react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useLoginMutation } from "@/store/api";
@@ -65,8 +65,6 @@ export default function LoginCard() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 p-6">
-      <Toaster />
-
       <div className="max-w-3xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="hidden md:flex items-center justify-center">
           <div className="w-80 h-80 rounded-2xl bg-gradient-to-br from-blue-100 to-white dark:from-blue-900 dark:to-gray-800 shadow-lg flex items-center justify-center">

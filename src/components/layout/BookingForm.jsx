@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import toast from "react-hot-toast";
-import { getCurrentUserId } from "@/utils/auth";
+import { getCurrentUser, getCurrentUserId } from "@/utils/auth";
 
 import {
   useGetDoctorsQuery,
@@ -12,19 +12,31 @@ import {
   useAddAppointmentMutation,
 } from "@/store/api";
 
+function timeStringToMinutes(t) {
+  const [hh, mm] = t.split(":").map(Number);
+  return hh * 60 + mm;
+}
+function minutesToTimeString(m) {
+  const hh = Math.floor(m / 60);
+  const mm = m % 60;
+  return `${String(hh).padStart(2, "0")}:${String(mm).padStart(2, "0")}`;
+}
+function todayISO() {
+  return new Date().toISOString().slice(0, 10);
+}
+
 export default function BookingForm() {
   const { data: doctors = [] } = useGetDoctorsQuery();
   const { data: schedules = [] } = useGetSchedulesQuery();
   const { data: appointments = [] } = useGetAppointmentsQuery();
   const [addAppointment, { isLoading: aLoading }] = useAddAppointmentMutation();
-  const userIdId = getCurrentUserId();
+  const userId = getCurrentUserId();
+  const user = getCurrentUser();
 
   const [form, setForm] = useState({
     specialization: "",
     doctorId: "",
-    date: "",
-    name: "",
-    phone: "",
+    date: todayISO(),
   });
 
   const [slots, setSlots] = useState([]);
@@ -36,29 +48,27 @@ export default function BookingForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { doctorId, date, name, phone } = form;
-    if (!doctorId || !date || !name || !phone || !selectedSlot) {
+    const { doctorId, date } = form;
+    if (!doctorId || !date || !selectedSlot) {
       toast.error("Заполните все поля и выберите время");
       return;
     }
-
+    if (!userId) {
+      toast.error("Вам нужно войти, чтобы записаться");
+      return;
+    }
     try {
-      await addAppointment({
+      const payload = {
         doctorId: Number(doctorId),
-        patientId: userIdId,
+        patientId: userId,
+        patientName: user?.name || "",
+        patientPhone: user?.phoneNumber || "",
         date,
         time: selectedSlot,
         status: false,
-      }).unwrap();
-
+      };
+      await addAppointment(payload).unwrap();
       toast.success("Запись успешно создана!");
-      setForm({
-        specialization: "",
-        doctorId: "",
-        date: "",
-        name: "",
-        phone: "",
-      });
       setSelectedSlot(null);
     } catch (err) {
       console.error(err);
@@ -77,10 +87,15 @@ export default function BookingForm() {
       return;
     }
 
-    const start = schedule.startTime;
-    const end = schedule.endTime;
-    const breakStart = schedule.breakStart;
-    const breakEnd = schedule.breakEnd;
+    const interval = schedule.intervalMinutes || 30;
+    const startMin = timeStringToMinutes(schedule.startTime);
+    const endMin = timeStringToMinutes(schedule.endTime);
+    const breakStartMin = schedule.breakStart
+      ? timeStringToMinutes(schedule.breakStart)
+      : null;
+    const breakEndMin = schedule.breakEnd
+      ? timeStringToMinutes(schedule.breakEnd)
+      : null;
 
     const bookedTimes = appointments
       .filter(
@@ -91,32 +106,25 @@ export default function BookingForm() {
       .map((a) => a.time);
 
     const slotsArr = [];
-    let current = new Date(`${selectedDate}T${start}:00`);
-    const endTime = new Date(`${selectedDate}T${end}:00`);
     const now = new Date();
 
-    while (current < endTime) {
-      const hh = current.getHours().toString().padStart(2, "0");
-      const mm = current.getMinutes().toString().padStart(2, "0");
-      const timeStr = `${hh}:${mm}`;
-
+    for (let t = startMin; t + interval <= endMin; t += interval) {
+      const timeStr = minutesToTimeString(t);
+      const slotDateTime = new Date(`${selectedDate}T${timeStr}:00`);
+      const isPast = slotDateTime <= now;
       const inBreak =
-        current >= new Date(`${selectedDate}T${breakStart}:00`) &&
-        current < new Date(`${selectedDate}T${breakEnd}:00`);
-      const isPast = current < now;
-
-      slotsArr.push({
-        time: timeStr,
-        status: inBreak
-          ? "break"
-          : bookedTimes.includes(timeStr)
-          ? "booked"
-          : isPast
-          ? "past"
-          : "free",
-      });
-
-      current.setHours(current.getHours() + 1);
+        breakStartMin !== null &&
+        breakEndMin !== null &&
+        t >= breakStartMin &&
+        t < breakEndMin;
+      const status = inBreak
+        ? "break"
+        : bookedTimes.includes(timeStr)
+        ? "booked"
+        : isPast
+        ? "past"
+        : "free";
+      slotsArr.push({ time: timeStr, status });
     }
 
     setSlots(slotsArr);
@@ -212,7 +220,7 @@ export default function BookingForm() {
             {/* Время */}
             <div className="md:col-span-2">
               <label className="block text-gray-500 mb-2">Выберите время</label>
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-4 lg:grid-cols-8 gap-2">
                 {slots.map((s) => {
                   let bg = "bg-gray-300 cursor-not-allowed";
                   if (s.status === "free")
@@ -240,30 +248,6 @@ export default function BookingForm() {
                   );
                 })}
               </div>
-            </div>
-
-            {/* Имя */}
-            <div>
-              <label className="block text-gray-500 mb-2">Ваше имя</label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-              />
-            </div>
-
-            {/* Телефон */}
-            <div>
-              <label className="block text-gray-500 mb-2">Телефон</label>
-              <input
-                type="tel"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-              />
             </div>
 
             {/* Отправка */}

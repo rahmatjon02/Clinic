@@ -4,6 +4,7 @@ import React from "react";
 import { useGetReviewsQuery, useGetDoctorsQuery } from "@/store/api";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const Reviews = () => {
   const { data: reviews, isLoading, isError } = useGetReviewsQuery();
@@ -69,9 +70,9 @@ const Reviews = () => {
         </div>
 
         <div className="text-center mt-10">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full smooth-transition">
-            Оставить отзыв
-          </button>
+          <Link href={'/reviews'} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full smooth-transition">
+            Все отзывы
+          </Link>
         </div>
       </div>
     </div>

@@ -2,49 +2,63 @@
 
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import Link from "next/link";
 import { Button } from "antd";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
 import Image from "next/image";
 import imgLogo from "../../assets/home/i.webp";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { useGetContactQuery } from "@/store/api";
+import { getCurrentUser } from "@/utils/auth";
 
 export default function Header() {
+  const { data: contact, isLoading, error } = useGetContactQuery();
   useEffect(() => setMounted(true), []);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [user, setUser] = useState(null);
+  const user = getCurrentUser();
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("current_user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+  let pathName = usePathname();
+  const router = useRouter();
 
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  
-  let pathName = usePathname();
-  
+
+  if (isLoading) {
+    return (
+      <footer className="bg-blue-900 text-white py-12 text-center">
+        <p>Загрузка...</p>
+      </footer>
+    );
+  }
+
+  if (error) {
+    return (
+      <footer className="bg-blue-900 text-white py-12 text-center">
+        <p>Ошибка при загрузке контактов</p>
+      </footer>
+    );
+  }
+
   if (!mounted) return null;
   return (
     <>
       <div className="bg-blue-900 text-white py-2 px-4 text-[10px] lg:text-sm">
         <div className="container mx-auto flex  justify-between items-center">
-          <div className="flex items-center space-x-4 md:mb-0">
-            <div className="flex items-center">
+          <div className="flex items-center space-x-4 md:mb-0 text-[10px]">
+            <div className="lg:flex items-center hidden ">
               <i className="fas fa-map-marker-alt mr-2"></i>
-              <span>Москва, ул. Лесная, д. 15</span>
+              <span>{contact.address}</span>
             </div>
 
             <div className="flex items-center">
               <i className="fas fa-phone-alt mr-2"></i>
-              <span>+7 (495) 123-45-67</span>
+              <span>{contact.phones?.[0]}</span>
             </div>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 text-sm">
             <Link href="#" className="hover:text-blue-200">
               <i className="fab fa-vk"></i>
             </Link>
@@ -64,22 +78,30 @@ export default function Header() {
           theme === "dark" ? "bg-black" : "bg-white"
         } shadow-md sticky top-0 z-50`}
       >
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center gap-2">
-          {/* Лого */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src={imgLogo}
-              alt="Logo"
-              width={500}
-              height={500}
-              className="w-10 h-10 rounded-full object-cover"
-            />
+        <div className="container mx-auto pl-2 pr-4 py-3 flex justify-between items-center gap-2">
+          <div className="flex items-center gap-2">
+            {pathName !== "/" && (
+              <button onClick={() => router.back()} className=" cursor-pointer">
+                <ArrowLeft />
+              </button>
+            )}
 
-            <h1 className="text-xl">Клиника Будь Здоров</h1>
-          </Link>
+            {/* Лого */}
+            <Link href="/" className="flex items-center">
+              <Image
+                src={contact.logo}
+                alt="Logo"
+                width={500}
+                height={500}
+                className="w-10 h-10 rounded-full object-cover"
+              />
+
+              <h1 className="lg:text-xl text-sm">{contact.nameClinic}</h1>
+            </Link>
+          </div>
 
           {/* Десктоп меню */}
-          <div className="hidden md:flex space-x-8 items-center">
+          <div className="hidden md:flex space-x-8 items-center w-2/6">
             <Link
               href="/"
               className={`${
@@ -104,10 +126,26 @@ export default function Header() {
             >
               Врачи
             </Link>
+            <Link
+              href="/reviews"
+              className={`${
+                pathName == "/reviews" ? "text-blue-700" : "text-gray-500"
+              }  font-medium hover:text-blue-500`}
+            >
+              Отзывы
+            </Link>
+            <Link
+              href="/about"
+              className={`${
+                pathName == "/about" ? "text-blue-700" : "text-gray-500"
+              }  font-medium hover:text-blue-500`}
+            >
+              О нас
+            </Link>
           </div>
 
           {/* Тема + Логин */}
-          <div className={`lg:flex items-center gap-2 hidden`}>
+          <div className={`lg:flex items-center gap-2 hidden `}>
             {user ? (
               <Link href={"/profile"}>
                 <span
@@ -144,28 +182,62 @@ export default function Header() {
           }`}
         >
           <div className="flex justify-between">
-            <Link href="/" className="block py-2 text-blue-600 font-medium">
+            <Link
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              href="/"
+              className={`${
+                pathName == "/" ? "text-blue-700" : "text-gray-500"
+              }  font-medium hover:text-blue-500`}
+            >
               Главная
             </Link>
             <ThemeSwitcher />
           </div>
+
           <Link
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
             href="/services"
-            className="block py-2 text-gray-400 hover:text-blue-500"
+            className={`${
+              pathName == "/services" ? "text-blue-700" : "text-gray-500"
+            }  font-medium hover:text-blue-500 block py-2`}
           >
             Услуги
           </Link>
+
           <Link
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
             href="/allDoctors"
-            className="block py-2 text-gray-400 hover:text-blue-500"
+            className={`${
+              pathName == "/allDoctors" ? "text-blue-700" : "text-gray-500"
+            }  font-medium hover:text-blue-500 block py-2`}
           >
             Врачи
           </Link>
 
+          <Link
+            href="/reviews"
+            className={`${
+              pathName == "/services" ? "text-blue-700" : "text-gray-500"
+            }  font-medium hover:text-blue-500`}
+          >
+            Отзывы
+          </Link>
+          <Link
+            href="/about"
+            className={`${
+              pathName == "/about" ? "text-blue-700" : "text-gray-500"
+            }  font-medium hover:text-blue-500`}
+          >
+            О нас
+          </Link>
+
           <div className="">
             {user ? (
-              <Link href={"/profile"}>
-                <button color="default" variant="outlined">
+              <Link
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                href={"/profile"}
+              >
+                <button className=" py-2 text-gray-500 hover:text-blue-500">
                   {user?.userName}
                 </button>
               </Link>

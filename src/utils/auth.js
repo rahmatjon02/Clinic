@@ -64,3 +64,12 @@ export function getCurrentUserId() {
 
   return null;
 }
+
+export function getCurrentUser() {
+  const user = getStoredUserObject();
+  if (!user) return null;
+
+  if (user) return user;
+
+  return null;
+}

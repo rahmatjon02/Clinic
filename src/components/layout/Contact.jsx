@@ -1,9 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useGetDoctorsQuery } from "@/store/api";
-import Image from "next/image";
-import image from "../../assets/home/doc.png";
-
+import { useGetContactQuery } from "@/store/api";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -11,85 +8,100 @@ export default function Contact() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+
+  const { data: contact, isLoading, error } = useGetContactQuery();
+
+  if (isLoading) return <p>Загрузка...</p>;
+  if (error) return <p>Ошибка загрузки</p>;
+
   if (!mounted) return null;
 
   return (
     <div className={`${theme === "dark" ? "bg-black" : "bg-white"} py-16`}>
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row">
+          {/* Левая часть */}
           <div className="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
             <h2 className="text-3xl font-bold mb-6 text-blue-900">Контакты</h2>
 
             <div className="mb-8">
+              {/* Адрес */}
               <div className="flex items-start mb-6">
-                <div className="bg-blue-100 p-3 rounded-full mr-4">
+                <div className="bg-blue-100 p-3 w-10 h-10 flex items-center justify-center rounded-full mr-4">
                   <i className="fas fa-map-marker-alt text-blue-600 text-xl"></i>
                 </div>
                 <div>
                   <h4 className="font-bold text-blue-900 mb-1">Адрес</h4>
-                  <p className="text-gray-600">Москва, ул. Лесная, д. 15</p>
+                  <p className="text-gray-600">{contact.address}</p>
                 </div>
               </div>
 
+              {/* Телефон */}
               <div className="flex items-start mb-6">
-                <div className="bg-blue-100 p-3 rounded-full mr-4">
+                <div className="bg-blue-100 p-3 w-10 h-10 flex items-center justify-center rounded-full mr-4">
                   <i className="fas fa-phone-alt text-blue-600 text-xl"></i>
                 </div>
                 <div>
                   <h4 className="font-bold text-blue-900 mb-1">Телефон</h4>
-                  <p className="text-gray-600">+7 (495) 123-45-67</p>
-                  <p className="text-gray-600">+7 (495) 765-43-21</p>
+                  {contact.phones.map((phone, i) => (
+                    <p key={i} className="text-gray-600">
+                      {phone}
+                    </p>
+                  ))}
                 </div>
               </div>
 
+              {/* Email */}
               <div className="flex items-start mb-6">
-                <div className="bg-blue-100 p-3 rounded-full mr-4">
+                <div className="bg-blue-100 p-3 w-10 h-10 flex items-center justify-center rounded-full mr-4">
                   <i className="fas fa-envelope text-blue-600 text-xl"></i>
                 </div>
                 <div>
                   <h4 className="font-bold text-blue-900 mb-1">Email</h4>
-                  <p className="text-gray-600">info@klinikabudzdorov.ru</p>
+                  <p className="text-gray-600">{contact.email}</p>
                 </div>
               </div>
 
+              {/* Режим работы */}
               <div className="flex items-start">
-                <div className="bg-blue-100 p-3 rounded-full mr-4">
+                <div className="bg-blue-100 p-3 w-10 h-10 flex items-center justify-center rounded-full mr-4">
                   <i className="fas fa-clock text-blue-600 text-xl"></i>
                 </div>
                 <div>
                   <h4 className="font-bold text-blue-900 mb-1">Режим работы</h4>
-                  <p className="text-gray-600">Пн-Пт: 8:00 - 20:00</p>
-                  <p className="text-gray-600">Сб-Вс: 9:00 - 18:00</p>
+                  <p className="text-gray-600">{contact.schedule.weekdays}</p>
+                  <p className="text-gray-600">{contact.schedule.weekend}</p>
                 </div>
               </div>
             </div>
 
+            {/* Соцсети */}
             <div>
               <h4 className="font-bold text-blue-900 mb-4">
                 Мы в социальных сетях
               </h4>
               <div className="flex space-x-4">
                 <Link
-                  href="#"
-                  className="bg-blue-100 p-3 rounded-full text-blue-600 hover:bg-blue-200 smooth-transition"
+                  href={contact.socials.vk}
+                  className="bg-blue-100 p-3 w-10 h-10 flex items-center justify-center rounded-full text-blue-600 hover:bg-blue-200"
                 >
                   <i className="fab fa-vk text-xl"></i>
                 </Link>
                 <Link
-                  href="#"
-                  className="bg-blue-100 p-3 rounded-full text-blue-600 hover:bg-blue-200 smooth-transition"
+                  href={contact.socials.telegram}
+                  className="bg-blue-100 p-3 w-10 h-10 flex items-center justify-center rounded-full text-blue-600 hover:bg-blue-200"
                 >
                   <i className="fab fa-telegram text-xl"></i>
                 </Link>
                 <Link
-                  href="#"
-                  className="bg-blue-100 p-3 rounded-full text-blue-600 hover:bg-blue-200 smooth-transition"
+                  href={contact.socials.whatsapp}
+                  className="bg-blue-100 p-3 w-10 h-10 flex items-center justify-center rounded-full text-blue-600 hover:bg-blue-200"
                 >
                   <i className="fab fa-whatsapp text-xl"></i>
                 </Link>
                 <Link
-                  href="#"
-                  className="bg-blue-100 p-3 rounded-full text-blue-600 hover:bg-blue-200 smooth-transition"
+                  href={contact.socials.instagram}
+                  className="bg-blue-100 p-3 w-10 h-10 flex items-center justify-center rounded-full text-blue-600 hover:bg-blue-200"
                 >
                   <i className="fab fa-instagram text-xl"></i>
                 </Link>
@@ -97,6 +109,7 @@ export default function Contact() {
             </div>
           </div>
 
+          {/* Правая часть */}
           <div className="lg:w-1/2">
             <div
               className={`${

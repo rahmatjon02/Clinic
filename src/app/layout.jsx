@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "@ant-design/v5-patch-for-react-19";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
           <Providers>
             <div className="flex flex-col justify-between min-h-[100vh]">
               <div>
+                <Toaster />
                 <Header />
                 <main className="">{children}</main>
               </div>

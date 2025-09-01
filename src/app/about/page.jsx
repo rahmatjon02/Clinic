@@ -4,7 +4,6 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { useGetContactQuery } from "@/store/api";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function About() {
   const { theme } = useTheme();
@@ -24,7 +23,7 @@ export default function About() {
             <Image
               width={500}
               height={500}
-              src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80"
+              src={contact.logo}
               alt={contact.nameClinic}
               className="rounded-lg shadow-lg w-full"
             />
@@ -56,15 +55,6 @@ export default function About() {
               ))}
             </div>
           </div>
-        </div>
-
-        <div className="text-center mt-10">
-          <Link
-            href="/about"
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full smooth-transition"
-          >
-            Подробнее о клинике
-          </Link>
         </div>
       </div>
     </div>

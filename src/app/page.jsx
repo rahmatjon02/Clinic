@@ -5,7 +5,7 @@ import BookingForm from "@/components/layout/BookingForm";
 import FAQ from "@/components/layout/FAQ";
 import Reviews from "@/components/layout/Reviews";
 import About from "@/components/layout/About";
-import Contact from "@/components/layout/Contactc";
+import Contact from "@/components/layout/Contact";
 import Link from "next/link";
 
 export default function Home() {
@@ -27,7 +27,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Написать в WhatsApp"
-            className="bg-green-500 hover:bg-green-600 text-white px-4 py-4 rounded-full shadow-lg transition duration-300 flex items-center justify-center"
+            className="bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-full shadow-lg transition duration-300 flex items-center justify-center"
           >
             <i className="fab fa-whatsapp text-2xl"></i>
           </Link>
@@ -35,7 +35,7 @@ export default function Home() {
           <Link
             href="tel:+992948773399"
             aria-label="Позвонить"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-4 rounded-full shadow-lg transition duration-300 flex items-center justify-center"
+            className="bg-blue-500 hover:bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg transition duration-300 flex items-center justify-center"
           >
             <i className="fas fa-phone-alt text-xl"></i>
           </Link>
