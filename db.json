@@ -23,9 +23,8 @@
       "id": "1a6f",
       "userName": "tom",
       "password": "123456",
-      "name": "tom john",
+      "name": "tom john ",
       "phoneNumber": "992 948 77 33 99",
-      "role": "user",
       "bio": "i am frontend",
       "image": ""
     },
@@ -105,8 +104,9 @@
       "id": "1",
       "name": "Доктор Саидова",
       "specialization": "Кардиолог",
+      "specializationId": "2",
       "experience": 5,
-      "bio": "",
+      "bio": "Профессионал в своей области. Запись по удобному расписанию.",
       "image": "https://images.unsplash.com/photo-1612363584451-cd060fb62018?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "price": 40
     },
@@ -114,6 +114,7 @@
       "id": "2",
       "name": "Доктор Алиев",
       "specialization": "Диетолог",
+      "specializationId": "10",
       "experience": 10,
       "bio": "",
       "image": "https://images.unsplash.com/photo-1659353885824-1199aeeebfc6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -123,6 +124,7 @@
       "id": "3",
       "name": "Доктор Хусейн",
       "specialization": "Невролог",
+      "specializationId": "3",
       "experience": 8,
       "bio": "",
       "image": "https://plus.unsplash.com/premium_photo-1723514536306-26fe5c4adeb7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -132,6 +134,7 @@
       "id": "4",
       "name": "Доктор Гули",
       "specialization": "Педиатр",
+      "specializationId": "4",
       "experience": 6,
       "bio": "",
       "image": "https://plus.unsplash.com/premium_photo-1664475543697-229156438e1e?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -141,6 +144,7 @@
       "id": "5",
       "name": "Доктор Мирзоев",
       "specialization": "Стоматолог",
+      "specializationId": "5",
       "experience": 12,
       "bio": "",
       "image": "https://images.unsplash.com/photo-1623261794928-8d9d0646bda1?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -150,6 +154,7 @@
       "id": "6",
       "name": "Доктор Зулайхо",
       "specialization": "Гинеколог",
+      "specializationId": "6",
       "experience": 9,
       "bio": "",
       "image": "https://images.unsplash.com/photo-1736289173074-df6009da27c9?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -159,6 +164,7 @@
       "id": "7",
       "name": "Доктор Омар",
       "specialization": "Офтальмолог",
+      "specializationId": "7",
       "experience": 7,
       "bio": "",
       "image": "https://plus.unsplash.com/premium_photo-1661580632282-c56b1bfc0489?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -168,6 +174,7 @@
       "id": "8",
       "name": "Доктор Шахноза",
       "specialization": "Терапевт",
+      "specializationId": "1",
       "experience": 4,
       "bio": "",
       "image": "https://images.unsplash.com/photo-1706958581603-dffa91fec580?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -177,6 +184,7 @@
       "id": "9",
       "name": "Доктор Бобур",
       "specialization": "Кардиолог",
+      "specializationId": "2",
       "experience": 11,
       "bio": "",
       "image": "https://images.unsplash.com/photo-1641723345378-a701b30b2d36?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -186,6 +194,7 @@
       "id": "10",
       "name": "Доктор Лола",
       "specialization": "Диетолог",
+      "specializationId": "10",
       "experience": 5,
       "bio": "",
       "image": "",
@@ -232,26 +241,27 @@
       "date": "2025-09-02",
       "time": "14:00",
       "status": false
+    },
+    {
+      "id": "ebda",
+      "doctorId": 2,
+      "patientId": "1a6f",
+      "patientName": "tom john",
+      "patientPhone": "992 948 77 33 99",
+      "date": "2025-09-02",
+      "time": "14:30",
+      "status": false
     }
   ],
   "reviews": [
-    {
-      "id": "d3f8",
-      "doctorId": 2,
-      "patientName": "tom john",
-      "patientId": "1a6f",
-      "patientPhoneNumber": "992 948 77 33 99",
-      "rating": "5",
-      "comment": ""
-    },
     {
       "id": "c853",
       "doctorId": 1,
       "patientName": "tom john",
       "patientId": "1a6f",
       "patientPhoneNumber": "992 948 77 33 99",
-      "rating": "1",
-      "comment": "bot bday"
+      "rating": "5",
+      "comment": "созай"
     },
     {
       "id": "46c5",
@@ -434,70 +444,115 @@
       "answer": "Нет, ребёнок должен приходить с родителем или опекуном."
     }
   ],
+
   "services": [
     {
       "id": "1",
       "title": "Терапия",
-      "description": "Комплексная диагностика и лечение заболеваний внутренних органов.",
+      "description": {
+        "tj": "Ташхиси мукаммал ва табобати бемориҳои узвҳои дарунӣ.",
+        "ru": "Комплексная диагностика и лечение заболеваний внутренних органов.",
+        "en": "Comprehensive diagnosis and treatment of internal organ diseases."
+      },
       "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
     },
     {
       "id": "2",
       "title": "Кардиология",
-      "description": "Диагностика, лечение и профилактика заболеваний сердечно-сосудистой системы.",
+      "description": {
+        "tj": "Ташхис, табобат ва пешгирии бемориҳои системаи дилу раг.",
+        "ru": "Диагностика, лечение и профилактика заболеваний сердечно-сосудистой системы.",
+        "en": "Diagnosis, treatment and prevention of cardiovascular system diseases."
+      },
       "image": "https://images.unsplash.com/photo-1638202993928-7267aad84c31?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": "3",
       "title": "Неврология",
-      "description": "Лечение заболеваний нервной системы, головных болей, нарушений сна.",
+      "description": {
+        "tj": "Табобати бемориҳои системаи асаб, дардҳои сар, харошиҳои хоб.",
+        "ru": "Лечение заболеваний нервной системы, головных болей, нарушений сна.",
+        "en": "Treatment of nervous system diseases, headaches, sleep disorders."
+      },
       "image": "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
     },
     {
       "id": "4",
       "title": "Педиатрия",
-      "description": "Медицинская помощь детям: профилактика, диагностика и лечение заболеваний.",
+      "description": {
+        "tj": "Ёрии тиббӣ ба кӯдакон: пешгирӣ, ташхис ва табобати бемориҳо.",
+        "ru": "Медицинская помощь детям: профилактика, диагностика и лечение заболеваний.",
+        "en": "Medical care for children: prevention, diagnosis and treatment of diseases."
+      },
       "image": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": "5",
       "title": "Стоматология",
-      "description": "Лечение зубов и десен, протезирование и профилактика стоматологических заболеваний.",
+      "description": {
+        "tj": "Табобати дандон ва ласса, протезгузорӣ ва пешгирии бемориҳои дандон.",
+        "ru": "Лечение зубов и десен, протезирование и профилактика стоматологических заболеваний.",
+        "en": "Treatment of teeth and gums, prosthetics and prevention of dental diseases."
+      },
       "image": "https://images.unsplash.com/photo-1663151064065-cb334788f77d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": "6",
       "title": "Гинекология",
-      "description": "Диагностика и лечение женских заболеваний, сопровождение беременности.",
+      "description": {
+        "tj": "Ташхис ва табобати бемориҳои занона, дастгирии ҳомилагӣ.",
+        "ru": "Диагностика и лечение женских заболеваний, сопровождение беременности.",
+        "en": "Diagnosis and treatment of female diseases, pregnancy care."
+      },
       "image": "https://plus.unsplash.com/premium_photo-1661757209301-841e1fe196ec?q=80&w=1954&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": "7",
       "title": "Офтальмология",
-      "description": "Диагностика и лечение заболеваний глаз, подбор очков и контактных линз.",
+      "description": {
+        "tj": "Ташхис ва табобати бемориҳои чашм, интихоби айнак ва линзаҳои контактӣ.",
+        "ru": "Диагностика и лечение заболеваний глаз, подбор очков и контактных линз.",
+        "en": "Diagnosis and treatment of eye diseases, selection of glasses and contact lenses."
+      },
       "image": "https://images.unsplash.com/photo-1625134673337-519d4d10b313?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
     },
     {
       "id": "8",
       "title": "Дерматология",
-      "description": "Лечение кожных заболеваний, аллергий и дерматологических проблем.",
+      "description": {
+        "tj": "Табобати бемориҳои пӯст, аллергия ва мушкилоти дерматологӣ.",
+        "ru": "Лечение кожных заболеваний, аллергий и дерматологических проблем.",
+        "en": "Treatment of skin diseases, allergies and dermatological problems."
+      },
       "image": "https://plus.unsplash.com/premium_photo-1681966907271-1e350ec3bb95?q=80&w=1193&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": "9",
       "title": "Оториноларингология",
-      "description": "Лечение ушей, носа и горла, профилактика заболеваний дыхательных путей.",
+      "description": {
+        "tj": "Табобати гӯш, бинӣ ва гулӯ, пешгирии бемориҳои роҳҳои нафаскашӣ.",
+        "ru": "Лечение ушей, носа и горла, профилактика заболеваний дыхательных путей.",
+        "en": "Treatment of ears, nose and throat, prevention of respiratory tract diseases."
+      },
       "image": "https://media.istockphoto.com/id/2170836563/photo/doctor-performs-tuning-fork-test-with-patient.jpg?s=1024x1024&w=is&k=20&c=aD7wnGEZbcbtFnbrnRDyHm90bsnwhmdzoDeuiyj5Bg4="
+    },
+    {
+      "id": "10",
+      "title": "Диетология",
+      "description": {
+        "tj": "Хизматрасонии барои духтурони диетолог: маслихат дар бораи ғизо, ислоҳи рацион, пешгирии бемориҳо.",
+        "ru": "Услуги для докторов-диетологов: консультации по питанию, коррекция рациона, профилактика заболеваний.",
+        "en": "Services for nutritionists: nutrition consultations, diet correction, disease prevention."
+      },
+      "image": "https://images.unsplash.com/photo-1659353886508-63654e63eca4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
   ],
+
   "contact": {
-    "nameClinic": "Клиника Будь Здоров",
+    "nameClinic": "Будь Здоров",
     "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSn7RcaDkqzG1ilmRUs1Oo0Z93fSkjJovaFw&s",
     "address": "улица Дехоти, Душанбе, Таджикистан",
-    "phones": [
-      "+992 923-45-67-22",
-      "+992 965-43-21-22"
-    ],
+    "phones": ["+992 923-45-67-22", "+992 965-43-21-22"],
     "email": "info@klinikabudzdorov.tj",
     "schedule": {
       "weekdays": "Пн-Пт: 8:00 - 20:00",

@@ -55,13 +55,7 @@ export default function AppointmentsPage() {
     }
   }
 
-  function LogOut() {
-    localStorage.removeItem("access_token");
-    sessionStorage.removeItem("access_token");
-    localStorage.removeItem("current_user");
-    sessionStorage.removeItem("current_user");
-    router.push("/");
-  }
+
 
   if (apptsLoading) {
     return (
@@ -104,7 +98,7 @@ export default function AppointmentsPage() {
             return (
               <div
                 key={a.id}
-                className="bg-white p-4 rounded shadow flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+                className=" p-4 rounded shadow flex flex-col md:flex-row md:items-center md:justify-between gap-4"
               >
                 <div className="flex items-center gap-4">
                   <Image

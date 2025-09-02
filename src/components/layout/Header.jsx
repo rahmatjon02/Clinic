@@ -11,10 +11,11 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useGetContactQuery } from "@/store/api";
 import { getCurrentUser } from "@/utils/auth";
+import { useTranslations } from 'next-intl';
 
 export default function Header() {
   const { data: contact, isLoading, error } = useGetContactQuery();
-  useEffect(() => setMounted(true), []);
+  const t = useTranslations('Header');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const user = getCurrentUser();
 
@@ -28,7 +29,7 @@ export default function Header() {
   if (isLoading) {
     return (
       <footer className="bg-blue-900 text-white py-12 text-center">
-        <p>Загрузка...</p>
+        <p>{t('loading')}</p>
       </footer>
     );
   }
@@ -36,18 +37,23 @@ export default function Header() {
   if (error) {
     return (
       <footer className="bg-blue-900 text-white py-12 text-center">
-        <p>Ошибка при загрузке контактов</p>
+        <p>{t('error')}</p>
       </footer>
     );
   }
 
   if (!mounted) return null;
+  
   return (
     <>
-      <div className="bg-blue-900 text-white py-2 px-4 text-[10px] lg:text-sm">
-        <div className="container mx-auto flex  justify-between items-center">
-          <div className="flex items-center space-x-4 md:mb-0 text-[10px]">
-            <div className="lg:flex items-center hidden ">
+      <div
+        className={`${
+          theme === "dark" ? "bg-gray-900" : "bg-blue-900 text-white"
+        } py-2 px-4 text-[10px] lg:text-sm`}
+      >
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-4 md:mb-0 lg:text-sm text-[10px]">
+            <div className="lg:flex items-center hidden">
               <i className="fas fa-map-marker-alt mr-2"></i>
               <span>{contact.address}</span>
             </div>
@@ -75,19 +81,19 @@ export default function Header() {
       {/* Навигация */}
       <nav
         className={`${
-          theme === "dark" ? "bg-black" : "bg-white"
-        } shadow-md sticky top-0 z-50`}
+          theme === "dark" ? "bg-black shadow shadow-white" : "bg-white shadow-md"
+        } sticky top-0 z-50`}
       >
         <div className="container mx-auto pl-2 pr-4 py-3 flex justify-between items-center gap-2">
           <div className="flex items-center gap-2">
             {pathName !== "/" && (
-              <button onClick={() => router.back()} className=" cursor-pointer">
+              <button onClick={() => router.back()} className="cursor-pointer">
                 <ArrowLeft />
               </button>
             )}
 
             {/* Лого */}
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center gap-3">
               <Image
                 src={contact.logo}
                 alt="Logo"
@@ -95,59 +101,58 @@ export default function Header() {
                 height={500}
                 className="w-10 h-10 rounded-full object-cover"
               />
-
               <h1 className="lg:text-xl text-sm">{contact.nameClinic}</h1>
             </Link>
           </div>
 
           {/* Десктоп меню */}
-          <div className="hidden md:flex space-x-8 items-center w-2/6">
+          <div className="hidden md:flex space-x-8 items-center">
             <Link
               href="/"
               className={`${
                 pathName == "/" ? "text-blue-700" : "text-gray-500"
-              }  font-medium hover:text-blue-500`}
+              } font-medium hover:text-blue-500`}
             >
-              Главная
+              {t('home')}
             </Link>
             <Link
               href="/services"
               className={`${
                 pathName == "/services" ? "text-blue-700" : "text-gray-500"
-              }  font-medium hover:text-blue-500`}
+              } font-medium hover:text-blue-500`}
             >
-              Услуги
+              {t('services')}
             </Link>
             <Link
               href="/allDoctors"
               className={`${
                 pathName == "/allDoctors" ? "text-blue-700" : "text-gray-500"
-              }  font-medium hover:text-blue-500`}
+              } font-medium hover:text-blue-500`}
             >
-              Врачи
+              {t('doctors')}
             </Link>
             <Link
               href="/reviews"
               className={`${
                 pathName == "/reviews" ? "text-blue-700" : "text-gray-500"
-              }  font-medium hover:text-blue-500`}
+              } font-medium hover:text-blue-500`}
             >
-              Отзывы
+              {t('reviews')}
             </Link>
             <Link
               href="/about"
               className={`${
                 pathName == "/about" ? "text-blue-700" : "text-gray-500"
-              }  font-medium hover:text-blue-500`}
+              } font-medium hover:text-blue-500`}
             >
-              О нас
+              {t('about')}
             </Link>
           </div>
 
           {/* Тема + Логин */}
-          <div className={`lg:flex items-center gap-2 hidden `}>
+          <div className="lg:flex items-center gap-2 hidden">
             {user ? (
-              <Link href={"/profile"}>
+              <Link href="/profile">
                 <span
                   className={`hover:text-blue-400 text-xl ${
                     theme === "dark" ? "text-white" : "text-black"
@@ -157,8 +162,8 @@ export default function Header() {
                 </span>
               </Link>
             ) : (
-              <Link href={"/auth/login"}>
-                <Button type="primary">Войти</Button>
+              <Link href="/auth/login">
+                <Button type="primary">{t('login')}</Button>
               </Link>
             )}
             <ThemeSwitcher />
@@ -187,9 +192,9 @@ export default function Header() {
               href="/"
               className={`${
                 pathName == "/" ? "text-blue-700" : "text-gray-500"
-              }  font-medium hover:text-blue-500`}
+              } font-medium hover:text-blue-500`}
             >
-              Главная
+              {t('home')}
             </Link>
             <ThemeSwitcher />
           </div>
@@ -199,9 +204,9 @@ export default function Header() {
             href="/services"
             className={`${
               pathName == "/services" ? "text-blue-700" : "text-gray-500"
-            }  font-medium hover:text-blue-500 block py-2`}
+            } font-medium hover:text-blue-500 block py-2`}
           >
-            Услуги
+            {t('services')}
           </Link>
 
           <Link
@@ -209,42 +214,45 @@ export default function Header() {
             href="/allDoctors"
             className={`${
               pathName == "/allDoctors" ? "text-blue-700" : "text-gray-500"
-            }  font-medium hover:text-blue-500 block py-2`}
+            } font-medium hover:text-blue-500 block py-2`}
           >
-            Врачи
+            {t('doctors')}
           </Link>
 
           <Link
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
             href="/reviews"
             className={`${
-              pathName == "/services" ? "text-blue-700" : "text-gray-500"
-            }  font-medium hover:text-blue-500`}
+              pathName == "/reviews" ? "text-blue-700" : "text-gray-500"
+            } font-medium hover:text-blue-500 block py-2`}
           >
-            Отзывы
+            {t('reviews')}
           </Link>
+          
           <Link
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
             href="/about"
             className={`${
               pathName == "/about" ? "text-blue-700" : "text-gray-500"
-            }  font-medium hover:text-blue-500`}
+            } font-medium hover:text-blue-500 block py-2`}
           >
-            О нас
+            {t('about')}
           </Link>
 
-          <div className="">
+          <div>
             {user ? (
               <Link
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                href={"/profile"}
+                href="/profile"
               >
-                <button className=" py-2 text-gray-500 hover:text-blue-500">
+                <button className="py-2 text-gray-500 hover:text-blue-500">
                   {user?.userName}
                 </button>
               </Link>
             ) : (
-              <Link href={"/auth/login"}>
+              <Link href="/auth/login">
                 <button className="block py-2 text-gray-400 hover:text-blue-500">
-                  Войти
+                  {t('login')}
                 </button>
               </Link>
             )}

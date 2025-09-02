@@ -38,7 +38,9 @@ const ReviewsPage = () => {
         <select
           value={status}
           onChange={(e) => setStatus(e.target.value)}
-          className=" px-4 py-2 rounded-l-lg border border-gray-300 outline-none"
+          className={`${
+            theme === "dark" ? "bg-black" : "bg-white"
+          } px-4 py-2 rounded-l-lg border border-gray-300 outline-none`}
         >
           <option value="">Все </option>
           <option value="5">5</option>

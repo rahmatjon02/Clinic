@@ -3,9 +3,16 @@ import Link from "next/link";
 import imageLogo from "../../assets/home/i.webp";
 import Image from "next/image";
 import { useGetContactQuery } from "@/store/api";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
   const { data: contact, isLoading, error } = useGetContactQuery();
+
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
   if (isLoading) {
     return (
@@ -24,7 +31,9 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-blue-900 text-white py-12">
+    <footer
+      className={`${theme === "dark" ? "bg-gray-900" : "bg-blue-900 text-white"} py-12`}
+    >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Логотип и соцсети */}

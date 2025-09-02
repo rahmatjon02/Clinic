@@ -22,7 +22,7 @@ const FAQ = () => {
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
-      <h2 className="text-3xl font-bold mb-8 text-center text-blue-900">
+      <h2 className="text-3xl font-bold mb-8 text-center text-blue-700">
         Часто задаваемые вопросы
       </h2>
       <div className="space-y-4">
@@ -33,7 +33,7 @@ const FAQ = () => {
           >
             <button
               onClick={() => toggle(item.id)}
-              className="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-blue-800 hover:bg-blue-50 transition-colors"
+              className="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-blue-600 hover:bg-blue-50 transition-colors"
             >
               {item.question}
               <ChevronDown
@@ -43,7 +43,7 @@ const FAQ = () => {
               />
             </button>
             {openId === item.id && (
-              <div className="px-4 pb-4 text-gray-600 animate-fadeIn">
+              <div className="px-4 pb-4 text-gray-400 animate-fadeIn">
                 {item.answer}
               </div>
             )}

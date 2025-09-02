@@ -36,7 +36,6 @@ function getDayOfWeekName(date) {
     "Saturday",
   ][new Date(date).getDay()];
 }
-
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -201,7 +200,7 @@ export default function DoctorPage() {
       await addAppointment(payload).unwrap();
       await refetchAppointments();
       setSelectedSlot(null);
-      router.push("/profile")
+      router.push("/profile");
     } catch (err) {
       console.error(err);
       toast.error("Ошибка при создании записи");
@@ -210,6 +209,11 @@ export default function DoctorPage() {
 
   const [moreReview, setmoreReview] = useState(1);
 
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+
   if (dLoading) return <p className="text-center py-20">Загрузка профиля...</p>;
   if (dError || !doctor)
     return <p className="text-center py-20 text-red-500">Доктор не найден</p>;
@@ -217,7 +221,7 @@ export default function DoctorPage() {
   return (
     <div className="container mx-auto py-12 px-6">
       <div className="grid md:grid-cols-3 gap-8">
-        <div className="md:col-span-2 bg-white shadow-md rounded-xl p-6">
+        <div className="md:col-span-2  shadow-md rounded-xl p-6">
           <div className="flex items-center gap-6">
             <Image
               src={doctor.image || image}
@@ -256,7 +260,12 @@ export default function DoctorPage() {
                 <p className="text-gray-500">Пока нет отзывов.</p>
               )}
               {reviews.slice(0, moreReview).map((r) => (
-                <div key={r.id} className="border rounded p-3 bg-gray-50">
+                <div
+                  key={r.id}
+                  className={`border rounded p-3 ${
+                    theme == "dark" ? "bg-gray-900" : "bg-gray-100"
+                  }`}
+                >
                   <div className="flex justify-between">
                     <div className="text-sm font-medium">
                       Пользователь{" "}
@@ -267,7 +276,7 @@ export default function DoctorPage() {
                     </div>
                   </div>
                   {r.comment && (
-                    <p className="mt-2 text-gray-700">{r.comment}</p>
+                    <p className="mt-2 text-gray-500">{r.comment}</p>
                   )}
                 </div>
               ))}
@@ -278,14 +287,14 @@ export default function DoctorPage() {
                     onClick={() => setmoreReview((e) => e + 3)}
                     className=" bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-lg smooth-transition"
                   >
-                    Show more
+                    Больше
                   </button>
                   {moreReview !== 1 && (
                     <button
                       onClick={() => setmoreReview((e) => (e = 1))}
                       className=" bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-lg smooth-transition"
                     >
-                      Show less
+                      Меньше
                     </button>
                   )}
                 </div>
@@ -324,11 +333,11 @@ export default function DoctorPage() {
           </div>
         </div>
 
-        <aside className="bg-white shadow-md rounded-xl p-6">
+        <aside className=" shadow-md rounded-xl p-6">
           <h4 className="font-semibold mb-3">Запись на приём</h4>
           <form onSubmit={handleBooking} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-500 mb-2">
                 Выберите дату
               </label>
               <input
@@ -343,7 +352,7 @@ export default function DoctorPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-500 mb-2">
                 Доступное время
               </label>
               {slots.length === 0 ? (

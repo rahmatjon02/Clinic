@@ -16,6 +16,7 @@ import Image from "next/image";
 import image from "@/assets/home/doc.png";
 import { useTheme } from "next-themes";
 import { Input, Modal } from "antd";
+import { X } from "lucide-react";
 
 export default function MyReviews() {
   const router = useRouter();
@@ -67,8 +68,8 @@ export default function MyReviews() {
   const showModal = (e) => {
     setEditReview(e.comment || "");
     setEditReting(e.rating || 5);
-    setIdx(e.id)
-    setDoctorId(e.doctorId)
+    setIdx(e.id);
+    setDoctorId(e.doctorId);
     setIsModalOpen(true);
   };
 
@@ -119,7 +120,9 @@ export default function MyReviews() {
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className=" px-4 py-2 rounded-l-lg border border-gray-300 outline-none"
+            className={`${
+              theme === "dark" ? "bg-black" : "bg-white"
+            } px-4 py-2 rounded-l-lg border border-gray-300 outline-none`}
           >
             <option value="">Все </option>
             <option value="5">5</option>
@@ -197,32 +200,74 @@ export default function MyReviews() {
                       Изменить
                     </button>
                   </div>
-
-                  <Modal
-                    title="Редактировать отзыв"
-                    open={isModalOpen}
-                    onOk={handleEdit}
-                    onCancel={() => setIsModalOpen(false)}
-                  >
-                    <div className="flex flex-col gap-2">
-                      <Input
-                        value={editReview}
-                        onChange={(e) => setEditReview(e.target.value)}
-                        placeholder="Ваш отзыв"
-                      />
-                      <select
-                        value={editReting}
-                        onChange={(e) => setEditReting(e.target.value)}
-                        className="border border-gray-300 rounded p-1.5"
+                  {isModalOpen && (
+                    <div
+                      style={{ backdropFilter: "blur(6px)" }}
+                      className={`fixed inset-0 flex items-center justify-center  ${
+                        theme === "dark"
+                          ? "bg-[rgba(0,0,0,0.3)]"
+                          : "bg-[rgba(255,255,255,0.5)]"
+                      }`}
+                    >
+                      <form
+                        onSubmit={handleEdit}
+                        className={`w-[250px] lg:w-[400px] ${
+                          theme === "dark" ? "bg-black" : "bg-white"
+                        } rounded-2xl shadow p-5`}
                       >
-                        <option value="5">5</option>
-                        <option value="4">4</option>
-                        <option value="3">3</option>
-                        <option value="2">2</option>
-                        <option value="1">1</option>
-                      </select>
+                        <div className="flex items-center justify-between">
+                          <h1 className="text-xl font-medium">
+                            Редактировать отзыв
+                          </h1>
+                          <button
+                            type="button"
+                            onClick={() => setIsModalOpen(false)}
+                            className="cursor-pointer"
+                          >
+                            <X />
+                          </button>
+                        </div>
+
+                        <div className="flex flex-col gap-2 py-5">
+                          <input
+                            type="text"
+                            className="border rounded p-1.5"
+                            value={editReview}
+                            onChange={(e) => setEditReview(e.target.value)}
+                            placeholder="Ваш отзыв"
+                          />
+                          <select
+                            value={editReting}
+                            onChange={(e) => setEditReting(e.target.value)}
+                            className={`${
+                              theme === "dark" ? "bg-black" : "bg-white"
+                            } px-4 py-2 rounded-l-lg border border-gray-300 outline-none p-1.5`}
+                          >
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                          </select>
+                        </div>
+                        <div className="flex items-center justify-end gap-3">
+                          <button
+                            className="border px-3 rounded hover:text-blue-400"
+                            type="button"
+                            onClick={() => setIsModalOpen(false)}
+                          >
+                            Cancil
+                          </button>
+                          <button
+                            className="border px-3 rounded hover:bg-blue-500 bg-blue-600 text-white border-blue-600"
+                            type="submit"
+                          >
+                            Ok
+                          </button>
+                        </div>
+                      </form>
                     </div>
-                  </Modal>
+                  )}
                 </div>
               ))}
           </div>

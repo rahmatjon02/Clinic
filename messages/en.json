@@ -1,0 +1,66 @@
+{
+  "Layout": {
+    "title": "Be Healthy - Medical Center",
+    "description": "Professional care for your health"
+  },
+
+  "Header": {
+    "loading": "Loading...",
+    "error": "Error loading contacts",
+    "home": "Home",
+    "services": "Services",
+    "doctors": "Doctors",
+    "reviews": "Reviews",
+    "about": "About us",
+    "login": "Login"
+  },
+
+  "Services": {
+    "title": "Our Services",
+    "description": "We offer a wide range of medical services for the whole family",
+    "details": "Doctors",
+    "allServices": "All services"
+  },
+
+  "About": {
+    "loading": "Loading...",
+    "error": "Loading error",
+    "moreAboutClinic": "More about the clinic"
+  },
+
+  "Doctors": {
+    "loading": "Loading doctors...",
+    "error": "Error loading doctors",
+    "title": "Our Doctors",
+    "subtitle": "Professionals with extensive experience",
+    "experience": "years of experience",
+    "profileButton": "Profile/Appointment",
+    "allDoctorsButton": "All Doctors"
+  },
+
+  "Reviews": {
+    "loading": "Loading reviews...",
+    "error": "Error loading reviews",
+    "title": "Our Patients' Reviews",
+    "subtitle": "What our patients say about us",
+    "unknownDoctor": "Unknown doctor",
+    "doctor": "Doctor",
+    "allReviewsButton": "All Reviews"
+  },
+
+  "BookingForm": {
+    "title": "Book an Appointment",
+    "specialization": "Specialization",
+    "doctor": "Specialist",
+    "date": "Preferred Date",
+    "time": "Select Time",
+    "selectService": "Select service",
+    "selectDoctor": "Select specialist",
+    "fillAllFields": "Fill all fields and select time",
+    "loginRequired": "You need to login to book an appointment",
+    "success": "Appointment successfully created!",
+    "error": "Error creating appointment",
+    "creating": "Creating...",
+    "confirmButton": "Confirm Appointment"
+  }
+}

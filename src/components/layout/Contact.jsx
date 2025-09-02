@@ -22,7 +22,7 @@ export default function Contact() {
         <div className="flex flex-col lg:flex-row">
           {/* Левая часть */}
           <div className="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
-            <h2 className="text-3xl font-bold mb-6 text-blue-900">Контакты</h2>
+            <h2 className="text-3xl font-bold mb-6 text-blue-700">Контакты</h2>
 
             <div className="mb-8">
               {/* Адрес */}
@@ -31,8 +31,8 @@ export default function Contact() {
                   <i className="fas fa-map-marker-alt text-blue-600 text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-bold text-blue-900 mb-1">Адрес</h4>
-                  <p className="text-gray-600">{contact.address}</p>
+                  <h4 className="font-bold text-blue-700 mb-1">Адрес</h4>
+                  <p className="text-gray-400">{contact.address}</p>
                 </div>
               </div>
 
@@ -42,9 +42,9 @@ export default function Contact() {
                   <i className="fas fa-phone-alt text-blue-600 text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-bold text-blue-900 mb-1">Телефон</h4>
+                  <h4 className="font-bold text-blue-700 mb-1">Телефон</h4>
                   {contact.phones.map((phone, i) => (
-                    <p key={i} className="text-gray-600">
+                    <p key={i} className="text-gray-400">
                       {phone}
                     </p>
                   ))}
@@ -57,8 +57,8 @@ export default function Contact() {
                   <i className="fas fa-envelope text-blue-600 text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-bold text-blue-900 mb-1">Email</h4>
-                  <p className="text-gray-600">{contact.email}</p>
+                  <h4 className="font-bold text-blue-700 mb-1">Email</h4>
+                  <p className="text-gray-400">{contact.email}</p>
                 </div>
               </div>
 
@@ -68,16 +68,16 @@ export default function Contact() {
                   <i className="fas fa-clock text-blue-600 text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-bold text-blue-900 mb-1">Режим работы</h4>
-                  <p className="text-gray-600">{contact.schedule.weekdays}</p>
-                  <p className="text-gray-600">{contact.schedule.weekend}</p>
+                  <h4 className="font-bold text-blue-700 mb-1">Режим работы</h4>
+                  <p className="text-gray-400">{contact.schedule.weekdays}</p>
+                  <p className="text-gray-400">{contact.schedule.weekend}</p>
                 </div>
               </div>
             </div>
 
             {/* Соцсети */}
             <div>
-              <h4 className="font-bold text-blue-900 mb-4">
+              <h4 className="font-bold text-blue-700 mb-4">
                 Мы в социальных сетях
               </h4>
               <div className="flex space-x-4">
@@ -118,7 +118,7 @@ export default function Contact() {
                   : "bg-white shadow-md"
               } p-6 rounded-lg shadow-md h-full`}
             >
-              <h3 className="text-xl font-bold mb-6 text-blue-900">
+              <h3 className="text-xl font-bold mb-6 text-blue-700">
                 Как нас найти
               </h3>
               <div className="h-96 bg-gray-200 rounded-lg overflow-hidden">

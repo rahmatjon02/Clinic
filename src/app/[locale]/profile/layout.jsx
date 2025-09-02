@@ -13,8 +13,11 @@ import { getCurrentUserId } from "@/utils/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { Input, Modal } from "antd";
+import { Annoyed, Eye, EyeClosed, X } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export default function Layout({ children }) {
+  const [aye, setaye] = useState(false);
   const router = useRouter();
   const currentUserId = getCurrentUserId();
   const { data: user, refetch } = useGetUserByIdQuery(currentUserId);
@@ -52,7 +55,8 @@ export default function Layout({ children }) {
     setIsModalOpen(true);
   };
 
-  async function handleEdit() {
+  async function handleEdit(e) {
+    e.preventDefault();
     const updatedUser = {
       id: user?.id,
       userName: editName,
@@ -60,7 +64,7 @@ export default function Layout({ children }) {
       name: editFullName,
       phoneNumber: editPhoneNumber,
       bio: editBio,
-      image: editImage, 
+      image: editImage,
     };
 
     try {
@@ -89,6 +93,10 @@ export default function Layout({ children }) {
     router.push("/");
   }
 
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
   if (apptsLoading) {
     return (
       <p className="text-center py-20 font-semibold">Загрузка профиля...</p>
@@ -109,7 +117,7 @@ export default function Layout({ children }) {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="md:col-span-2 bg-white shadow-md rounded-xl p-2 lg:p-6 my-5">
+      <div className="md:col-span-2  shadow-md rounded-xl p-2 lg:p-6 my-5">
         <div className="flex items-center gap-6 relative">
           <Image
             src={
@@ -135,7 +143,7 @@ export default function Layout({ children }) {
             <p className="text-gray-600">{user?.bio || "Нет био"}</p>
           </div>
 
-          <div className="absolute right-2 top-2 space-x-3">
+          <div className="absolute right-2 top-2 flex flex-col lg:flex-row gap-2 items-end">
             <button
               onClick={showModal}
               className="text-blue-500 font-bold text-xs lg:text-[16px] cursor-pointer hover:text-blue-600"
@@ -153,58 +161,114 @@ export default function Layout({ children }) {
         </div>
       </div>
 
-      <Modal
-        title="Редактировать"
-        open={isModalOpen}
-        onOk={handleEdit}
-        onCancel={() => setIsModalOpen(false)}
-      >
-        <div className="flex flex-col gap-2">
-          <Input
-            value={editName}
-            onChange={(e) => setEditName(e.target.value)}
-            placeholder="User Name"
-          />
-          <Input.Password
-            value={editPassword}
-            onChange={(e) => setEditPassword(e.target.value)}
-            placeholder="Password"
-          />
-          <Input
-            value={editFullName}
-            onChange={(e) => setEditFullName(e.target.value)}
-            placeholder="Name Full"
-          />
-          <Input
-            value={editPhoneNumber}
-            onChange={(e) => setEditPhoneNumber(e.target.value)}
-            placeholder="Phone Number"
-          />
-          <Input
-            value={editBio}
-            onChange={(e) => setEditBio(e.target.value)}
-            placeholder="Bio"
-          />
-          <Input
-            value={editImage}
-            onChange={(e) => setEditImage(e.target.value)}
-            placeholder="Image URL (https://...)"
-          />
-
-          {editImage && (
-            <div className="flex justify-center">
-              <Image
-                src={editImage}
-                alt="Preview"
-                width={500}
-                height={500}
-                className="w-32 h-32 object-cover rounded-full mt-2"
-              />
+      {isModalOpen && (
+        <div
+          style={{ backdropFilter: "blur(6px)" }}
+          className={`fixed inset-0 flex items-center justify-center  ${
+            theme === "dark"
+              ? "bg-[rgba(0,0,0,0.3)]"
+              : "bg-[rgba(255,255,255,0.5)]"
+          }`}
+        >
+          <form
+            onSubmit={handleEdit}
+            className={`w-[250px] lg:w-[400px] ${
+              theme === "dark" ? "bg-black" : "bg-white"
+            } rounded-2xl shadow p-5`}
+          >
+            <div className="flex items-center justify-between">
+              <h1 className="text-xl font-medium">Редактировать профиль</h1>
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(false)}
+                className="cursor-pointer"
+              >
+                <X />
+              </button>
             </div>
-          )}
-        </div>
-      </Modal>
 
+            <div className="flex flex-col gap-2 py-5">
+              <input
+                type="text"
+                className="border rounded p-1.5"
+                value={editName}
+                onChange={(e) => setEditName(e.target.value)}
+                placeholder="User Name"
+              />
+              <label htmlFor="" className="relative">
+                <input
+                  type={`${aye ? "text" : "password"}`}
+                  className="border rounded p-1.5 w-full"
+                  value={editPassword}
+                  onChange={(e) => setEditPassword(e.target.value)}
+                  placeholder="Password"
+                />
+                <button
+                  className="absolute right-2 top-2"
+                  type="button"
+                  onClick={() => setaye((e) => !e)}
+                >
+                  {aye ? <Eye /> : <EyeClosed />}
+                </button>
+              </label>
+              <input
+                type="text"
+                className="border rounded p-1.5"
+                value={editFullName}
+                onChange={(e) => setEditFullName(e.target.value)}
+                placeholder="Name Full"
+              />
+              <input
+                type="text"
+                className="border rounded p-1.5"
+                value={editPhoneNumber}
+                onChange={(e) => setEditPhoneNumber(e.target.value)}
+                placeholder="Phone Number"
+              />
+              <input
+                type="text"
+                className="border rounded p-1.5"
+                value={editBio}
+                onChange={(e) => setEditBio(e.target.value)}
+                placeholder="Bio"
+              />
+              <input
+                className="border rounded p-1.5"
+                value={editImage}
+                onChange={(e) => setEditImage(e.target.value)}
+                placeholder="Image URL (https://...)"
+              />
+
+              {editImage && (
+                <div className="flex justify-center">
+                  <Image
+                    src={editImage}
+                    alt="Preview"
+                    width={500}
+                    height={500}
+                    className="w-32 h-32 object-cover rounded-full mt-2"
+                  />
+                </div>
+              )}
+            </div>
+            <div className="flex items-center justify-end gap-3">
+              <button
+                className="border px-3 rounded hover:text-blue-400"
+                type="button"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Cancil
+              </button>
+              <button
+                className="border px-3 rounded hover:bg-blue-500 bg-blue-600 text-white border-blue-600"
+                type="submit"
+              >
+                Ok
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
       <div className="flex items-center gap-4">
         <Link href={"/profile"} className="text-2xl font-semibold mb-6">
           Мои записи

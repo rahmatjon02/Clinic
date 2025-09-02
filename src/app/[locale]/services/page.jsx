@@ -3,12 +3,16 @@ import { useGetServicesQuery } from "@/store/api";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 export default function Services() {
   const { data } = useGetServicesQuery();
 
   const [search, setSearch] = useState("");
+
+  const pathName = usePathname();
+  console.log(pathName);
 
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -45,7 +49,6 @@ export default function Services() {
                 src={service.image}
                 width={500}
                 height={500}
-                
                 alt={service.title}
                 className="w-full h-48 object-cover"
               />
@@ -53,9 +56,17 @@ export default function Services() {
                 <h3 className="text-xl font-bold mb-3 text-blue-900">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
+                {pathName == "/tj/services" && (
+                  <p className="text-gray-500 mb-4">{service.description.tj}</p>
+                )}
+                {pathName == "/ru/services" && (
+                  <p className="text-gray-500 mb-4">{service.description.ru}</p>
+                )}
+                {pathName == "/en/services" && (
+                  <p className="text-gray-500 mb-4">{service.description.en}</p>
+                )}
                 <Link
-                  href="#"
+                  href={`/services/${service.id}`}
                   className="text-blue-600 font-medium hover:text-blue-800 flex items-center"
                 >
                   Врачи <i className="fas fa-arrow-right ml-2"></i>

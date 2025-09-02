@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import toast from "react-hot-toast";
 import { getCurrentUser, getCurrentUserId } from "@/utils/auth";
-
 import {
   useGetDoctorsQuery,
   useGetSchedulesQuery,
   useGetAppointmentsQuery,
   useAddAppointmentMutation,
 } from "@/store/api";
+import { useTranslations } from 'next-intl';
 
 function timeStringToMinutes(t) {
   const [hh, mm] = t.split(":").map(Number);
@@ -32,6 +32,7 @@ export default function BookingForm() {
   const [addAppointment, { isLoading: aLoading }] = useAddAppointmentMutation();
   const userId = getCurrentUserId();
   const user = getCurrentUser();
+  const t = useTranslations('BookingForm');
 
   const [form, setForm] = useState({
     specialization: "",
@@ -50,11 +51,11 @@ export default function BookingForm() {
     e.preventDefault();
     const { doctorId, date } = form;
     if (!doctorId || !date || !selectedSlot) {
-      toast.error("Заполните все поля и выберите время");
+      toast.error(t('fillAllFields'));
       return;
     }
     if (!userId) {
-      toast.error("Вам нужно войти, чтобы записаться");
+      toast.error(t('loginRequired'));
       return;
     }
     try {
@@ -68,11 +69,11 @@ export default function BookingForm() {
         status: false,
       };
       await addAppointment(payload).unwrap();
-      toast.success("Запись успешно создана!");
+      toast.success(t('success'));
       setSelectedSlot(null);
     } catch (err) {
       console.error(err);
-      toast.error("Ошибка при создании записи");
+      toast.error(t('error'));
     }
   };
 
@@ -143,18 +144,18 @@ export default function BookingForm() {
         <div
           className={`${
             theme === "dark" ? "bg-black" : "bg-white"
-          } rounded-lg shadow-lg p-6 max-w-4xl mx-auto `}
+          } rounded-lg shadow-lg p-6 max-w-4xl mx-auto`}
         >
           <h2 className="text-2xl font-bold text-center text-blue-600">
-            Записаться на прием
+            {t('title')}
           </h2>
           <form
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 "
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
             onSubmit={handleSubmit}
           >
             {/* Специализация */}
             <div>
-              <label className="block text-gray-500 mb-2">Специализация</label>
+              <label className="block text-gray-400 mb-2">{t('specialization')}</label>
               <select
                 name="specialization"
                 value={form.specialization}
@@ -170,7 +171,7 @@ export default function BookingForm() {
                   theme === "dark" ? "bg-black" : "bg-white"
                 } w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200`}
               >
-                <option value="">Выберите услугу</option>
+                <option value="">{t('selectService')}</option>
                 {specializations.map((s) => (
                   <option key={s} value={s}>
                     {s}
@@ -181,7 +182,7 @@ export default function BookingForm() {
 
             {/* Врач */}
             <div>
-              <label className="block text-gray-500 mb-2">Специалист</label>
+              <label className="block text-gray-400 mb-2">{t('doctor')}</label>
               <select
                 name="doctorId"
                 value={form.doctorId}
@@ -190,7 +191,7 @@ export default function BookingForm() {
                   theme === "dark" ? "bg-black" : "bg-white"
                 } w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-blue-200`}
               >
-                <option value="">Выберите специалиста</option>
+                <option value="">{t('selectDoctor')}</option>
                 {doctors
                   .filter(
                     (d) =>
@@ -207,7 +208,7 @@ export default function BookingForm() {
 
             {/* Дата */}
             <div className="lg:col-span-2">
-              <label className="block text-gray-500 mb-2">Желаемая дата</label>
+              <label className="block text-gray-400 mb-2">{t('date')}</label>
               <input
                 type="date"
                 name="date"
@@ -219,7 +220,7 @@ export default function BookingForm() {
 
             {/* Время */}
             <div className="md:col-span-2">
-              <label className="block text-gray-500 mb-2">Выберите время</label>
+              <label className="block text-gray-400 mb-2">{t('time')}</label>
               <div className="grid grid-cols-4 lg:grid-cols-8 gap-2">
                 {slots.map((s) => {
                   let bg = "bg-gray-300 cursor-not-allowed";
@@ -257,7 +258,7 @@ export default function BookingForm() {
                 disabled={aLoading}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg smooth-transition"
               >
-                {aLoading ? "Создание..." : "Подтвердить запись"}
+                {aLoading ? t('creating') : t('confirmButton')}
               </button>
             </div>
           </form>

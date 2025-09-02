@@ -5,19 +5,21 @@ import { useEffect, useState } from "react";
 import { useGetContactQuery } from "@/store/api";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function About() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const { data: contact, isLoading, error } = useGetContactQuery();
+  const t = useTranslations("About");
 
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
-  if (isLoading) return <p>Загрузка...</p>;
-  if (error) return <p>Ошибка загрузки</p>;
+  if (isLoading) return <p>{t("loading")}</p>;
+  if (error) return <p>{t("error")}</p>;
 
   return (
-    <div className={`${theme === "dark" ? "bg-gray-950" : "bg-gray-50"} py-16`}>
+    <div className={`${theme === "dark" ? "bg-gray-900" : "bg-gray-50"} py-16`}>
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
@@ -30,12 +32,12 @@ export default function About() {
             />
           </div>
           <div className="lg:w-1/2">
-            <h2 className="text-3xl font-bold mb-6 text-blue-900">
+            <h2 className="text-3xl font-bold mb-6 text-blue-700">
               {contact.about.title}
             </h2>
 
             {contact.about.paragraphs?.map((text, idx) => (
-              <p key={idx} className="text-gray-600 mb-4">
+              <p key={idx} className="text-gray-500 mb-4">
                 {text}
               </p>
             ))}
@@ -47,8 +49,8 @@ export default function About() {
                     <i className={`${feature.icon} text-blue-600 text-xl`}></i>
                   </div>
                   <div>
-                    <h4 className="font-bold text-blue-900">{feature.title}</h4>
-                    <p className="text-gray-600 text-sm">
+                    <h4 className="font-bold text-blue-700">{feature.title}</h4>
+                    <p className="text-gray-500 text-sm">
                       {feature.description}
                     </p>
                   </div>
@@ -63,7 +65,7 @@ export default function About() {
             href="/about"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full smooth-transition"
           >
-            Подробнее о клинике
+            {t("moreAboutClinic")}
           </Link>
         </div>
       </div>

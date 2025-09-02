@@ -1,15 +1,22 @@
 "use client";
-import React from "react";
-import Link from "next/link";
 import { useGetDoctorsQuery } from "@/store/api";
-import Image from "next/image";
-import image from "../../assets/home/doc.png";
-
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import React, { useEffect, useMemo, useState } from "react";
+import image from "@/assets/home/doc.png";
 
-const AllDoctors = () => {
+const serviceById = () => {
+  const { id } = useParams();
+
   const { data: doctors = [], isLoading, isError } = useGetDoctorsQuery();
+
+  const allDoctors = useMemo(
+    () => doctors?.filter((e) => e.specializationId == id),
+    [doctors]
+  );
+
   const [search, setSearch] = useState("");
 
   const { theme } = useTheme();
@@ -21,9 +28,10 @@ const AllDoctors = () => {
     return (
       <p className="text-center py-10 text-red-500">Ошибка загрузки врачей</p>
     );
-
   return (
     <div>
+      {id}
+
       <div className="flex justify-center m-6">
         <input
           type="text"
@@ -38,7 +46,7 @@ const AllDoctors = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-5">
-        {doctors
+        {allDoctors
           .filter((e) =>
             e.name.toLowerCase().includes(search.toLowerCase() || "")
           )
@@ -76,13 +84,13 @@ const AllDoctors = () => {
                     href={`/doctors/${doc.id}`}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full text-sm smooth-transition"
                   >
-                    Профиль
+                    Профиль/Записаться
                   </Link>
                   <Link
-                    href={`/doctors/${doc.id}`}
+                    href={`https://t.me/rahmatjon24`} target="_blank"
                     className="border border-blue-600 text-blue-600 px-4 py-2 rounded-full text-sm smooth-transition"
                   >
-                    Записаться
+                    Telegram
                   </Link>
                 </div>
               </div>
@@ -93,4 +101,4 @@ const AllDoctors = () => {
   );
 };
 
-export default AllDoctors;
+export default serviceById;
