@@ -22,12 +22,6 @@
     "allServices": "All services"
   },
 
-  "About": {
-    "loading": "Loading...",
-    "error": "Loading error",
-    "moreAboutClinic": "More about the clinic"
-  },
-
   "Doctors": {
     "loading": "Loading doctors...",
     "error": "Error loading doctors",
@@ -62,5 +56,33 @@
     "error": "Error creating appointment",
     "creating": "Creating...",
     "confirmButton": "Confirm Appointment"
+  },
+
+  "About": {
+    "loading": "Loading...",
+    "error": "Error loading information",
+    "imageAlt": "About our clinic",
+    "title": "About our clinic",
+    "description1": "Be Healthy Clinic is a modern medical center with highly qualified specialists with many years of experience.",
+    "description2": "Our team has over 15 years of practical experience in various medical fields including therapy, cardiology, neurology and ophthalmology.",
+    "description3": "We use advanced diagnostic and treatment methods to provide our patients with quality medical care in comfortable conditions.",
+    "description4": "The clinic is equipped with modern equipment, allowing for accurate examinations and quick diagnosis.",
+    "description5": "We value an individual approach to each patient and provide personal attention throughout diagnosis and treatment.",
+    "feature1Title": "Experienced doctors",
+    "feature1Description": "Highly qualified specialists with over 15 years of experience",
+    "feature2Title": "Modern equipment",
+    "feature2Description": "Accurate diagnostics using the latest technologies",
+    "feature3Title": "Individual approach",
+    "feature3Description": "Personal attention to each patient",
+    "feature4Title": "Convenient time",
+    "feature4Description": "Appointments at convenient times, including evenings and weekends",
+    "moreAboutClinic": "More about the clinic"
+  },
+
+  "FAQ": {
+    "loading": "Loading...",
+    "error": "Error loading FAQ",
+    "noQuestions": "No questions yet",
+    "title": "Frequently Asked Questions"
   }
 }

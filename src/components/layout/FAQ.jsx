@@ -2,19 +2,21 @@
 import React, { useState } from "react";
 import { useGetFaqQuery } from "@/store/api";
 import { ChevronDown } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 const FAQ = () => {
   const { data: faq, isLoading, isError } = useGetFaqQuery();
   const [openId, setOpenId] = useState(null);
+  const t = useTranslations('FAQ');
 
   if (isLoading)
     return (
-      <p className="text-center text-gray-500 animate-pulse">Загрузка...</p>
+      <p className="text-center text-gray-500 animate-pulse">{t('loading')}</p>
     );
   if (isError)
-    return <p className="text-center text-red-500">Ошибка загрузки FAQ</p>;
+    return <p className="text-center text-red-500">{t('error')}</p>;
   if (!faq || faq.length === 0)
-    return <p className="text-center text-gray-500">Вопросов пока нет</p>;
+    return <p className="text-center text-gray-500">{t('noQuestions')}</p>;
 
   const toggle = (id) => {
     setOpenId(openId === id ? null : id);
@@ -23,7 +25,7 @@ const FAQ = () => {
   return (
     <div className="p-6 max-w-3xl mx-auto">
       <h2 className="text-3xl font-bold mb-8 text-center text-blue-700">
-        Часто задаваемые вопросы
+        {t('title')}
       </h2>
       <div className="space-y-4">
         {faq.map((item) => (
