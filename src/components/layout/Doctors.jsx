@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useGetDoctorsQuery } from "@/store/api";
 import Image from "next/image";
-import image from "../../assets/home/doc.png";
+import image from "@/assets/home/doc.png";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { useTranslations } from 'next-intl';

@@ -12,7 +12,8 @@
     "doctors": "Doctors",
     "reviews": "Reviews",
     "about": "About us",
-    "login": "Login"
+    "login": "Login",
+    "street": "street"
   },
 
   "Services": {
@@ -84,5 +85,43 @@
     "error": "Error loading FAQ",
     "noQuestions": "No questions yet",
     "title": "Frequently Asked Questions"
+  },
+
+  "Contact": {
+    "loading": "Loading...",
+    "error": "Loading error",
+    "title": "Contacts",
+    "address": "Address",
+    "street": "street",
+    "phone": "Phone",
+    "workingHours": "Working hours",
+    "weekdays": "Mon-Fri",
+    "weekend": "Sat-Sun",
+    "socialMedia": "We are on social media",
+    "findUs": "How to find us"
+  },
+
+  "Footer": {
+    "loading": "Loading...",
+    "error": "Loading error",
+    "clinicName": "Be Healthy Clinic",
+    "description": "Modern clinic with a professional approach to your health.",
+    "services": "Services",
+    "therapy": "Therapy",
+    "cardiology": "Cardiology",
+    "neurology": "Neurology",
+    "ophthalmology": "Ophthalmology",
+    "ultrasound": "Ultrasound diagnostics",
+    "aboutClinic": "About clinic",
+    "aboutUs": "About us",
+    "doctors": "Doctors",
+    "licenses": "Licenses",
+    "reviews": "Reviews",
+    "vacancies": "Vacancies",
+    "contacts": "Contacts",
+    "street": "street",
+    "copyright": "© {year} {clinicName}. All rights reserved.",
+    "privacyPolicy": "Privacy policy",
+    "termsOfUse": "Terms of use"
   }
 }

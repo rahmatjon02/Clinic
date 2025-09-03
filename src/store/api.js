@@ -61,6 +61,14 @@ export const api = createApi({
       invalidatesTags: ["Appointments"],
     }),
 
+    deleteAppointment: builder.mutation({
+      query: (id) => ({
+        url: `/appointments/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Appointments"],
+    }),
+
     getSchedules: builder.query({
       query: () => "/schedules",
       providesTags: ["Schedules"],
@@ -104,7 +112,7 @@ export const api = createApi({
       query: (rev) => ({
         url: `/reviews/${rev.id}`,
         method: "Put",
-        body: rev
+        body: rev,
       }),
       invalidatesTags: ["Reviews"],
     }),
@@ -159,4 +167,5 @@ export const {
   useGetServicesQuery,
   useGetContactQuery,
   useEditProfileMutation,
+  useDeleteAppointmentMutation
 } = api;

@@ -7,13 +7,14 @@ import image from "@/assets/home/doc.png";
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { useLocale } from "next-intl";
 
 const AllDoctors = () => {
   const { data: doctors = [], isLoading, isError } = useGetDoctorsQuery();
   const { data: services = [], serLoading, serError } = useGetServicesQuery();
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
-
+const locale = useLocale()
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -37,7 +38,7 @@ const AllDoctors = () => {
           <option value="">Все</option>
           {services?.map((e) => (
             <option key={e.id} value={e.id}>
-              {e.title}
+              {e.title[locale]}
             </option>
           ))}
         </select>

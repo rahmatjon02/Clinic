@@ -12,7 +12,8 @@
     "doctors": "Врачи",
     "reviews": "Отзывы",
     "about": "О нас",
-    "login": "Войти"
+    "login": "Войти",
+    "street": "улица"
   },
 
   "Services": {
@@ -84,5 +85,43 @@
     "error": "Ошибка загрузки FAQ",
     "noQuestions": "Вопросов пока нет",
     "title": "Часто задаваемые вопросы"
+  },
+
+  "Contact": {
+    "loading": "Загрузка...",
+    "error": "Ошибка загрузки",
+    "title": "Контакты",
+    "address": "Адрес",
+    "street": "улица",
+    "phone": "Телефон",
+    "workingHours": "Режим работы",
+    "weekdays": "Пн-Пт",
+    "weekend": "Сб-Вс",
+    "socialMedia": "Мы в социальных сетях",
+    "findUs": "Как нас найти"
+  },
+
+  "Footer": {
+    "loading": "Загрузка...",
+    "error": "Ошибка загрузки",
+    "clinicName": "Клиника \"Будь Здоров\"",
+    "description": "Современная клиника с профессиональным подходом к вашему здоровью.",
+    "services": "Услуги",
+    "therapy": "Терапия",
+    "cardiology": "Кардиология",
+    "neurology": "Неврология",
+    "ophthalmology": "Офтальмология",
+    "ultrasound": "УЗИ диагностика",
+    "aboutClinic": "О клинике",
+    "aboutUs": "О нас",
+    "doctors": "Врачи",
+    "licenses": "Лицензии",
+    "reviews": "Отзывы",
+    "vacancies": "Вакансии",
+    "contacts": "Контакты",
+    "street": "улица",
+    "copyright": "© {year} {clinicName}. Все права защищены.",
+    "privacyPolicy": "Политика конфиденциальности",
+    "termsOfUse": "Пользовательское соглашение"
   }
 }

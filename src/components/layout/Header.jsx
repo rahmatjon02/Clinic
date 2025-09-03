@@ -11,11 +11,12 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useGetContactQuery } from "@/store/api";
 import { getCurrentUser } from "@/utils/auth";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
+import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
 
 export default function Header() {
   const { data: contact, isLoading, error } = useGetContactQuery();
-  const t = useTranslations('Header');
+  const t = useTranslations("Header");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const user = getCurrentUser();
 
@@ -29,7 +30,7 @@ export default function Header() {
   if (isLoading) {
     return (
       <footer className="bg-blue-900 text-white py-12 text-center">
-        <p>{t('loading')}</p>
+        <p>{t("loading")}</p>
       </footer>
     );
   }
@@ -37,13 +38,13 @@ export default function Header() {
   if (error) {
     return (
       <footer className="bg-blue-900 text-white py-12 text-center">
-        <p>{t('error')}</p>
+        <p>{t("error")}</p>
       </footer>
     );
   }
 
   if (!mounted) return null;
-  
+
   return (
     <>
       <div
@@ -55,7 +56,9 @@ export default function Header() {
           <div className="flex items-center space-x-4 md:mb-0 lg:text-sm text-[10px]">
             <div className="lg:flex items-center hidden">
               <i className="fas fa-map-marker-alt mr-2"></i>
-              <span>{contact.address}</span>
+              <span>
+                {t("street")} {contact.address}
+              </span>
             </div>
 
             <div className="flex items-center">
@@ -81,12 +84,14 @@ export default function Header() {
       {/* Навигация */}
       <nav
         className={`${
-          theme === "dark" ? "bg-black shadow shadow-white" : "bg-white shadow-md"
+          theme === "dark"
+            ? "bg-black shadow shadow-white"
+            : "bg-white shadow-md"
         } sticky top-0 z-50`}
       >
         <div className="container mx-auto pl-2 pr-4 py-3 flex justify-between items-center gap-2">
           <div className="flex items-center gap-2">
-            {pathName !== "/" && (
+            {pathName && (
               <button onClick={() => router.back()} className="cursor-pointer">
                 <ArrowLeft />
               </button>
@@ -113,7 +118,7 @@ export default function Header() {
                 pathName == "/" ? "text-blue-700" : "text-gray-500"
               } font-medium hover:text-blue-500`}
             >
-              {t('home')}
+              {t("home")}
             </Link>
             <Link
               href="/services"
@@ -121,7 +126,7 @@ export default function Header() {
                 pathName == "/services" ? "text-blue-700" : "text-gray-500"
               } font-medium hover:text-blue-500`}
             >
-              {t('services')}
+              {t("services")}
             </Link>
             <Link
               href="/allDoctors"
@@ -129,7 +134,7 @@ export default function Header() {
                 pathName == "/allDoctors" ? "text-blue-700" : "text-gray-500"
               } font-medium hover:text-blue-500`}
             >
-              {t('doctors')}
+              {t("doctors")}
             </Link>
             <Link
               href="/reviews"
@@ -137,7 +142,7 @@ export default function Header() {
                 pathName == "/reviews" ? "text-blue-700" : "text-gray-500"
               } font-medium hover:text-blue-500`}
             >
-              {t('reviews')}
+              {t("reviews")}
             </Link>
             <Link
               href="/about"
@@ -145,7 +150,7 @@ export default function Header() {
                 pathName == "/about" ? "text-blue-700" : "text-gray-500"
               } font-medium hover:text-blue-500`}
             >
-              {t('about')}
+              {t("about")}
             </Link>
           </div>
 
@@ -163,10 +168,11 @@ export default function Header() {
               </Link>
             ) : (
               <Link href="/auth/login">
-                <Button type="primary">{t('login')}</Button>
+                <Button type="primary">{t("login")}</Button>
               </Link>
             )}
             <ThemeSwitcher />
+            <LanguageSwitcher />
           </div>
 
           {/* Бургер */}
@@ -194,9 +200,12 @@ export default function Header() {
                 pathName == "/" ? "text-blue-700" : "text-gray-500"
               } font-medium hover:text-blue-500`}
             >
-              {t('home')}
+              {t("home")}
             </Link>
-            <ThemeSwitcher />
+            <div>
+              <ThemeSwitcher />
+              <LanguageSwitcher />
+            </div>
           </div>
 
           <Link
@@ -206,7 +215,7 @@ export default function Header() {
               pathName == "/services" ? "text-blue-700" : "text-gray-500"
             } font-medium hover:text-blue-500 block py-2`}
           >
-            {t('services')}
+            {t("services")}
           </Link>
 
           <Link
@@ -216,7 +225,7 @@ export default function Header() {
               pathName == "/allDoctors" ? "text-blue-700" : "text-gray-500"
             } font-medium hover:text-blue-500 block py-2`}
           >
-            {t('doctors')}
+            {t("doctors")}
           </Link>
 
           <Link
@@ -226,9 +235,9 @@ export default function Header() {
               pathName == "/reviews" ? "text-blue-700" : "text-gray-500"
             } font-medium hover:text-blue-500 block py-2`}
           >
-            {t('reviews')}
+            {t("reviews")}
           </Link>
-          
+
           <Link
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             href="/about"
@@ -236,15 +245,12 @@ export default function Header() {
               pathName == "/about" ? "text-blue-700" : "text-gray-500"
             } font-medium hover:text-blue-500 block py-2`}
           >
-            {t('about')}
+            {t("about")}
           </Link>
 
           <div>
             {user ? (
-              <Link
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                href="/profile"
-              >
+              <Link onClick={() => setIsMenuOpen(!isMenuOpen)} href="/profile">
                 <button className="py-2 text-gray-500 hover:text-blue-500">
                   {user?.userName}
                 </button>
@@ -252,7 +258,7 @@ export default function Header() {
             ) : (
               <Link href="/auth/login">
                 <button className="block py-2 text-gray-400 hover:text-blue-500">
-                  {t('login')}
+                  {t("login")}
                 </button>
               </Link>
             )}

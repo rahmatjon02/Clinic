@@ -1,23 +1,24 @@
 "use client";
 import Link from "next/link";
-import imageLogo from "../../assets/home/i.webp";
 import Image from "next/image";
 import { useGetContactQuery } from "@/store/api";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { useTranslations } from 'next-intl';
 
 export default function Footer() {
   const { data: contact, isLoading, error } = useGetContactQuery();
-
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const t = useTranslations('Footer');
+
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
   if (isLoading) {
     return (
       <footer className="bg-blue-900 text-white py-12 text-center">
-        <p>Загрузка...</p>
+        <p>{t('loading')}</p>
       </footer>
     );
   }
@@ -25,7 +26,7 @@ export default function Footer() {
   if (error) {
     return (
       <footer className="bg-blue-900 text-white py-12 text-center">
-        <p>Ошибка при загрузке контактов</p>
+        <p>{t('error')}</p>
       </footer>
     );
   }
@@ -39,14 +40,14 @@ export default function Footer() {
           {/* Логотип и соцсети */}
           <div className="md:col-span-1 col-span-2">
             <Image
-              src={contact.logo}
-              alt="Клиника Будь Здоров"
+              src={contact?.logo || ""}
+              alt={t('clinicName')}
               width={100}
               height={100}
               className="w-25 h-25 mb-4 object-cover rounded-full"
             />
             <p className="text-blue-200 mb-4">
-              Современная клиника с профессиональным подходом к вашему здоровью.
+              {t('description')}
             </p>
             {contact?.socials && (
               <div className="flex space-x-4">
@@ -80,31 +81,31 @@ export default function Footer() {
 
           {/* Услуги */}
           <div>
-            <h4 className="font-bold text-xl mb-4">Услуги</h4>
+            <h4 className="font-bold text-xl mb-4">{t('services')}</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="#" className="text-blue-200 hover:text-white">
-                  Терапия
+                  {t('therapy')}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="text-blue-200 hover:text-white">
-                  Кардиология
+                  {t('cardiology')}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="text-blue-200 hover:text-white">
-                  Неврология
+                  {t('neurology')}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="text-blue-200 hover:text-white">
-                  Офтальмология
+                  {t('ophthalmology')}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="text-blue-200 hover:text-white">
-                  УЗИ диагностика
+                  {t('ultrasound')}
                 </Link>
               </li>
             </ul>
@@ -112,31 +113,31 @@ export default function Footer() {
 
           {/* О клинике */}
           <div>
-            <h4 className="font-bold text-xl mb-4">О клинике</h4>
+            <h4 className="font-bold text-xl mb-4">{t('aboutClinic')}</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="#" className="text-blue-200 hover:text-white">
-                  О нас
+                  {t('aboutUs')}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="text-blue-200 hover:text-white">
-                  Врачи
+                  {t('doctors')}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="text-blue-200 hover:text-white">
-                  Лицензии
+                  {t('licenses')}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="text-blue-200 hover:text-white">
-                  Отзывы
+                  {t('reviews')}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="text-blue-200 hover:text-white">
-                  Вакансии
+                  {t('vacancies')}
                 </Link>
               </li>
             </ul>
@@ -144,12 +145,12 @@ export default function Footer() {
 
           {/* Контакты */}
           <div>
-            <h4 className="font-bold text-xl mb-4">Контакты</h4>
+            <h4 className="font-bold text-xl mb-4">{t('contacts')}</h4>
             {contact && (
               <ul className="space-y-2">
                 <li className="flex items-start">
                   <i className="fas fa-map-marker-alt mt-1 mr-2 text-blue-200"></i>
-                  <span className="text-blue-200">{contact.address}</span>
+                  <span className="text-blue-200">{t('street')} {contact.address}</span>
                 </li>
 
                 {/* Несколько телефонов */}
@@ -189,14 +190,14 @@ export default function Footer() {
 
         <div className="border-t border-blue-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-blue-200 mb-4 md:mb-0">
-            © 2023 Клиника "Будь Здоров". Все права защищены.
+            {t('copyright', { year: 2023, clinicName: t('clinicName') })}
           </p>
           <div className="flex space-x-6">
             <Link href="#" className="text-blue-200 hover:text-white">
-              Политика конфиденциальности
+              {t('privacyPolicy')}
             </Link>
             <Link href="#" className="text-blue-200 hover:text-white">
-              Пользовательское соглашение
+              {t('termsOfUse')}
             </Link>
           </div>
         </div>

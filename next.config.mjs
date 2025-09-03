@@ -9,6 +9,7 @@ const nextConfig = {
       "www.transparentpng.com",
       "media.istockphoto.com",
       "img.freepik.com",
+      "upload.wikimedia.org",
     ],
   },
 };

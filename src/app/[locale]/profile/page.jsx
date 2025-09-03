@@ -3,11 +3,15 @@
 
 import { useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { useGetAppointmentsQuery, useGetDoctorsQuery } from "@/store/api";
+import {
+  useDeleteAppointmentMutation,
+  useGetAppointmentsQuery,
+  useGetDoctorsQuery,
+} from "@/store/api";
 import toast from "react-hot-toast";
 import { getCurrentUser, getCurrentUserId } from "@/utils/auth";
 import Image from "next/image";
-import image from "../../assets/home/doc.png";
+import image from "@/assets/home/doc.png";
 
 export default function AppointmentsPage() {
   const router = useRouter();
@@ -19,6 +23,8 @@ export default function AppointmentsPage() {
     isError: apptsError,
     refetch: refetchAppointments,
   } = useGetAppointmentsQuery();
+
+  const [deleteAppointment] = useDeleteAppointmentMutation();
 
   const { data: doctors = [] } = useGetDoctorsQuery();
 
@@ -36,26 +42,38 @@ export default function AppointmentsPage() {
   const findDoctor = (id) => doctors?.find((d) => String(d.id) === String(id));
 
   async function handleCancel(appointmentId) {
-    const ok = confirm("Вы действительно хотите отменить эту запись?");
-    if (!ok) return;
-
-    try {
-      const res = await fetch(
-        `http://localhost:5000/appointments/${appointmentId}`,
-        {
-          method: "DELETE",
-        }
-      );
-      if (!res.ok) throw new Error("Ошибка удаления");
-      await refetchAppointments();
-      toast.success("Запись отменена");
-    } catch (err) {
-      console.error(err);
-      toast.error("Не удалось отменить запись");
-    }
+    toast(
+      (t) => (
+        <div className="flex flex-col gap-2">
+          <span>Вы действительно хотите отменить эту запись?</span>
+          <div className="flex gap-2">
+            <button
+              className="bg-red-500 text-white px-3 py-1 rounded"
+              onClick={async () => {
+                try {
+                  await deleteAppointment(appointmentId).unwrap;
+                  await refetchAppointments();
+                  toast.success("Запись отменена");
+                } catch (err) {
+                  toast.error("Не удалось отменить запись");
+                }
+                toast.dismiss(t.id);
+              }}
+            >
+              Да
+            </button>
+            <button
+              className="bg-gray-300 px-3 py-1 rounded"
+              onClick={() => toast.dismiss(t.id)}
+            >
+              Нет
+            </button>
+          </div>
+        </div>
+      ),
+      { duration: Infinity }
+    );
   }
-
-
 
   if (apptsLoading) {
     return (

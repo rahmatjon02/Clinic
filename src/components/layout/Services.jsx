@@ -4,15 +4,14 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 
 export default function Services() {
   const { data } = useGetServicesQuery();
   const t = useTranslations("Services");
   let services = data?.slice(0, 3);
-  const pathName = usePathname();
-  console.log(pathName);
+  const locale = useLocale();
 
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -49,17 +48,12 @@ export default function Services() {
               />
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-3 text-blue-700">
-                  {service.title}
+                  {service.title[locale]}
                 </h3>
-                {pathName == "/tj" && (
-                  <p className="text-gray-500 mb-4">{service.description.tj}</p>
-                )}
-                {pathName == "/ru" && (
-                  <p className="text-gray-500 mb-4">{service.description.ru}</p>
-                )}
-                {pathName == "/en" && (
-                  <p className="text-gray-500 mb-4">{service.description.en}</p>
-                )}
+                <p className="text-gray-500 mb-4">
+                  {service.description[locale]}
+                </p>
+
                 <Link
                   href={`/services/${service.id}`}
                   className="text-blue-600 font-medium hover:text-blue-800 flex items-center"

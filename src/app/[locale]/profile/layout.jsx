@@ -164,7 +164,7 @@ export default function Layout({ children }) {
       {isModalOpen && (
         <div
           style={{ backdropFilter: "blur(6px)" }}
-          className={`fixed inset-0 flex items-center justify-center  ${
+          className={`fixed z-60 inset-0 flex items-center justify-center  ${
             theme === "dark"
               ? "bg-[rgba(0,0,0,0.3)]"
               : "bg-[rgba(255,255,255,0.5)]"

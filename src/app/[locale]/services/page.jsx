@@ -1,5 +1,6 @@
 "use client";
 import { useGetServicesQuery } from "@/store/api";
+import { useLocale } from "next-intl";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +9,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Services() {
   const { data } = useGetServicesQuery();
-
+  const locale = useLocale();
   const [search, setSearch] = useState("");
 
   const pathName = usePathname();
@@ -36,7 +37,7 @@ export default function Services() {
       <div className="container mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {data
           ?.filter((e) =>
-            e.title.toLowerCase().includes(search.toLowerCase() || "")
+            e.title[locale].toLowerCase().includes(search.toLowerCase() || "")
           )
           .map((service) => (
             <div
@@ -49,22 +50,15 @@ export default function Services() {
                 src={service.image}
                 width={500}
                 height={500}
-                alt={service.title}
+                alt={service.title[locale]}
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-3 text-blue-900">
-                  {service.title}
+                  {service.title[locale]}
                 </h3>
-                {pathName == "/tj/services" && (
-                  <p className="text-gray-500 mb-4">{service.description.tj}</p>
-                )}
-                {pathName == "/ru/services" && (
-                  <p className="text-gray-500 mb-4">{service.description.ru}</p>
-                )}
-                {pathName == "/en/services" && (
-                  <p className="text-gray-500 mb-4">{service.description.en}</p>
-                )}
+                <p className="text-gray-500 mb-4">{service.description[locale]}</p>
+
                 <Link
                   href={`/services/${service.id}`}
                   className="text-blue-600 font-medium hover:text-blue-800 flex items-center"

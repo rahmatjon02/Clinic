@@ -3,17 +3,18 @@ import Link from "next/link";
 import { useGetContactQuery } from "@/store/api";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { useTranslations } from 'next-intl';
 
 export default function Contact() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { data: contact, isLoading, error } = useGetContactQuery();
+  const t = useTranslations('Contact');
+
   useEffect(() => setMounted(true), []);
 
-  const { data: contact, isLoading, error } = useGetContactQuery();
-
-  if (isLoading) return <p>Загрузка...</p>;
-  if (error) return <p>Ошибка загрузки</p>;
-
+  if (isLoading) return <p>{t('loading')}</p>;
+  if (error) return <p>{t('error')}</p>;
   if (!mounted) return null;
 
   return (
@@ -22,7 +23,7 @@ export default function Contact() {
         <div className="flex flex-col lg:flex-row">
           {/* Левая часть */}
           <div className="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
-            <h2 className="text-3xl font-bold mb-6 text-blue-700">Контакты</h2>
+            <h2 className="text-3xl font-bold mb-6 text-blue-700">{t('title')}</h2>
 
             <div className="mb-8">
               {/* Адрес */}
@@ -31,8 +32,8 @@ export default function Contact() {
                   <i className="fas fa-map-marker-alt text-blue-600 text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-bold text-blue-700 mb-1">Адрес</h4>
-                  <p className="text-gray-400">{contact.address}</p>
+                  <h4 className="font-bold text-blue-700 mb-1">{t('address')}</h4>
+                  <p className="text-gray-400">{t('street')} {contact.address}</p>
                 </div>
               </div>
 
@@ -42,7 +43,7 @@ export default function Contact() {
                   <i className="fas fa-phone-alt text-blue-600 text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-bold text-blue-700 mb-1">Телефон</h4>
+                  <h4 className="font-bold text-blue-700 mb-1">{t('phone')}</h4>
                   {contact.phones.map((phone, i) => (
                     <p key={i} className="text-gray-400">
                       {phone}
@@ -68,9 +69,9 @@ export default function Contact() {
                   <i className="fas fa-clock text-blue-600 text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-bold text-blue-700 mb-1">Режим работы</h4>
-                  <p className="text-gray-400">{contact.schedule.weekdays}</p>
-                  <p className="text-gray-400">{contact.schedule.weekend}</p>
+                  <h4 className="font-bold text-blue-700 mb-1">{t('workingHours')}</h4>
+                  <p className="text-gray-400">{t('weekdays')}: {contact.schedule.weekdays}</p>
+                  <p className="text-gray-400">{t('weekend')}: {contact.schedule.weekend}</p>
                 </div>
               </div>
             </div>
@@ -78,7 +79,7 @@ export default function Contact() {
             {/* Соцсети */}
             <div>
               <h4 className="font-bold text-blue-700 mb-4">
-                Мы в социальных сетях
+                {t('socialMedia')}
               </h4>
               <div className="flex space-x-4">
                 <Link
@@ -119,7 +120,7 @@ export default function Contact() {
               } p-6 rounded-lg shadow-md h-full`}
             >
               <h3 className="text-xl font-bold mb-6 text-blue-700">
-                Как нас найти
+                {t('findUs')}
               </h3>
               <div className="h-96 bg-gray-200 rounded-lg overflow-hidden">
                 <iframe
