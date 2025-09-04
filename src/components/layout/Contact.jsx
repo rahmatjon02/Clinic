@@ -3,13 +3,14 @@ import Link from "next/link";
 import { useGetContactQuery } from "@/store/api";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function Contact() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const { data: contact, isLoading, error } = useGetContactQuery();
   const t = useTranslations('Contact');
+  const locale = useLocale();
 
   useEffect(() => setMounted(true), []);
 
@@ -33,7 +34,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-blue-700 mb-1">{t('address')}</h4>
-                  <p className="text-gray-400">{t('street')} {contact.address}</p>
+                  <p className="text-gray-400">{t('street')} {contact.address[locale]}</p>
                 </div>
               </div>
 

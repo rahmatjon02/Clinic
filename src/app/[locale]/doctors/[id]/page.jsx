@@ -15,6 +15,7 @@ import {
   useGetSchedulesQuery,
   useGetAppointmentsQuery,
 } from "@/store/api";
+import { useLocale, useTranslations } from "next-intl";
 
 function timeStringToMinutes(t) {
   const [hh, mm] = t.split(":").map(Number);
@@ -25,16 +26,13 @@ function minutesToTimeString(m) {
   const mm = m % 60;
   return `${String(hh).padStart(2, "0")}:${String(mm).padStart(2, "0")}`;
 }
-function getDayOfWeekName(date) {
-  return [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ][new Date(date).getDay()];
+function getDayOfWeekName(date, locale) {
+  const days = {
+    en: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    ru: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
+    tj: ["Якшанбе", "Душанбе", "Сешанбе", "Чоршанбе", "Панҷшанбе", "Ҷумъа", "Шанбе"]
+  };
+  return days[locale][new Date(date).getDay()];
 }
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
@@ -44,7 +42,9 @@ export default function DoctorPage() {
   const { id: doctorId } = useParams();
   const router = useRouter();
   const user = getCurrentUser();
-
+  const locale = useLocale();
+  const t = useTranslations('DoctorPage');
+  
   const {
     data: doctor,
     isLoading: dLoading,
@@ -74,10 +74,10 @@ export default function DoctorPage() {
       }).unwrap();
       setComment("");
       setRating(5);
-      toast.success("Спасибо за отзыв!");
+      toast.success(t('reviewSuccess'));
     } catch (err) {
       console.error(err);
-      toast.error("Ошибка при отправке отзыва");
+      toast.error(t('reviewError'));
     }
   };
 
@@ -107,7 +107,7 @@ export default function DoctorPage() {
   const schedulesForSelectedDay = useMemo(() => {
     const byDate = schedulesForDoctor.filter((s) => s.date === selectedDate);
     if (byDate.length) return byDate;
-    const dayName = getDayOfWeekName(selectedDate);
+    const dayName = getDayOfWeekName(selectedDate, locale);
     const byDay = schedulesForDoctor.filter((s) => {
       if (!s.dayOfWeek) return false;
       return (
@@ -119,7 +119,7 @@ export default function DoctorPage() {
     });
     if (byDay.length) return byDay;
     return schedulesForDoctor.length ? [schedulesForDoctor[0]] : [];
-  }, [schedulesForDoctor, selectedDate]);
+  }, [schedulesForDoctor, selectedDate, locale]);
 
   useEffect(() => {
     setSelectedSlot(null);
@@ -174,20 +174,18 @@ export default function DoctorPage() {
   const handleBooking = async (e) => {
     e.preventDefault();
     if (!selectedDate || !selectedSlot) {
-      toast.error("Выберите дату и время");
+      toast.error(t('selectDateTime'));
       return;
     }
     const userId = user?.id || getCurrentUserId();
-    console.log(userId);
 
     if (!userId) {
-      toast.error("Вам нужно войти, чтобы записаться");
+      toast.error(t('loginRequired'));
       router.push("/auth/login");
       return;
     }
 
     try {
-      toast.success("Запись успешно создана!");
       const payload = {
         doctorId: Number(doctorId),
         patientId: userId,
@@ -200,10 +198,11 @@ export default function DoctorPage() {
       await addAppointment(payload).unwrap();
       await refetchAppointments();
       setSelectedSlot(null);
+      toast.success(t('bookingSuccess'));
       router.push("/profile");
     } catch (err) {
       console.error(err);
-      toast.error("Ошибка при создании записи");
+      toast.error(t('bookingError'));
     }
   };
 
@@ -214,14 +213,14 @@ export default function DoctorPage() {
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
-  if (dLoading) return <p className="text-center py-20">Загрузка профиля...</p>;
+  if (dLoading) return <p className="text-center py-20">{t('loadingProfile')}</p>;
   if (dError || !doctor)
-    return <p className="text-center py-20 text-red-500">Доктор не найден</p>;
+    return <p className="text-center py-20 text-red-500">{t('doctorNotFound')}</p>;
 
   return (
     <div className="container mx-auto py-12 px-6">
       <div className="grid md:grid-cols-3 gap-8">
-        <div className="md:col-span-2  shadow-md rounded-xl p-6">
+        <div className="md:col-span-2 shadow-md rounded-xl p-6">
           <div className="flex items-center gap-6">
             <Image
               src={doctor.image || image}
@@ -235,29 +234,28 @@ export default function DoctorPage() {
             />
             <div>
               <h1 className="text-2xl font-bold">{doctor.name}</h1>
-              <p className="text-gray-600">{doctor.specialization}</p>
+              <p className="text-gray-600">{doctor.specialization[locale]}</p>
               <p className="text-sm text-gray-400">
-                {doctor.experience} лет опыта
+                {doctor.experience} {t('yearsExperience')}
               </p>
               <p className="mt-2 text-lg font-semibold text-blue-600">
-                {doctor.price} TJS
+                {doctor.price} {t('currency')}
               </p>
             </div>
           </div>
 
           <div className="mt-6">
-            <h3 className="font-semibold mb-2">Описание</h3>
+            <h3 className="font-semibold mb-2">{t('description')}</h3>
             <p className="text-gray-600">
-              {doctor.bio ||
-                "Профессионал в своей области. Запись по удобному расписанию."}
+              {doctor.bio || t('defaultBio')}
             </p>
           </div>
 
           <div className="mt-6">
-            <h3 className="font-semibold mb-2">Отзывы ({reviews.length})</h3>
+            <h3 className="font-semibold mb-2">{t('reviews')} ({reviews.length})</h3>
             <div className="space-y-4">
               {reviews.length === 0 && (
-                <p className="text-gray-500">Пока нет отзывов.</p>
+                <p className="text-gray-500">{t('noReviews')}</p>
               )}
               {reviews.slice(0, moreReview).map((r) => (
                 <div
@@ -268,7 +266,7 @@ export default function DoctorPage() {
                 >
                   <div className="flex justify-between">
                     <div className="text-sm font-medium">
-                      Пользователь{" "}
+                      {t('user')}{" "}
                       <span className="font-bold">{r.patientName}</span>
                     </div>
                     <div className="text-yellow-500">
@@ -285,16 +283,16 @@ export default function DoctorPage() {
                 <div className="flex justify-center items-start gap-5">
                   <button
                     onClick={() => setmoreReview((e) => e + 3)}
-                    className=" bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-lg smooth-transition"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-lg smooth-transition"
                   >
-                    Больше
+                    {t('more')}
                   </button>
                   {moreReview !== 1 && (
                     <button
                       onClick={() => setmoreReview((e) => (e = 1))}
-                      className=" bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-lg smooth-transition"
+                      className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-lg smooth-transition"
                     >
-                      Меньше
+                      {t('less')}
                     </button>
                   )}
                 </div>
@@ -303,7 +301,7 @@ export default function DoctorPage() {
 
             <form onSubmit={handleAddReview} className="mt-4 space-y-2">
               <div className="flex items-center gap-2">
-                <label className="text-sm">Оценка:</label>
+                <label className="text-sm">{t('rating')}:</label>
                 <select
                   value={rating}
                   onChange={(e) => setRating(e.target.value)}
@@ -320,25 +318,25 @@ export default function DoctorPage() {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 className="w-full border rounded px-3 py-2"
-                placeholder="Ваш отзыв"
+                placeholder={t('reviewPlaceholder')}
               />
               <button
                 type="submit"
                 disabled={addReviewLoading}
                 className="bg-blue-600 text-white px-4 py-2 rounded"
               >
-                Отправить отзыв
+                {t('submitReview')}
               </button>
             </form>
           </div>
         </div>
 
-        <aside className=" shadow-md rounded-xl p-6">
-          <h4 className="font-semibold mb-3">Запись на приём</h4>
+        <aside className="shadow-md rounded-xl p-6">
+          <h4 className="font-semibold mb-3">{t('bookingTitle')}</h4>
           <form onSubmit={handleBooking} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-500 mb-2">
-                Выберите дату
+                {t('selectDate')}
               </label>
               <input
                 type="date"
@@ -353,11 +351,11 @@ export default function DoctorPage() {
 
             <div>
               <label className="block text-sm font-medium text-gray-500 mb-2">
-                Доступное время
+                {t('availableTime')}
               </label>
               {slots.length === 0 ? (
                 <p className="text-gray-500">
-                  На выбранную дату нет рабочих часов.
+                  {t('noWorkingHours')}
                 </p>
               ) : (
                 <div className="grid grid-cols-4 gap-2">
@@ -402,7 +400,7 @@ export default function DoctorPage() {
                   : "bg-blue-600 text-white"
               }`}
             >
-              {adding ? "Отправка..." : "Записаться"}
+              {adding ? t('submitting') : t('bookAppointment')}
             </button>
           </form>
         </aside>

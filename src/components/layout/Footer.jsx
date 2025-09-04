@@ -4,13 +4,16 @@ import Image from "next/image";
 import { useGetContactQuery } from "@/store/api";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import img from "@/assets/home/logoClinic.png";
+
 
 export default function Footer() {
   const { data: contact, isLoading, error } = useGetContactQuery();
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const t = useTranslations('Footer');
+  const locale = useLocale();
 
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
@@ -40,11 +43,12 @@ export default function Footer() {
           {/* Логотип и соцсети */}
           <div className="md:col-span-1 col-span-2">
             <Image
-              src={contact?.logo || ""}
+              src={img}
               alt={t('clinicName')}
-              width={100}
-              height={100}
-              className="w-25 h-25 mb-4 object-cover rounded-full"
+              width={500}
+              height={500}
+              priority
+              className="w-50 h-20 mb-4 object-cover rounded-full"
             />
             <p className="text-blue-200 mb-4">
               {t('description')}
@@ -150,7 +154,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 <li className="flex items-start">
                   <i className="fas fa-map-marker-alt mt-1 mr-2 text-blue-200"></i>
-                  <span className="text-blue-200">{t('street')} {contact.address}</span>
+                  <span className="text-blue-200">{t('street')} {contact.address[locale]}</span>
                 </li>
 
                 {/* Несколько телефонов */}

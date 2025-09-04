@@ -1,4 +1,3 @@
-// app/profile/myReviews/page.jsx
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
@@ -18,11 +17,13 @@ import { useTheme } from "next-themes";
 import { Input, Modal } from "antd";
 import { X } from "lucide-react";
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
 
 export default function MyReviews() {
   const router = useRouter();
   const user = getCurrentUser();
   const userId = getCurrentUserId();
+  const t = useTranslations('MyReviews');
 
   const {
     data: reviews,
@@ -43,7 +44,7 @@ export default function MyReviews() {
     const doctor = doctors?.find(
       (d) => d.id.toString() === doctorId.toString()
     );
-    return doctor ? doctor.name : "Неизвестный врач";
+    return doctor ? doctor.name : t('unknownDoctor');
   };
 
   function delMyReview(id) {
@@ -81,10 +82,10 @@ export default function MyReviews() {
     try {
       await updateReview(updated).unwrap();
       await refetch();
-      toast.success("Отзыв обновлен");
+      toast.success(t('updateSuccess'));
     } catch (error) {
       console.error(error);
-      toast.error("Ошибка");
+      toast.error(t('updateError'));
     }
 
     setIsModalOpen(false);
@@ -98,12 +99,12 @@ export default function MyReviews() {
 
   if (revLoading) {
     return (
-      <p className="text-center py-20 font-semibold">Загрузка отзывы...</p>
+      <p className="text-center py-20 font-semibold">{t('loading')}</p>
     );
   }
   if (revError) {
     return (
-      <p className="text-center py-20 text-red-500">Ошибка загрузки отзывы.</p>
+      <p className="text-center py-20 text-red-500">{t('loadingError')}</p>
     );
   }
 
@@ -118,7 +119,7 @@ export default function MyReviews() {
               theme === "dark" ? "bg-black" : "bg-white"
             } px-4 py-2 rounded-l-lg border border-gray-300 outline-none`}
           >
-            <option value="">Все </option>
+            <option value="">{t('all')}</option>
             <option value="5">5</option>
             <option value="4">4</option>
             <option value="3">3</option>
@@ -127,13 +128,13 @@ export default function MyReviews() {
           </select>
           <input
             type="text"
-            placeholder="Поиск"
-            className="w-1/2 px-4 py-2  border border-gray-300 outline-none"
+            placeholder={t('searchPlaceholder')}
+            className="w-1/2 px-4 py-2 border border-gray-300 outline-none"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-r-lg">
-            Найти
+            {t('searchButton')}
           </button>
         </div>
       )}
@@ -156,7 +157,7 @@ export default function MyReviews() {
                     theme === "dark"
                       ? "bg-black shadow-md shadow-gray-900"
                       : "bg-white shadow-md"
-                  } p-6 rounded-lg `}
+                  } p-6 rounded-lg`}
                 >
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
@@ -180,7 +181,7 @@ export default function MyReviews() {
                     href={`/doctors/${review.doctorId}`}
                     className="text-sm text-gray-500 mt-2 hover:text-blue-500"
                   >
-                    Врач: {getDoctorName(review.doctorId)}
+                    {t('doctor')}: {getDoctorName(review.doctorId)}
                   </Link>
 
                   <div className="text-sm pt-5 flex items-center justify-between">
@@ -188,21 +189,21 @@ export default function MyReviews() {
                       className="cursor-pointer"
                       onClick={() => delMyReview(review.id)}
                     >
-                      Удалить
+                      {t('delete')}
                     </button>
 
                     <button
                       className="cursor-pointer"
                       onClick={() => showModal(review)}
                     >
-                      Изменить
+                      {t('edit')}
                     </button>
                   </div>
                 </div>
               ))}
           </div>
         ) : (
-          <div className="text-center w-full py-5">Нет отзывов</div>
+          <div className="text-center w-full py-5">{t('noReviews')}</div>
         )}
       </div>
       {isModalOpen && (
@@ -221,7 +222,7 @@ export default function MyReviews() {
             } rounded-2xl shadow p-5`}
           >
             <div className="flex items-center justify-between">
-              <h1 className="text-xl font-medium">Редактировать отзыв</h1>
+              <h1 className="text-xl font-medium">{t('editReview')}</h1>
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
@@ -237,7 +238,7 @@ export default function MyReviews() {
                 className="border rounded p-1.5"
                 value={editReview}
                 onChange={(e) => setEditReview(e.target.value)}
-                placeholder="Ваш отзыв"
+                placeholder={t('reviewPlaceholder')}
               />
               <select
                 value={editReting}
@@ -259,13 +260,13 @@ export default function MyReviews() {
                 type="button"
                 onClick={() => setIsModalOpen(false)}
               >
-                Cancil
+                {t('cancel')}
               </button>
               <button
                 className="border px-3 rounded hover:bg-blue-500 bg-blue-600 text-white border-blue-600"
                 type="submit"
               >
-                Ok
+                {t('ok')}
               </button>
             </div>
           </form>

@@ -5,13 +5,13 @@ import Image from "next/image";
 import image from "@/assets/home/doc.png";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function Doctors() {
   const { data: doctors = [], isLoading, isError } = useGetDoctorsQuery();
   const t = useTranslations('Doctors');
   const doctorSlice = doctors?.slice(0, 3) || [];
-
+  const locale = useLocale()
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -49,8 +49,9 @@ export default function Doctors() {
                     src={doc.image || image}
                     alt={doc.name}
                     fill
-                    sizes="100vw"
+                    sizes="500px"
                     style={{ objectFit: "cover" }}
+                    priority
                     className="smooth-transition"
                   />
                 </div>
@@ -59,7 +60,7 @@ export default function Doctors() {
                 <h3 className="text-xl font-bold mb-1 text-blue-700">
                   {doc.name}
                 </h3>
-                <p className="mb-3">{doc.specialization}</p>
+                <p className="mb-3">{doc.specialization[locale]}</p>
                 <p className="text-sm text-gray-500 mb-4">
                   {doc.experience} {t('experience')}
                 </p>

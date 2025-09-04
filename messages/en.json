@@ -1,6 +1,6 @@
 {
   "Layout": {
-    "title": "Be Healthy - Medical Center",
+    "title": "- Medical Center",
     "description": "Professional care for your health"
   },
 
@@ -123,5 +123,181 @@
     "copyright": "© {year} {clinicName}. All rights reserved.",
     "privacyPolicy": "Privacy policy",
     "termsOfUse": "Terms of use"
+  },
+
+  "AllDoctors": {
+    "loading": "Loading doctors...",
+    "error": "Error loading doctors",
+    "allSpecialties": "All specialties",
+    "searchPlaceholder": "Enter doctor's name",
+    "searchButton": "Search",
+    "yearsExperience": "years of experience",
+    "profileButton": "Profile/Appointment",
+    "noDoctorsFound": "No doctors found"
+  },
+
+  "Login": {
+    "welcome": "Welcome",
+    "welcomeSubtitle": "Log in to schedule an appointment",
+    "title": "Account Login",
+    "username": "Username",
+    "usernamePlaceholder": "Enter username",
+    "usernameRequired": "Username is required",
+    "password": "Password",
+    "passwordPlaceholder": "Enter password",
+    "passwordRequired": "Password is required",
+    "passwordMinLength": "Minimum 6 characters",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "loginButton": "Log in",
+    "noAccount": "No account?",
+    "registerLink": "Register",
+    "success": "Login successful",
+    "invalidCredentials": "Invalid username or password",
+    "error": "Login error"
+  },
+
+  "AllReviews": {
+    "loading": "Loading reviews...",
+    "error": "Error loading reviews",
+    "unknownDoctor": "Unknown doctor",
+    "allRatings": "All ratings",
+    "searchPlaceholder": "Enter doctor's name or comment",
+    "searchButton": "Search",
+    "doctor": "Doctor",
+    "noReviews": "No reviews"
+  },
+
+  "Register": {
+    "welcome": "Welcome",
+    "welcomeSubtitle": "Create an account to continue",
+    "title": "Registration",
+    "username": "Username",
+    "usernamePlaceholder": "Enter username",
+    "usernameRequired": "Username is required",
+    "fullName": "Full name",
+    "fullNamePlaceholder": "Enter your name",
+    "nameRequired": "Name is required",
+    "phone": "Phone number",
+    "phonePlaceholder": "Enter phone number",
+    "phoneRequired": "Phone number is required",
+    "phoneInvalid": "Invalid phone format",
+    "password": "Password",
+    "passwordPlaceholder": "Enter password",
+    "passwordRequired": "Password is required",
+    "passwordMinLength": "Minimum 6 characters",
+    "registerButton": "Register",
+    "haveAccount": "Already have an account?",
+    "loginLink": "Log in",
+    "checkUserError": "Error checking user",
+    "userExists": "User with this username already exists",
+    "success": "Registration successful",
+    "registrationFailed": "Registration failed",
+    "error": "Registration error"
+  },
+
+  "DoctorPage": {
+    "reviewSuccess": "Thank you for your review!",
+    "reviewError": "Error submitting review",
+    "selectDateTime": "Select date and time",
+    "loginRequired": "You need to login to book an appointment",
+    "bookingSuccess": "Appointment successfully created!",
+    "bookingError": "Error creating appointment",
+    "loadingProfile": "Loading profile...",
+    "doctorNotFound": "Doctor not found",
+    "yearsExperience": "years of experience",
+    "currency": "TJS",
+    "description": "Description",
+    "defaultBio": "Professional in their field. Appointment at a convenient time.",
+    "reviews": "Reviews",
+    "noReviews": "No reviews yet.",
+    "user": "User",
+    "more": "More",
+    "less": "Less",
+    "rating": "Rating",
+    "reviewPlaceholder": "Your review",
+    "submitReview": "Submit review",
+    "bookingTitle": "Book an appointment",
+    "selectDate": "Select date",
+    "availableTime": "Available time",
+    "noWorkingHours": "No working hours for the selected date.",
+    "submitting": "Submitting...",
+    "bookAppointment": "Book appointment"
+  },
+
+  "ServiceDoctors": {
+    "loading": "Loading doctors...",
+    "error": "Error loading doctors",
+    "searchPlaceholder": "Enter doctor's name",
+    "searchButton": "Search",
+    "yearsExperience": "years of experience",
+    "profileButton": "Profile/Appointment"
+  },
+
+  "AllServices": {
+    "searchPlaceholder": "Enter service name",
+    "searchButton": "Search",
+    "doctorsLink": "Doctors"
+  },
+
+  "Profile": {
+    "updateSuccess": "Profile updated",
+    "updateError": "Error",
+    "loadingProfile": "Loading profile...",
+    "loadingError": "Error loading profile",
+    "notAuthorized": "You are not authorized. To make appointments and manage your profile, please log in.",
+    "noBio": "No bio",
+    "edit": "Edit",
+    "logout": "Logout",
+    "editProfile": "Edit profile",
+    "usernamePlaceholder": "User Name",
+    "passwordPlaceholder": "Password",
+    "fullnamePlaceholder": "Full Name",
+    "phonePlaceholder": "Phone Number",
+    "bioPlaceholder": "Bio",
+    "imagePlaceholder": "Image URL (https://...)",
+    "cancel": "Cancel",
+    "ok": "Ok",
+    "myAppointments": "My appointments",
+    "myReviews": "My reviews"
+  },
+
+  "Appointments": {
+    "loading": "Loading appointments...",
+    "error": "Error loading appointments",
+    "notAuthorized": "You are not authorized. To make appointments and manage your profile, please log in.",
+    "noAppointments": "You have no appointments yet.",
+    "findSpecialist": "Find a specialist",
+    "confirmed": "Confirmed",
+    "pending": "Pending confirmation",
+    "doctor": "Doctor",
+    "date": "Date",
+    "time": "Time",
+    "doctorProfile": "Doctor profile",
+    "cancel": "Cancel",
+    "cancelConfirmation": "Are you sure you want to cancel this appointment?",
+    "cancelSuccess": "Appointment cancelled",
+    "cancelError": "Failed to cancel appointment",
+    "yes": "Yes",
+    "no": "No"
+  },
+
+  "MyReviews": {
+    "unknownDoctor": "Unknown doctor",
+    "updateSuccess": "Review updated",
+    "updateError": "Error",
+    "loading": "Loading reviews...",
+    "loadingError": "Error loading reviews",
+    "all": "All",
+    "searchPlaceholder": "Search",
+    "searchButton": "Search",
+    "doctor": "Doctor",
+    "delete": "Delete",
+    "edit": "Edit",
+    "noReviews": "No reviews",
+    "editReview": "Edit review",
+    "reviewPlaceholder": "Your review",
+    "cancel": "Cancel",
+    "ok": "Ok"
   }
 }

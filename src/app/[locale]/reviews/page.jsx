@@ -4,21 +4,23 @@ import Link from "next/link";
 import { useGetDoctorsQuery, useGetReviewsQuery } from "@/store/api";
 import Image from "next/image";
 import image from "@/assets/home/doc.png";
-
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Rewind, Star } from "lucide-react";
+import { useTranslations } from "next-intl";
+
 const ReviewsPage = () => {
   const { data: reviews = [], isLoading, isError } = useGetReviewsQuery();
   const { data: doctors } = useGetDoctorsQuery();
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
+  const t = useTranslations("AllReviews");
 
   const getDoctorName = (doctorId) => {
     const doctor = doctors?.find(
       (d) => d.id.toString() === doctorId.toString()
     );
-    return doctor ? doctor.name : "Неизвестный врач";
+    return doctor ? doctor.name : t("unknownDoctor");
   };
 
   const { theme } = useTheme();
@@ -26,11 +28,9 @@ const ReviewsPage = () => {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;
-  if (isLoading) return <p className="text-center py-10">Загрузка врачей...</p>;
+  if (isLoading) return <p className="text-center py-10">{t("loading")}</p>;
   if (isError)
-    return (
-      <p className="text-center py-10 text-red-500">Ошибка загрузки врачей</p>
-    );
+    return <p className="text-center py-10 text-red-500">{t("error")}</p>;
 
   return (
     <div>
@@ -42,7 +42,7 @@ const ReviewsPage = () => {
             theme === "dark" ? "bg-black" : "bg-white"
           } px-4 py-2 rounded-l-lg border border-gray-300 outline-none`}
         >
-          <option value="">Все </option>
+          <option value="">{t("allRatings")}</option>
           <option value="5">5</option>
           <option value="4">4</option>
           <option value="3">3</option>
@@ -51,13 +51,13 @@ const ReviewsPage = () => {
         </select>
         <input
           type="text"
-          placeholder="Введите имя врача"
-          className="w-1/2 px-4 py-2  border border-gray-300 outline-none"
+          placeholder={t("searchPlaceholder")}
+          className="w-1/2 px-4 py-2 border border-gray-300 outline-none"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
         <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-r-lg">
-          Найти
+          {t("searchButton")}
         </button>
       </div>
       {reviews.length != 0 ? (
@@ -65,8 +65,12 @@ const ReviewsPage = () => {
           {reviews
             .filter(
               (e) =>
-                e.comment.toLowerCase().includes(search.toLowerCase() || "") ||
-                e.patientName.toLowerCase().includes(search.toLowerCase())
+                (e.comment?.toLowerCase() || "").includes(
+                  search.toLowerCase()
+                ) ||
+                (e.patientName?.toLowerCase() || "").includes(
+                  search.toLowerCase()
+                )
             )
             .filter((e) => e.rating.toString().includes(status.toString()))
             .map((review) => (
@@ -82,7 +86,7 @@ const ReviewsPage = () => {
                   <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
                     <i className="fas fa-user text-blue-600 text-xl"></i>
                   </div>
-                  <div className=" space-y-2">
+                  <div className="space-y-2">
                     <h4 className="font-bold text-blue-900">
                       {review.patientName}
                     </h4>
@@ -94,14 +98,17 @@ const ReviewsPage = () => {
                   </div>
                 </div>
                 <p className="text-gray-600 italic">"{review.comment}"</p>
-                <p className="text-sm text-gray-500 mt-2">
-                  Врач: {getDoctorName(review.doctorId)}
-                </p>
+                <Link
+                  href={`/doctors/${review.doctorId}`}
+                  className="text-sm text-gray-400 mt-2 hover:text-blue-500"
+                >
+                  {t("doctor")}: {getDoctorName(review.doctorId)}
+                </Link>
               </div>
             ))}
         </div>
       ) : (
-        <div className="text-center w-full py-5">Нет отзывов</div>
+        <div className="text-center w-full py-5">{t("noReviews")}</div>
       )}
     </div>
   );

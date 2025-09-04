@@ -1,6 +1,6 @@
 {
   "Layout": {
-    "title": "Будь Здоров - Маркази тиббӣ",
+    "title": "- Маркази тиббӣ",
     "description": "Парвоиши касбии саломатии шумо"
   },
 
@@ -123,5 +123,181 @@
     "copyright": "© {year} {clinicName}. Ҳама ҳуқуқҳо ҳифз шудаанд.",
     "privacyPolicy": "Сиёсати махфият",
     "termsOfUse": "Шартҳои истифода"
+  },
+
+  "AllDoctors": {
+    "loading": "Духтурҳо бор карда истодааст...",
+    "error": "Хатоги дар боркунии духтурҳо",
+    "allSpecialties": "Ҳама ихтисосҳо",
+    "searchPlaceholder": "Номи духтурро ворид кунед",
+    "searchButton": "Ҷустуҷӯ",
+    "yearsExperience": "соли таҷриба",
+    "profileButton": "Профил/Қайд шудан",
+    "noDoctorsFound": "Духтурҳо ёфт нашуд"
+  },
+
+  "Login": {
+    "welcome": "Хуш омадед",
+    "welcomeSubtitle": "Барои қайд шудан ба назорат ворид шавед",
+    "title": "Воридшавӣ ба ҳисоб",
+    "username": "Номи корбар",
+    "usernamePlaceholder": "Номи корбариро ворид кунед",
+    "usernameRequired": "Номи корбарӣ зарурӣ аст",
+    "password": "Парол",
+    "passwordPlaceholder": "Паролро ворид кунед",
+    "passwordRequired": "Парол зарурӣ аст",
+    "passwordMinLength": "Ҳадди ақал 6 аломат",
+    "rememberMe": "Маро дар ёд дор",
+    "forgotPassword": "Парол фаромуш шуд?",
+    "loginButton": "Ворид шудан",
+    "noAccount": "Ҳисоб надоред?",
+    "registerLink": "Бақайдгирӣ",
+    "success": "Воридшавӣ муваффақона",
+    "invalidCredentials": "Номи корбар ё парол нодуруст",
+    "error": "Хатоги дар воридшавӣ"
+  },
+
+  "AllReviews": {
+    "loading": "Аксолҳо бор карда истодааст...",
+    "error": "Хатоги дар боркунии аксолҳо",
+    "unknownDoctor": "Духтури ношинос",
+    "allRatings": "Ҳама баҳоҳо",
+    "searchPlaceholder": "Номи духтур ё аксолиро ворид кунед",
+    "searchButton": "Ҷустуҷӯ",
+    "doctor": "Духтур",
+    "noReviews": "Аксолҳо нестанд"
+  },
+
+  "Register": {
+    "welcome": "Хуш омадед",
+    "welcomeSubtitle": "Барои идома додан ҳисоб эҷод кунед",
+    "title": "Бақайдгирӣ",
+    "username": "Номи корбар",
+    "usernamePlaceholder": "Номи корбариро ворид кунед",
+    "usernameRequired": "Номи корбарӣ зарурӣ аст",
+    "fullName": "Номи пурра",
+    "fullNamePlaceholder": "Номи худро ворид кунед",
+    "nameRequired": "Ном зарурӣ аст",
+    "phone": "Рақами телефон",
+    "phonePlaceholder": "Рақами телефонро ворид кунед",
+    "phoneRequired": "Рақами телефон зарурӣ аст",
+    "phoneInvalid": "Формати нодурусти рақам",
+    "password": "Парол",
+    "passwordPlaceholder": "Паролро ворид кунед",
+    "passwordRequired": "Парол зарурӣ аст",
+    "passwordMinLength": "Ҳадди ақал 6 аломат",
+    "registerButton": "Бақайдгирӣ",
+    "haveAccount": "Аллакай ҳисоб доред?",
+    "loginLink": "Ворид шудан",
+    "checkUserError": "Хатоги дар санҷиши корбар",
+    "userExists": "Корбар бо ин номи корбарӣ аллакай мавҷуд аст",
+    "success": "Бақайдгирӣ муваффақона",
+    "registrationFailed": "Бақайдгирӣ иҷро нашуд",
+    "error": "Хатоги дар бақайдгирӣ"
+  },
+
+  "DoctorPage": {
+    "reviewSuccess": "Ташаккур барои аксол!",
+    "reviewError": "Хатоги дар фиристодани аксол",
+    "selectDateTime": "Сана ва вақтро интихоб кунед",
+    "loginRequired": "Барои қайд шудан ба қабул шумо бояд ворид шавед",
+    "bookingSuccess": "Қайд бомуваффақият сохта шуд!",
+    "bookingError": "Хатоги дар сохтани қайд",
+    "loadingProfile": "Боркунии профил...",
+    "doctorNotFound": "Духтур ёфт нашуд",
+    "yearsExperience": "соли таҷриба",
+    "currency": "TJS",
+    "description": "Тавсиф",
+    "defaultBio": "Мутахассис дар соҳаи худ. Қайд ба вақти бароҳат.",
+    "reviews": "Аксолҳо",
+    "noReviews": "То ҳол аксоле нест.",
+    "user": "Корбар",
+    "more": "Бештар",
+    "less": "Камтар",
+    "rating": "Баҳо",
+    "reviewPlaceholder": "Аксоли шумо",
+    "submitReview": "Фиристодани аксол",
+    "bookingTitle": "Қайд ба қабул",
+    "selectDate": "Санаро интихоб кунед",
+    "availableTime": "Вақти дастрас",
+    "noWorkingHours": "Барои санаи интихобшуда соатҳои корӣ нестанд.",
+    "submitting": "Фиристода истодааст...",
+    "bookAppointment": "Қайд шудан"
+  },
+
+  "ServiceDoctors": {
+    "loading": "Духтурҳо бор карда истодааст...",
+    "error": "Хатоги дар боркунии духтурҳо",
+    "searchPlaceholder": "Номи духтурро ворид кунед",
+    "searchButton": "Ҷустуҷӯ",
+    "yearsExperience": "соли таҷриба",
+    "profileButton": "Профил/Қайд шудан"
+  },
+
+  "AllServices": {
+    "searchPlaceholder": "Номи хизматро ворид кунед",
+    "searchButton": "Ҷустуҷӯ",
+    "doctorsLink": "Духтурҳо"
+  },
+
+  "Profile": {
+    "updateSuccess": "Профил нав карда шуд",
+    "updateError": "Хатогӣ",
+    "loadingProfile": "Боркунии профил...",
+    "loadingError": "Хатоги дар боркунии профил",
+    "notAuthorized": "Шумо авторизатсия нашудаед. Барои қайд кардан ва идоракунии профил, лутфан ворид шавед.",
+    "noBio": "Био нест",
+    "edit": "Таҳрир кардан",
+    "logout": "Баромад",
+    "editProfile": "Таҳрири профил",
+    "usernamePlaceholder": "Номи корбар",
+    "passwordPlaceholder": "Парол",
+    "fullnamePlaceholder": "Номи пурра",
+    "phonePlaceholder": "Рақами телефон",
+    "bioPlaceholder": "Био",
+    "imagePlaceholder": "URL-и тасвир (https://...)",
+    "cancel": "Бекор кардан",
+    "ok": "Хуб",
+    "myAppointments": "Қайдҳои ман",
+    "myReviews": "Аксолҳои ман"
+  },
+
+  "Appointments": {
+    "loading": "Қайдҳо бор карда истодааст...",
+    "error": "Хатоги дар боркунии қайдҳо",
+    "notAuthorized": "Шумо авторизатсия нашудаед. Барои қайд кардан ва идоракунии профил, лутфан ворид шавед.",
+    "noAppointments": "Шумо ҳоло қайд надоред.",
+    "findSpecialist": "Мутахассис ёфтан",
+    "confirmed": "Тасдиқ шуд",
+    "pending": "Интизори тасдиқ",
+    "doctor": "Духтур",
+    "date": "Сана",
+    "time": "Соат",
+    "doctorProfile": "Профили духтур",
+    "cancel": "Бекор кардан",
+    "cancelConfirmation": "Шумо мутмаин ҳастед, ки мехоҳед ин қайдро бекор кунед?",
+    "cancelSuccess": "Қайд бекор карда шуд",
+    "cancelError": "Қайд бекор карда нашуд",
+    "yes": "Ҳа",
+    "no": "Не"
+  },
+
+  "MyReviews": {
+    "unknownDoctor": "Духтури номаълум",
+    "updateSuccess": "Аксол нав карда шуд",
+    "updateError": "Хатогӣ",
+    "loading": "Боркунии аксолҳо...",
+    "loadingError": "Хатоги дар боркунии аксолҳо",
+    "all": "Ҳама",
+    "searchPlaceholder": "Ҷустуҷӯ",
+    "searchButton": "Ҷустуҷӯ",
+    "doctor": "Духтур",
+    "delete": "Нест кардан",
+    "edit": "Таҳрир кардан",
+    "noReviews": "Аксолҳо нестанд",
+    "editReview": "Таҳрири аксол",
+    "reviewPlaceholder": "Аксоли шумо",
+    "cancel": "Бекор кардан",
+    "ok": "Хуб"
   }
 }

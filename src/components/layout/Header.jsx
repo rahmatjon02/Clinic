@@ -3,23 +3,25 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "antd";
-import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
+import ThemeSwitcher from "@/components/layout/ThemeSwitcher";
 import Image from "next/image";
-import imgLogo from "../../assets/home/i.webp";
 import { usePathname, useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useGetContactQuery } from "@/store/api";
 import { getCurrentUser } from "@/utils/auth";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
+import img from "@/assets/home/logoClinic.png";
 
 export default function Header() {
   const { data: contact, isLoading, error } = useGetContactQuery();
   const t = useTranslations("Header");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const user = getCurrentUser();
-
+  const locale = useLocale();
+  console.log(locale);
+  
   let pathName = usePathname();
   const router = useRouter();
 
@@ -57,7 +59,7 @@ export default function Header() {
             <div className="lg:flex items-center hidden">
               <i className="fas fa-map-marker-alt mr-2"></i>
               <span>
-                {t("street")} {contact.address}
+                {t("street")} {contact.address[locale]}
               </span>
             </div>
 
@@ -100,13 +102,12 @@ export default function Header() {
             {/* Лого */}
             <Link href="/" className="flex items-center gap-3">
               <Image
-                src={contact.logo}
+                src={img}
                 alt="Logo"
                 width={500}
                 height={500}
-                className="w-10 h-10 rounded-full object-cover"
+                className="w-40 h-10 rounded-full object-cover"
               />
-              <h1 className="lg:text-xl text-sm">{contact.nameClinic}</h1>
             </Link>
           </div>
 
@@ -115,7 +116,7 @@ export default function Header() {
             <Link
               href="/"
               className={`${
-                pathName == "/" ? "text-blue-700" : "text-gray-500"
+                pathName == `/${locale}` ? "text-blue-700" : "text-gray-500"
               } font-medium hover:text-blue-500`}
             >
               {t("home")}
@@ -256,7 +257,10 @@ export default function Header() {
                 </button>
               </Link>
             ) : (
-              <Link href="/auth/login">
+              <Link
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                href={`${locale}/auth/login`}
+              >
                 <button className="block py-2 text-gray-400 hover:text-blue-500">
                   {t("login")}
                 </button>

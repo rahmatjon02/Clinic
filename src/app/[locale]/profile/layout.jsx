@@ -1,4 +1,3 @@
-// app/profile/appointments/page.jsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -15,6 +14,7 @@ import Link from "next/link";
 import { Input, Modal } from "antd";
 import { Annoyed, Eye, EyeClosed, X } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
 
 export default function Layout({ children }) {
   const [aye, setaye] = useState(false);
@@ -22,6 +22,7 @@ export default function Layout({ children }) {
   const currentUserId = getCurrentUserId();
   const { data: user, refetch } = useGetUserByIdQuery(currentUserId);
   const [editProfile] = useEditProfileMutation();
+  const t = useTranslations("Profile");
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -70,10 +71,10 @@ export default function Layout({ children }) {
     try {
       await editProfile(updatedUser).unwrap();
       await refetch();
-      toast.success("Профиль обновлен");
+      toast.success(t("updateSuccess"));
     } catch (error) {
       console.error(error);
-      toast.error("Ошибка");
+      toast.error(t("updateError"));
     }
 
     setIsModalOpen(false);
@@ -99,31 +100,31 @@ export default function Layout({ children }) {
   if (!mounted) return null;
   if (apptsLoading) {
     return (
-      <p className="text-center py-20 font-semibold">Загрузка профиля...</p>
+      <p className="text-center py-20 font-semibold">{t("loadingProfile")}</p>
     );
   }
   if (apptsError) {
     return (
-      <p className="text-center py-20 text-red-500">Ошибка загрузки профиля.</p>
+      <p className="text-center py-20 text-red-500">{t("loadingError")}</p>
     );
   }
 
   if (!currentUserId)
     return (
       <div className="m-6 p-4 bg-yellow-50 border-l-4 border-yellow-300 text-yellow-700 rounded">
-        Вы не авторизованы. Для записи и управления профиля войдите в аккаунт.
+        {t("notAuthorized")}
       </div>
     );
 
   return (
     <div className="container mx-auto p-4">
-      <div className="md:col-span-2  shadow-md rounded-xl p-2 lg:p-6 my-5">
+      <div className="md:col-span-2 shadow-md rounded-xl p-2 lg:p-6 my-5">
         <div className="flex items-center gap-6 relative">
           <Image
             src={
               user?.image && user?.image.trim() !== ""
                 ? user.image
-                : "https://www.transparentpng.com/download/user/gray-user-profile-icon-png-fP8Q1P.png"
+                : "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI="
             }
             alt={user?.name || "user"}
             sizes="100vw"
@@ -131,7 +132,7 @@ export default function Layout({ children }) {
             height={500}
             priority
             style={{ objectFit: "cover" }}
-            className="smooth-transition w-25 h-25 rounded-full shadow"
+            className="smooth-transition lg:w-25 lg:h-25 w-20 h-20 rounded-full shadow"
           />
 
           <div>
@@ -140,7 +141,7 @@ export default function Layout({ children }) {
             <p className="mt-2 text-sm font-semibold text-blue-600">
               {user?.phoneNumber}
             </p>
-            <p className="text-gray-600">{user?.bio || "Нет био"}</p>
+            <p className="text-gray-600">{user?.bio || t("noBio")}</p>
           </div>
 
           <div className="absolute right-2 top-2 flex flex-col lg:flex-row gap-2 items-end">
@@ -148,14 +149,14 @@ export default function Layout({ children }) {
               onClick={showModal}
               className="text-blue-500 font-bold text-xs lg:text-[16px] cursor-pointer hover:text-blue-600"
             >
-              Редактировать
+              {t("edit")}
             </button>
 
             <button
               onClick={() => LogOut()}
               className="text-red-500 font-bold text-xs lg:text-[16px] cursor-pointer hover:text-red-600"
             >
-              Выход
+              {t("logout")}
             </button>
           </div>
         </div>
@@ -177,7 +178,7 @@ export default function Layout({ children }) {
             } rounded-2xl shadow p-5`}
           >
             <div className="flex items-center justify-between">
-              <h1 className="text-xl font-medium">Редактировать профиль</h1>
+              <h1 className="text-xl font-medium">{t("editProfile")}</h1>
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
@@ -193,7 +194,7 @@ export default function Layout({ children }) {
                 className="border rounded p-1.5"
                 value={editName}
                 onChange={(e) => setEditName(e.target.value)}
-                placeholder="User Name"
+                placeholder={t("usernamePlaceholder")}
               />
               <label htmlFor="" className="relative">
                 <input
@@ -201,7 +202,7 @@ export default function Layout({ children }) {
                   className="border rounded p-1.5 w-full"
                   value={editPassword}
                   onChange={(e) => setEditPassword(e.target.value)}
-                  placeholder="Password"
+                  placeholder={t("passwordPlaceholder")}
                 />
                 <button
                   className="absolute right-2 top-2"
@@ -216,27 +217,27 @@ export default function Layout({ children }) {
                 className="border rounded p-1.5"
                 value={editFullName}
                 onChange={(e) => setEditFullName(e.target.value)}
-                placeholder="Name Full"
+                placeholder={t("fullnamePlaceholder")}
               />
               <input
                 type="text"
                 className="border rounded p-1.5"
                 value={editPhoneNumber}
                 onChange={(e) => setEditPhoneNumber(e.target.value)}
-                placeholder="Phone Number"
+                placeholder={t("phonePlaceholder")}
               />
               <input
                 type="text"
                 className="border rounded p-1.5"
                 value={editBio}
                 onChange={(e) => setEditBio(e.target.value)}
-                placeholder="Bio"
+                placeholder={t("bioPlaceholder")}
               />
               <input
                 className="border rounded p-1.5"
                 value={editImage}
                 onChange={(e) => setEditImage(e.target.value)}
-                placeholder="Image URL (https://...)"
+                placeholder={t("imagePlaceholder")}
               />
 
               {editImage && (
@@ -257,13 +258,13 @@ export default function Layout({ children }) {
                 type="button"
                 onClick={() => setIsModalOpen(false)}
               >
-                Cancil
+                {t("cancel")}
               </button>
               <button
                 className="border px-3 rounded hover:bg-blue-500 bg-blue-600 text-white border-blue-600"
                 type="submit"
               >
-                Ok
+                {t("ok")}
               </button>
             </div>
           </form>
@@ -271,13 +272,13 @@ export default function Layout({ children }) {
       )}
       <div className="flex items-center gap-4">
         <Link href={"/profile"} className="text-2xl font-semibold mb-6">
-          Мои записи
+          {t("myAppointments")}
         </Link>
         <Link
           href={"/profile/myReviews"}
           className="text-2xl font-semibold mb-6"
         >
-          Мои отзывы
+          {t("myReviews")}
         </Link>
       </div>
       {children}

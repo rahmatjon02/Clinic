@@ -1,6 +1,6 @@
 {
   "Layout": {
-    "title": "Будь Здоров - Медицинский центр",
+    "title": " - Медицинский центр",
     "description": "Профессиональная забота о вашем здоровье"
   },
 
@@ -123,5 +123,181 @@
     "copyright": "© {year} {clinicName}. Все права защищены.",
     "privacyPolicy": "Политика конфиденциальности",
     "termsOfUse": "Пользовательское соглашение"
+  },
+
+  "AllDoctors": {
+    "loading": "Загрузка врачей...",
+    "error": "Ошибка загрузки врачей",
+    "allSpecialties": "Все специальности",
+    "searchPlaceholder": "Введите имя врача",
+    "searchButton": "Найти",
+    "yearsExperience": "лет опыта",
+    "profileButton": "Профиль/Записаться",
+    "noDoctorsFound": "Врачи не найдены"
+  },
+
+  "Login": {
+    "welcome": "Добро пожаловать",
+    "welcomeSubtitle": "Войдите, чтобы записаться на приём",
+    "title": "Вход в аккаунт",
+    "username": "Имя пользователя",
+    "usernamePlaceholder": "Введите имя пользователя",
+    "usernameRequired": "Имя пользователя обязательно",
+    "password": "Пароль",
+    "passwordPlaceholder": "Введите пароль",
+    "passwordRequired": "Пароль обязателен",
+    "passwordMinLength": "Минимум 6 символов",
+    "rememberMe": "Запомнить меня",
+    "forgotPassword": "Забыли пароль?",
+    "loginButton": "Войти",
+    "noAccount": "Нет аккаунта?",
+    "registerLink": "Зарегистрироваться",
+    "success": "Вход успешен",
+    "invalidCredentials": "Неверный логин или пароль",
+    "error": "Ошибка входа"
+  },
+
+  "AllReviews": {
+    "loading": "Загрузка отзывов...",
+    "error": "Ошибка загрузки отзывов",
+    "unknownDoctor": "Неизвестный врач",
+    "allRatings": "Все оценки",
+    "searchPlaceholder": "Введите имя врача или отзыв",
+    "searchButton": "Найти",
+    "doctor": "Врач",
+    "noReviews": "Нет отзывов"
+  },
+
+  "Register": {
+    "welcome": "Добро пожаловать",
+    "welcomeSubtitle": "Создайте аккаунт, чтобы продолжить",
+    "title": "Регистрация",
+    "username": "Имя пользователя",
+    "usernamePlaceholder": "Введите имя пользователя",
+    "usernameRequired": "Имя пользователя обязательно",
+    "fullName": "Полное имя",
+    "fullNamePlaceholder": "Введите имя",
+    "nameRequired": "Имя обязательно",
+    "phone": "Номер телефона",
+    "phonePlaceholder": "Введите номер телефона",
+    "phoneRequired": "Номер обязателен",
+    "phoneInvalid": "Неверный формат номера",
+    "password": "Пароль",
+    "passwordPlaceholder": "Введите пароль",
+    "passwordRequired": "Пароль обязателен",
+    "passwordMinLength": "Минимум 6 символов",
+    "registerButton": "Зарегистрироваться",
+    "haveAccount": "Уже есть аккаунт?",
+    "loginLink": "Войти",
+    "checkUserError": "Ошибка при проверке пользователя",
+    "userExists": "Пользователь с таким именем уже существует",
+    "success": "Регистрация успешна",
+    "registrationFailed": "Не удалось зарегистрировать",
+    "error": "Ошибка регистрации"
+  },
+
+  "DoctorPage": {
+    "reviewSuccess": "Спасибо за отзыв!",
+    "reviewError": "Ошибка при отправке отзыва",
+    "selectDateTime": "Выберите дату и время",
+    "loginRequired": "Вам нужно войти, чтобы записаться",
+    "bookingSuccess": "Запись успешно создана!",
+    "bookingError": "Ошибка при создании записи",
+    "loadingProfile": "Загрузка профиля...",
+    "doctorNotFound": "Доктор не найден",
+    "yearsExperience": "лет опыта",
+    "currency": "TJS",
+    "description": "Описание",
+    "defaultBio": "Профессионал в своей области. Запись по удобному расписанию.",
+    "reviews": "Отзывы",
+    "noReviews": "Пока нет отзывов.",
+    "user": "Пользователь",
+    "more": "Больше",
+    "less": "Меньше",
+    "rating": "Оценка",
+    "reviewPlaceholder": "Ваш отзыв",
+    "submitReview": "Отправить отзыв",
+    "bookingTitle": "Запись на приём",
+    "selectDate": "Выберите дату",
+    "availableTime": "Доступное время",
+    "noWorkingHours": "На выбранную дату нет рабочих часов.",
+    "submitting": "Отправка...",
+    "bookAppointment": "Записаться"
+  },
+
+  "ServiceDoctors": {
+    "loading": "Загрузка врачей...",
+    "error": "Ошибка загрузки врачей",
+    "searchPlaceholder": "Введите имя врача",
+    "searchButton": "Найти",
+    "yearsExperience": "лет опыта",
+    "profileButton": "Профиль/Записаться"
+  },
+
+  "AllServices": {
+    "searchPlaceholder": "Введите имя услугу",
+    "searchButton": "Найти",
+    "doctorsLink": "Врачи"
+  },
+
+  "Profile": {
+    "updateSuccess": "Профиль обновлен",
+    "updateError": "Ошибка",
+    "loadingProfile": "Загрузка профиля...",
+    "loadingError": "Ошибка загрузки профиля",
+    "notAuthorized": "Вы не авторизованы. Для записи и управления профиля войдите в аккаунт.",
+    "noBio": "Нет био",
+    "edit": "Редактировать",
+    "logout": "Выход",
+    "editProfile": "Редактировать профиль",
+    "usernamePlaceholder": "User Name",
+    "passwordPlaceholder": "Password",
+    "fullnamePlaceholder": "Name Full",
+    "phonePlaceholder": "Phone Number",
+    "bioPlaceholder": "Bio",
+    "imagePlaceholder": "Image URL (https://...)",
+    "cancel": "Cancil",
+    "ok": "Ok",
+    "myAppointments": "Мои записи",
+    "myReviews": "Мои отзывы"
+  },
+
+  "Appointments": {
+    "loading": "Загрузка записей...",
+    "error": "Ошибка загрузки записей",
+    "notAuthorized": "Вы не авторизованы. Для записи и управления профилем войдите в аккаунт.",
+    "noAppointments": "У вас пока нет записей.",
+    "findSpecialist": "Найти специалиста",
+    "confirmed": "Подтверждена",
+    "pending": "Ожидает подтверждения",
+    "doctor": "Доктор",
+    "date": "Дата",
+    "time": "Время",
+    "doctorProfile": "Профиль врача",
+    "cancel": "Отменить",
+    "cancelConfirmation": "Вы действительно хотите отменить эту запись?",
+    "cancelSuccess": "Запись отменена",
+    "cancelError": "Не удалось отменить запись",
+    "yes": "Да",
+    "no": "Нет"
+  },
+
+  "MyReviews": {
+    "unknownDoctor": "Неизвестный врач",
+    "updateSuccess": "Отзыв обновлен",
+    "updateError": "Ошибка",
+    "loading": "Загрузка отзывы...",
+    "loadingError": "Ошибка загрузки отзывы",
+    "all": "Все",
+    "searchPlaceholder": "Поиск",
+    "searchButton": "Найти",
+    "doctor": "Врач",
+    "delete": "Удалить",
+    "edit": "Изменить",
+    "noReviews": "Нет отзывов",
+    "editReview": "Редактировать отзыв",
+    "reviewPlaceholder": "Ваш отзыв",
+    "cancel": "Cancil",
+    "ok": "Ok"
   }
 }

@@ -65,9 +65,12 @@ const Reviews = () => {
                 </div>
               </div>
               <p className="italic">"{review.comment}"</p>
-              <p className="text-sm text-gray-400 mt-2">
+              <Link
+                href={`/doctors/${review.doctorId}`}
+                className="text-sm text-gray-400 mt-2 hover:text-blue-500"
+              >
                 {t("doctor")}: {getDoctorName(review.doctorId)}
-              </p>
+              </Link>
             </div>
           ))}
         </div>

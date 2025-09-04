@@ -1,6 +1,6 @@
 "use client";
 import { useGetServicesQuery } from "@/store/api";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,10 +10,10 @@ import React, { useEffect, useState } from "react";
 export default function Services() {
   const { data } = useGetServicesQuery();
   const locale = useLocale();
+  const t = useTranslations("AllServices");
   const [search, setSearch] = useState("");
 
   const pathName = usePathname();
-  console.log(pathName);
 
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -25,13 +25,13 @@ export default function Services() {
       <div className="flex justify-center m-6">
         <input
           type="text"
-          placeholder="Введите имя услугу"
+          placeholder={t("searchPlaceholder")}
           className="w-1/2 px-4 py-2 rounded-l-lg border border-gray-300 outline-none"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
         <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-r-lg">
-          Найти
+          {t("searchButton")}
         </button>
       </div>
       <div className="container mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -57,13 +57,15 @@ export default function Services() {
                 <h3 className="text-xl font-bold mb-3 text-blue-900">
                   {service.title[locale]}
                 </h3>
-                <p className="text-gray-500 mb-4">{service.description[locale]}</p>
+                <p className="text-gray-500 mb-4">
+                  {service.description[locale]}
+                </p>
 
                 <Link
                   href={`/services/${service.id}`}
                   className="text-blue-600 font-medium hover:text-blue-800 flex items-center"
                 >
-                  Врачи <i className="fas fa-arrow-right ml-2"></i>
+                  {t("doctorsLink")} <i className="fas fa-arrow-right ml-2"></i>
                 </Link>
               </div>
             </div>
