@@ -20,18 +20,18 @@ export default function Hero() {
         theme === "dark" ? "bg-gray-700" : "bg-blue-50"
       }`}
     >
-      <div className="container mx-auto px-4 text-center flex flex-col items-center justify-center">
+      <div className="container mx-auto px-4 text-center flex flex-col items-center justify-center md:mt-0 -mt-50">
         <h1 className="text-3xl md:text-4xl font-bold flex lg:flex-row flex-col items-center justify-center">
           <Image
             src={img}
             alt="logo"
             width={500}
             height={100}
-            className="w-70 h-40  rounded"
+            className="w-80 h-50  rounded"
           />
           {t("title")}
         </h1>
-        <p className="text-xl md:text-2xl mb-8">{t("description")}</p>
+        <p className="text-xl md:text-2xl mt-0 md:-mt-8">{t("description")}</p>
       </div>
     </div>
   );

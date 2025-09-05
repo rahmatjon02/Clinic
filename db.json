@@ -100,11 +100,12 @@
     },
     {
       "id": "ba12",
-      "userName": "Rahmatjon",
+      "userName": "Rahmatjon2211",
       "password": "123456",
       "name": "Pirmatov Rahmatjon",
       "phoneNumber": "987654321",
-      "role": "user"
+      "bio": "",
+      "image": ""
     },
     {
       "id": "8ce1",
@@ -289,23 +290,83 @@
       "status": false
     },
     {
-      "id": "2c51",
+      "id": "ac1f",
       "doctorId": 2,
       "patientId": "ba12",
       "patientName": "Pirmatov Rahmatjon",
       "patientPhone": "987654321",
       "date": "2025-09-04",
-      "time": "11:30",
+      "time": "18:00",
       "status": false
     },
     {
-      "id": "5a19",
+      "id": "053b",
+      "doctorId": 1,
+      "patientId": "ba12",
+      "patientName": "Pirmatov Rahmatjon",
+      "patientPhone": "987654321",
+      "date": "2025-09-05",
+      "time": "12:30",
+      "status": false
+    },
+    {
+      "id": "93a5",
+      "doctorId": 2,
+      "patientId": "ba12",
+      "patientName": "Pirmatov Rahmatjon",
+      "patientPhone": "987654321",
+      "date": "2025-09-04",
+      "time": "20:00",
+      "status": false
+    },
+    {
+      "id": "4198",
+      "doctorId": 5,
+      "patientId": "ba12",
+      "patientName": "Pirmatov Rahmatjon",
+      "patientPhone": "987654321",
+      "date": "2025-09-04",
+      "time": "18:30",
+      "status": false
+    },
+    {
+      "id": "6799",
       "doctorId": 1,
       "patientId": "ba12",
       "patientName": "Pirmatov Rahmatjon",
       "patientPhone": "987654321",
       "date": "2025-09-04",
-      "time": "12:30",
+      "time": "18:30",
+      "status": false
+    },
+    {
+      "id": "7eac",
+      "doctorId": 5,
+      "patientId": "ba12",
+      "patientName": "Pirmatov Rahmatjon",
+      "patientPhone": "987654321",
+      "date": "2025-09-04",
+      "time": "19:30",
+      "status": false
+    },
+    {
+      "id": "d2c5",
+      "doctorId": 5,
+      "patientId": "ba12",
+      "patientName": "Pirmatov Rahmatjon",
+      "patientPhone": "987654321",
+      "date": "2025-09-05",
+      "time": "10:30",
+      "status": false
+    },
+    {
+      "id": "6d1e",
+      "doctorId": 2,
+      "patientId": "ba12",
+      "patientName": "Pirmatov Rahmatjon",
+      "patientPhone": "987654321",
+      "date": "2025-09-06",
+      "time": "15:30",
       "status": false
     }
   ],
@@ -352,7 +413,7 @@
       "patientName": "Pirmatov Rahmatjon",
       "patientId": "ba12",
       "patientPhoneNumber": "987654321",
-      "rating": "5",
+      "rating": "4",
       "comment": "Nice"
     }
   ],
@@ -728,14 +789,15 @@
       "ru": "Дехоти, Душанбе, Таджикистан",
       "en": "Dekhoti, Dushanbe, Tajikistan"
     },
-
-    "phones": ["+992 923-45-67-22", "+992 965-43-21-22"],
+    "phones": [
+      "+992 923-45-67-22",
+      "+992 965-43-21-22"
+    ],
     "email": "info@klinikabudzdorov.tj",
     "schedule": {
       "weekdays": "8:00 - 20:00",
       "weekend": "9:00 - 18:00"
     },
-    
     "socials": {
       "vk": "#",
       "telegram": "#",

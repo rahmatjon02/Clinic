@@ -87,7 +87,7 @@ const ReviewsPage = () => {
                     <i className="fas fa-user text-blue-600 text-xl"></i>
                   </div>
                   <div className="space-y-2">
-                    <h4 className="font-bold text-blue-900">
+                    <h4 className="font-bold text-blue-700">
                       {review.patientName}
                     </h4>
                     <div className="flex text-yellow-400">
