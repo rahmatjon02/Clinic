@@ -113,7 +113,12 @@ export default function AppointmentsPage() {
         <div className="space-y-4">
           {myAppointments.map((a) => {
             const doctor = findDoctor(a.doctorId);
-            const statusLabel = a.status ? t("confirmed") : t("pending");
+            const statusLabel =
+              a.status == "confirmed"
+                ? t("confirmed")
+                : a.status == "cancelled"
+                ? t("cancelled")
+                : t("pending");
             const canCancel = !a.status;
             return (
               <div
@@ -149,8 +154,10 @@ export default function AppointmentsPage() {
                   <div className="text-sm">
                     <span
                       className={`px-2 py-1 rounded text-sm ${
-                        a.status
+                        a.status == "confirmed"
                           ? "bg-green-100 text-green-700"
+                          : a.status == "cancelled"
+                          ? "bg-red-100 text-red-700"
                           : "bg-yellow-100 text-yellow-700"
                       }`}
                     >

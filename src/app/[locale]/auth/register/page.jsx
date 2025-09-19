@@ -50,7 +50,8 @@ export default function RegisterCard() {
         password: values.password,
         name: values.name,
         phoneNumber: values.phoneNumber,
-        role: "user",
+        bio: "",
+        image: "",
       }).unwrap();
 
       if (created && created.id) {
@@ -78,9 +79,7 @@ export default function RegisterCard() {
   if (!mounted) return null;
 
   return (
-    <div
-      className={`flex items-center justify-center ${bgPage} p-6`}
-    >
+    <div className={`flex items-center justify-center ${bgPage} p-6`}>
       <div className="max-w-3xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="hidden md:flex items-center justify-center">
           <div

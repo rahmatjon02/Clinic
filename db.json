@@ -1,125 +1,58 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": "12",
+      "userName": "user1",
+      "password": "123456",
+      "name": "Tom John",
+      "phoneNumber": "992948773399",
+      "bio": "",
+      "image": "",
+      "role": "user"
+    },
+    {
+      "id": "13",
       "userName": "islom",
       "password": "123123",
-      "name": "Ислом Каримов",
-      "phoneNumber": "+992 987 65 43 21",
-      "bio": "не забалей",
-      "image": "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?semt=ais_hybrid&w=740&q=80"
+      "name": "Ислом",
+      "phoneNumber": "987654321",
+      "bio": "",
+      "image": "",
+      "role": "user"
     },
     {
-      "id": "2",
-      "userName": "ali",
-      "password": "654321",
-      "name": "Алиджон",
-      "phoneNumber": "+992 987 12 34 56",
-      "role": "user",
-      "bio": "1",
-      "image": ""
+      "id": "c940",
+      "userName": "tom11",
+      "password": "123123",
+      "name": "tom john",
+      "phoneNumber": "987654321",
+      "bio": "",
+      "image": "",
+      "role": "user"
     },
     {
-      "id": "1a6f",
-      "userName": "tom",
-      "password": "123456",
-      "name": "tom john ",
-      "phoneNumber": "992 948 77 33 99",
-      "bio": "i am frontend",
-      "image": ""
-    },
-    {
-      "id": "4",
-      "userName": "nargiz",
-      "password": "111222",
-      "name": "Наргиза",
-      "phoneNumber": "+992 900 11 22 33",
-      "role": "user",
-      "bio": "1",
-      "image": ""
-    },
-    {
-      "id": "5",
-      "userName": "shah",
-      "password": "333444",
-      "name": "Шахром",
-      "phoneNumber": "+992 901 44 55 66",
-      "role": "user",
-      "bio": "1",
-      "image": ""
-    },
-    {
-      "id": "6",
-      "userName": "ruz",
-      "password": "555666",
-      "name": "Рузие",
-      "phoneNumber": "+992 902 77 88 99",
-      "role": "user",
-      "bio": "1",
-      "image": ""
-    },
-    {
-      "id": "7",
-      "userName": "farid",
-      "password": "777888",
-      "name": "Фарид",
-      "phoneNumber": "+992 903 11 22 33",
-      "role": "user",
-      "bio": "1",
-      "image": ""
-    },
-    {
-      "id": "8",
-      "userName": "lola",
-      "password": "999000",
-      "name": "Лола",
-      "phoneNumber": "+992 904 44 55 66",
-      "role": "user",
-      "bio": "1",
-      "image": ""
-    },
-    {
-      "id": "9",
-      "userName": "daler",
-      "password": "121212",
-      "name": "Далер",
-      "phoneNumber": "+992 905 77 88 99",
-      "role": "user",
-      "bio": "1",
-      "image": ""
-    },
-    {
-      "id": "10",
-      "userName": "malika",
-      "password": "343434",
-      "name": "Малика",
-      "phoneNumber": "+992 906 22 33 44",
-      "role": "user",
-      "bio": "1",
-      "image": ""
-    },
-    {
-      "id": "ba12",
-      "userName": "Rahmatjon2211",
-      "password": "123456",
-      "name": "Pirmatov Rahmatjon",
+      "id": "b88b",
+      "userName": "islom12",
+      "password": "123123",
+      "name": "salim",
       "phoneNumber": "987654321",
       "bio": "",
       "image": ""
     },
     {
-      "id": "8ce1",
-      "userName": "salim",
+      "id": "2c67",
+      "userName": "user11",
       "password": "123456",
-      "name": "karimov",
+      "name": "jh iu",
       "phoneNumber": "987654321",
-      "role": "user"
+      "bio": "",
+      "image": ""
     }
   ],
   "doctors": [
     {
       "id": "1",
-      "name": "Саидов",
+      "name": "Saidov Karim",
       "specialization": {
         "ru": "Кардиолог",
         "en": "Cardiologist",
@@ -133,7 +66,7 @@
     },
     {
       "id": "2",
-      "name": "Алиев",
+      "name": "Aliev Mehriddin",
       "specialization": {
         "ru": "Диетолог",
         "en": "Nutritionist",
@@ -147,7 +80,7 @@
     },
     {
       "id": "3",
-      "name": "Хусейн",
+      "name": "Husenov Salim",
       "specialization": {
         "ru": "Невролог",
         "en": "Neurologist",
@@ -260,26 +193,6 @@
   ],
   "appointments": [
     {
-      "id": "cde2",
-      "doctorId": 2,
-      "patientId": "1",
-      "patientName": "Ислом Каримов",
-      "patientPhone": "+992 987 65 43 21",
-      "date": "2025-09-01",
-      "time": "14:00",
-      "status": false
-    },
-    {
-      "id": "8205",
-      "doctorId": 2,
-      "patientId": "1",
-      "patientName": "Ислом Каримов",
-      "patientPhone": "+992 987 65 43 21",
-      "date": "2025-09-02",
-      "time": "14:00",
-      "status": false
-    },
-    {
       "id": "b6f4",
       "doctorId": 2,
       "patientId": "1a6f",
@@ -287,7 +200,7 @@
       "patientPhone": "992 948 77 33 99",
       "date": "2025-09-03",
       "time": "14:00",
-      "status": false
+      "status": "cancelled"
     },
     {
       "id": "ac1f",
@@ -297,7 +210,7 @@
       "patientPhone": "987654321",
       "date": "2025-09-04",
       "time": "18:00",
-      "status": false
+      "status": "cancelled"
     },
     {
       "id": "053b",
@@ -307,17 +220,7 @@
       "patientPhone": "987654321",
       "date": "2025-09-05",
       "time": "12:30",
-      "status": false
-    },
-    {
-      "id": "93a5",
-      "doctorId": 2,
-      "patientId": "ba12",
-      "patientName": "Pirmatov Rahmatjon",
-      "patientPhone": "987654321",
-      "date": "2025-09-04",
-      "time": "20:00",
-      "status": false
+      "status": "cancelled"
     },
     {
       "id": "4198",
@@ -327,7 +230,7 @@
       "patientPhone": "987654321",
       "date": "2025-09-04",
       "time": "18:30",
-      "status": false
+      "status": "confirmed"
     },
     {
       "id": "6799",
@@ -337,7 +240,7 @@
       "patientPhone": "987654321",
       "date": "2025-09-04",
       "time": "18:30",
-      "status": false
+      "status": "confirmed"
     },
     {
       "id": "7eac",
@@ -347,7 +250,7 @@
       "patientPhone": "987654321",
       "date": "2025-09-04",
       "time": "19:30",
-      "status": false
+      "status": "confirmed"
     },
     {
       "id": "d2c5",
@@ -357,16 +260,96 @@
       "patientPhone": "987654321",
       "date": "2025-09-05",
       "time": "10:30",
+      "status": "cancelled"
+    },
+    {
+      "id": "cf89",
+      "doctorId": 3,
+      "patientId": "c940",
+      "patientName": "tom john",
+      "patientPhone": "987654321",
+      "date": "2025-09-14",
+      "time": "15:00",
+      "status": "confirmed"
+    },
+    {
+      "id": "2bec",
+      "doctorId": 1,
+      "patientId": "c940",
+      "patientName": "tom john",
+      "patientPhone": "987654321",
+      "date": "2025-09-14",
+      "time": "15:00",
+      "status": "confirmed"
+    },
+    {
+      "id": "79d8",
+      "doctorId": 4,
+      "patientId": "c940",
+      "patientName": "tom john",
+      "patientPhone": "987654321",
+      "date": "2025-09-14",
+      "time": "15:00",
+      "status": "confirmed"
+    },
+    {
+      "id": "dbd7",
+      "doctorId": 6,
+      "patientId": "c940",
+      "patientName": "tom john",
+      "patientPhone": "987654321",
+      "date": "2025-09-14",
+      "time": "15:00",
+      "status": "cancelled"
+    },
+    {
+      "id": "7397",
+      "doctorId": 7,
+      "patientId": "c940",
+      "patientName": "tom john",
+      "patientPhone": "987654321",
+      "date": "2025-09-14",
+      "time": "15:00",
+      "status": "confirmed"
+    },
+    {
+      "id": "4330",
+      "doctorId": 9,
+      "patientId": "c940",
+      "patientName": "tom john",
+      "patientPhone": "987654321",
+      "date": "2025-09-14",
+      "time": "15:00",
+      "status": "confirmed"
+    },
+    {
+      "id": "a43e",
+      "doctorId": 2,
+      "patientId": "13",
+      "patientName": "Ислом",
+      "patientPhone": "987654321",
+      "date": "2025-09-16",
+      "time": "14:00",
       "status": false
     },
     {
-      "id": "6d1e",
-      "doctorId": 2,
-      "patientId": "ba12",
-      "patientName": "Pirmatov Rahmatjon",
+      "id": "7218",
+      "doctorId": 1,
+      "patientId": "c940",
+      "patientName": "tom john",
       "patientPhone": "987654321",
-      "date": "2025-09-06",
-      "time": "15:30",
+      "date": "2025-09-16",
+      "time": "16:00",
+      "status": "cancelled"
+    },
+    {
+      "id": "7a36",
+      "doctorId": 1,
+      "patientId": "12",
+      "patientName": "Tom John",
+      "patientPhone": "992948773399",
+      "date": "2025-09-20",
+      "time": "08:00",
       "status": false
     }
   ],
@@ -390,15 +373,6 @@
       "comment": ""
     },
     {
-      "id": "1b62",
-      "doctorId": 2,
-      "patientName": "Ислом Каримов",
-      "patientId": "1",
-      "patientPhoneNumber": "+992 987 65 43 21",
-      "rating": "4",
-      "comment": "qqqq 1122"
-    },
-    {
       "id": "8ded",
       "doctorId": 2,
       "patientName": "Ислом Каримов",
@@ -408,27 +382,124 @@
       "comment": "sd"
     },
     {
+      "id": "3f62",
+      "doctorId": 2,
+      "patientName": "Pirmatov Rahmatjon",
+      "patientId": "ba12",
+      "patientPhoneNumber": "987654321",
+      "rating": "5",
+      "comment": "Nice"
+    },
+    {
+      "id": "ddr3",
+      "doctorId": 9,
+      "patientName": "",
+      "patientId": null,
+      "patientPhoneNumber": "",
+      "rating": "5",
+      "comment": ""
+    },
+    {
       "id": "3f63",
       "doctorId": 2,
       "patientName": "Pirmatov Rahmatjon",
       "patientId": "ba12",
       "patientPhoneNumber": "987654321",
-      "rating": "4",
+      "rating": "5",
       "comment": "Nice"
+    },
+    {
+      "id": "dde3",
+      "doctorId": 9,
+      "patientName": "",
+      "patientId": null,
+      "patientPhoneNumber": "",
+      "rating": "5",
+      "comment": ""
+    },
+    {
+      "id": "a112",
+      "doctorId": 2,
+      "patientName": "tom john",
+      "patientId": "c940",
+      "patientPhoneNumber": "987654321",
+      "rating": "4",
+      "comment": "зур"
     }
   ],
   "schedules": [
     {
-      "id": "1",
       "doctorId": 1,
       "dayOfWeek": "Monday",
       "startTime": "08:00",
       "endTime": "19:00",
       "breakStart": "13:00",
-      "breakEnd": "14:00"
+      "breakEnd": "14:00",
+      "off": false,
+      "id": "11"
     },
     {
-      "id": "2",
+      "doctorId": 1,
+      "dayOfWeek": "Tuesday",
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "breakStart": "13:00",
+      "breakEnd": "14:00",
+      "off": false,
+      "id": "12"
+    },
+    {
+      "doctorId": 1,
+      "dayOfWeek": "Wednesday",
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "breakStart": "13:00",
+      "breakEnd": "14:00",
+      "off": false,
+      "id": "13"
+    },
+    {
+      "doctorId": 1,
+      "dayOfWeek": "Thursday",
+      "startTime": "10:00",
+      "endTime": "20:00",
+      "breakStart": "14:00",
+      "breakEnd": "15:00",
+      "off": false,
+      "id": "14"
+    },
+    {
+      "doctorId": 1,
+      "dayOfWeek": "Friday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30",
+      "off": false,
+      "id": "15"
+    },
+    {
+      "doctorId": 1,
+      "dayOfWeek": "Saturday",
+      "startTime": "09:00",
+      "endTime": "14:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00",
+      "off": false,
+      "id": "16"
+    },
+    {
+      "doctorId": 1,
+      "dayOfWeek": "Sunday",
+      "startTime": "00:00",
+      "endTime": "00:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00",
+      "off": false,
+      "id": "17"
+    },
+    {
+      "id": "18",
       "doctorId": 2,
       "dayOfWeek": "Monday",
       "startTime": "09:00",
@@ -437,25 +508,219 @@
       "breakEnd": "14:00"
     },
     {
-      "id": "3",
-      "doctorId": 3,
+      "id": "19",
+      "doctorId": 2,
       "dayOfWeek": "Tuesday",
-      "startTime": "08:00",
+      "startTime": "09:00",
       "endTime": "18:00",
-      "breakStart": "12:00",
-      "breakEnd": "13:00"
+      "breakStart": "13:00",
+      "breakEnd": "14:00"
     },
     {
-      "id": "4",
-      "doctorId": 4,
-      "dayOfWeek": "Tuesday",
+      "id": "20",
+      "doctorId": 2,
+      "dayOfWeek": "Wednesday",
+      "startTime": "10:00",
+      "endTime": "19:00",
+      "breakStart": "13:30",
+      "breakEnd": "14:30"
+    },
+    {
+      "id": "21",
+      "doctorId": 2,
+      "dayOfWeek": "Thursday",
+      "startTime": "09:30",
+      "endTime": "17:30",
+      "breakStart": "13:00",
+      "breakEnd": "14:00"
+    },
+    {
+      "id": "22",
+      "doctorId": 2,
+      "dayOfWeek": "Friday",
       "startTime": "09:00",
       "endTime": "17:00",
       "breakStart": "12:30",
       "breakEnd": "13:30"
     },
     {
-      "id": "5",
+      "id": "23",
+      "doctorId": 2,
+      "dayOfWeek": "Saturday",
+      "startTime": "10:00",
+      "endTime": "15:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00"
+    },
+    {
+      "id": "24",
+      "doctorId": 2,
+      "dayOfWeek": "Sunday",
+      "startTime": "00:00",
+      "endTime": "00:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00"
+    },
+    {
+      "doctorId": 3,
+      "dayOfWeek": "Monday",
+      "startTime": "08:00",
+      "endTime": "18:00",
+      "breakStart": "12:00",
+      "breakEnd": "13:00",
+      "off": false,
+      "id": "25"
+    },
+    {
+      "doctorId": 3,
+      "dayOfWeek": "Tuesday",
+      "startTime": "08:00",
+      "endTime": "18:00",
+      "breakStart": "12:00",
+      "breakEnd": "13:00",
+      "off": false,
+      "id": "26"
+    },
+    {
+      "doctorId": 3,
+      "dayOfWeek": "Wednesday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30",
+      "off": false,
+      "id": "27"
+    },
+    {
+      "doctorId": 3,
+      "dayOfWeek": "Thursday",
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "breakStart": "13:00",
+      "breakEnd": "14:00",
+      "off": false,
+      "id": "28"
+    },
+    {
+      "doctorId": 3,
+      "dayOfWeek": "Friday",
+      "startTime": "09:00",
+      "endTime": "16:00",
+      "breakStart": "12:00",
+      "breakEnd": "13:00",
+      "off": false,
+      "id": "29"
+    },
+    {
+      "doctorId": 3,
+      "dayOfWeek": "Saturday",
+      "startTime": "09:00",
+      "endTime": "14:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00",
+      "off": false,
+      "id": "30"
+    },
+    {
+      "doctorId": 3,
+      "dayOfWeek": "Sunday",
+      "startTime": "00:00",
+      "endTime": "00:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00",
+      "off": true,
+      "id": "31"
+    },
+    {
+      "doctorId": 4,
+      "dayOfWeek": "Monday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30",
+      "off": true,
+      "id": "32"
+    },
+    {
+      "doctorId": 4,
+      "dayOfWeek": "Tuesday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30",
+      "off": true,
+      "id": "33"
+    },
+    {
+      "doctorId": 4,
+      "dayOfWeek": "Wednesday",
+      "startTime": "10:00",
+      "endTime": "20:00",
+      "breakStart": "14:00",
+      "breakEnd": "15:00",
+      "off": true,
+      "id": "34"
+    },
+    {
+      "doctorId": 4,
+      "dayOfWeek": "Thursday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30",
+      "off": true,
+      "id": "35"
+    },
+    {
+      "doctorId": 4,
+      "dayOfWeek": "Friday",
+      "startTime": "08:30",
+      "endTime": "16:30",
+      "breakStart": "12:00",
+      "breakEnd": "13:00",
+      "off": true,
+      "id": "36"
+    },
+    {
+      "doctorId": 4,
+      "dayOfWeek": "Saturday",
+      "startTime": "10:00",
+      "endTime": "15:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00",
+      "off": true,
+      "id": "37"
+    },
+    {
+      "doctorId": 4,
+      "dayOfWeek": "Sunday",
+      "startTime": "00:00",
+      "endTime": "00:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00",
+      "off": true,
+      "id": "38"
+    },
+    {
+      "id": "39",
+      "doctorId": 5,
+      "dayOfWeek": "Monday",
+      "startTime": "10:00",
+      "endTime": "20:00",
+      "breakStart": "14:00",
+      "breakEnd": "15:00"
+    },
+    {
+      "id": "40",
+      "doctorId": 5,
+      "dayOfWeek": "Tuesday",
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "breakStart": "13:00",
+      "breakEnd": "14:00"
+    },
+    {
+      "id": "41",
       "doctorId": 5,
       "dayOfWeek": "Wednesday",
       "startTime": "10:00",
@@ -464,7 +729,61 @@
       "breakEnd": "15:00"
     },
     {
-      "id": "6",
+      "id": "42",
+      "doctorId": 5,
+      "dayOfWeek": "Thursday",
+      "startTime": "09:00",
+      "endTime": "19:00",
+      "breakStart": "12:00",
+      "breakEnd": "13:00"
+    },
+    {
+      "id": "43",
+      "doctorId": 5,
+      "dayOfWeek": "Friday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30"
+    },
+    {
+      "id": "44",
+      "doctorId": 5,
+      "dayOfWeek": "Saturday",
+      "startTime": "09:00",
+      "endTime": "14:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00"
+    },
+    {
+      "id": "45",
+      "doctorId": 5,
+      "dayOfWeek": "Sunday",
+      "startTime": "00:00",
+      "endTime": "00:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00"
+    },
+    {
+      "id": "46",
+      "doctorId": 6,
+      "dayOfWeek": "Monday",
+      "startTime": "08:30",
+      "endTime": "18:30",
+      "breakStart": "13:00",
+      "breakEnd": "14:00"
+    },
+    {
+      "id": "47",
+      "doctorId": 6,
+      "dayOfWeek": "Tuesday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30"
+    },
+    {
+      "id": "48",
       "doctorId": 6,
       "dayOfWeek": "Wednesday",
       "startTime": "08:30",
@@ -473,7 +792,70 @@
       "breakEnd": "14:00"
     },
     {
-      "id": "7",
+      "id": "49",
+      "doctorId": 6,
+      "dayOfWeek": "Thursday",
+      "startTime": "09:00",
+      "endTime": "19:00",
+      "breakStart": "12:00",
+      "breakEnd": "13:00"
+    },
+    {
+      "id": "50",
+      "doctorId": 6,
+      "dayOfWeek": "Friday",
+      "startTime": "09:00",
+      "endTime": "16:00",
+      "breakStart": "12:00",
+      "breakEnd": "13:00"
+    },
+    {
+      "id": "51",
+      "doctorId": 6,
+      "dayOfWeek": "Saturday",
+      "startTime": "10:00",
+      "endTime": "15:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00"
+    },
+    {
+      "id": "52",
+      "doctorId": 6,
+      "dayOfWeek": "Sunday",
+      "startTime": "00:00",
+      "endTime": "00:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00"
+    },
+    {
+      "id": "53",
+      "doctorId": 7,
+      "dayOfWeek": "Monday",
+      "startTime": "09:00",
+      "endTime": "19:00",
+      "breakStart": "12:00",
+      "breakEnd": "13:00"
+    },
+    {
+      "id": "54",
+      "doctorId": 7,
+      "dayOfWeek": "Tuesday",
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "breakStart": "13:00",
+      "breakEnd": "14:00"
+    },
+    {
+      "id": "55",
+      "doctorId": 7,
+      "dayOfWeek": "Wednesday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30"
+    },
+    {
+      "id": "56",
       "doctorId": 7,
       "dayOfWeek": "Thursday",
       "startTime": "09:00",
@@ -482,7 +864,61 @@
       "breakEnd": "13:00"
     },
     {
-      "id": "8",
+      "id": "57",
+      "doctorId": 7,
+      "dayOfWeek": "Friday",
+      "startTime": "09:00",
+      "endTime": "16:00",
+      "breakStart": "12:00",
+      "breakEnd": "13:00"
+    },
+    {
+      "id": "58",
+      "doctorId": 7,
+      "dayOfWeek": "Saturday",
+      "startTime": "10:00",
+      "endTime": "15:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00"
+    },
+    {
+      "id": "59",
+      "doctorId": 7,
+      "dayOfWeek": "Sunday",
+      "startTime": "00:00",
+      "endTime": "00:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00"
+    },
+    {
+      "id": "60",
+      "doctorId": 8,
+      "dayOfWeek": "Monday",
+      "startTime": "09:00",
+      "endTime": "21:00",
+      "breakStart": "13:00",
+      "breakEnd": "14:00"
+    },
+    {
+      "id": "61",
+      "doctorId": 8,
+      "dayOfWeek": "Tuesday",
+      "startTime": "09:00",
+      "endTime": "19:00",
+      "breakStart": "13:00",
+      "breakEnd": "14:00"
+    },
+    {
+      "id": "62",
+      "doctorId": 8,
+      "dayOfWeek": "Wednesday",
+      "startTime": "09:00",
+      "endTime": "19:00",
+      "breakStart": "13:00",
+      "breakEnd": "14:00"
+    },
+    {
+      "id": "63",
       "doctorId": 8,
       "dayOfWeek": "Thursday",
       "startTime": "10:00",
@@ -491,22 +927,171 @@
       "breakEnd": "15:00"
     },
     {
-      "id": "9",
-      "doctorId": 9,
-      "dayOfWeek": "Friday",
-      "startTime": "08:00",
-      "endTime": "18:00",
-      "breakStart": "12:00",
-      "breakEnd": "13:00"
-    },
-    {
-      "id": "10",
-      "doctorId": 10,
+      "id": "64",
+      "doctorId": 8,
       "dayOfWeek": "Friday",
       "startTime": "09:00",
       "endTime": "17:00",
       "breakStart": "12:30",
       "breakEnd": "13:30"
+    },
+    {
+      "id": "65",
+      "doctorId": 8,
+      "dayOfWeek": "Saturday",
+      "startTime": "10:00",
+      "endTime": "15:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00"
+    },
+    {
+      "id": "66",
+      "doctorId": 8,
+      "dayOfWeek": "Sunday",
+      "startTime": "00:00",
+      "endTime": "00:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00"
+    },
+    {
+      "doctorId": 9,
+      "dayOfWeek": "Monday",
+      "startTime": "08:00",
+      "endTime": "18:00",
+      "breakStart": "12:00",
+      "breakEnd": "13:00",
+      "off": false,
+      "id": "67"
+    },
+    {
+      "doctorId": 9,
+      "dayOfWeek": "Tuesday",
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "breakStart": "13:00",
+      "breakEnd": "14:00",
+      "off": false,
+      "id": "68"
+    },
+    {
+      "doctorId": 9,
+      "dayOfWeek": "Wednesday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30",
+      "off": false,
+      "id": "69"
+    },
+    {
+      "doctorId": 9,
+      "dayOfWeek": "Thursday",
+      "startTime": "09:00",
+      "endTime": "18:00",
+      "breakStart": "13:00",
+      "breakEnd": "14:00",
+      "off": false,
+      "id": "70"
+    },
+    {
+      "doctorId": 9,
+      "dayOfWeek": "Friday",
+      "startTime": "08:00",
+      "endTime": "18:00",
+      "breakStart": "12:00",
+      "breakEnd": "13:00",
+      "off": false,
+      "id": "71"
+    },
+    {
+      "doctorId": 9,
+      "dayOfWeek": "Saturday",
+      "startTime": "09:00",
+      "endTime": "14:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00",
+      "off": false,
+      "id": "72"
+    },
+    {
+      "doctorId": 9,
+      "dayOfWeek": "Sunday",
+      "startTime": "00:00",
+      "endTime": "00:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00",
+      "off": true,
+      "id": "73"
+    },
+    {
+      "doctorId": 10,
+      "dayOfWeek": "Monday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30",
+      "off": true,
+      "id": "74"
+    },
+    {
+      "doctorId": 10,
+      "dayOfWeek": "Tuesday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30",
+      "off": false,
+      "id": "75"
+    },
+    {
+      "doctorId": 10,
+      "dayOfWeek": "Wednesday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30",
+      "off": false,
+      "id": "76"
+    },
+    {
+      "doctorId": 10,
+      "dayOfWeek": "Thursday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30",
+      "off": false,
+      "id": "77"
+    },
+    {
+      "doctorId": 10,
+      "dayOfWeek": "Friday",
+      "startTime": "09:00",
+      "endTime": "17:00",
+      "breakStart": "12:30",
+      "breakEnd": "13:30",
+      "off": false,
+      "id": "78"
+    },
+    {
+      "doctorId": 10,
+      "dayOfWeek": "Saturday",
+      "startTime": "10:00",
+      "endTime": "15:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00",
+      "off": false,
+      "id": "79"
+    },
+    {
+      "doctorId": 10,
+      "dayOfWeek": "Sunday",
+      "startTime": "00:00",
+      "endTime": "00:00",
+      "breakStart": "00:00",
+      "breakEnd": "00:00",
+      "off": true,
+      "id": "80"
     }
   ],
   "faq": [

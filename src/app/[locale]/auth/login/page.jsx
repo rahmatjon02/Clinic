@@ -1,4 +1,4 @@
-// app/components/auth/LoginCard.jsx
+// app/components/auth/login/page.jsx
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -15,7 +15,7 @@ export default function LoginCard() {
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  
+
   const t = useTranslations("Login");
 
   const currentTheme = mounted ? resolvedTheme || theme : "light";

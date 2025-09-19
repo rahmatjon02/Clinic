@@ -31,6 +31,7 @@ export default function Layout({ children }) {
   const [editFullName, setEditFullName] = useState("");
   const [editPhoneNumber, setEditPhoneNumber] = useState("");
   const [editBio, setEditBio] = useState("");
+  const [editRole, setEditRole] = useState("");
   const [editImage, setEditImage] = useState("");
 
   useEffect(() => {
@@ -50,6 +51,7 @@ export default function Layout({ children }) {
       setEditPassword(user.password || "");
       setEditFullName(user.name || "");
       setEditPhoneNumber(user.phoneNumber || "");
+      setEditRole(user.role || "");
       setEditBio(user.bio || "");
       setEditImage(user.image || "");
     }
@@ -64,6 +66,7 @@ export default function Layout({ children }) {
       password: editPassword,
       name: editFullName,
       phoneNumber: editPhoneNumber,
+      role: editRole,
       bio: editBio,
       image: editImage,
     };
@@ -98,6 +101,7 @@ export default function Layout({ children }) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
+
   if (apptsLoading) {
     return (
       <p className="text-center py-20 font-semibold">{t("loadingProfile")}</p>
@@ -144,7 +148,7 @@ export default function Layout({ children }) {
             <p className="text-gray-600">{user?.bio || t("noBio")}</p>
           </div>
 
-          <div className="absolute right-2 top-2 flex flex-col lg:flex-row gap-2 items-end">
+          <div className="absolute right-2 top-2 flex flex-col gap-2 items-end">
             <button
               onClick={showModal}
               className="text-blue-500 font-bold text-xs lg:text-[16px] cursor-pointer hover:text-blue-600"
@@ -158,6 +162,8 @@ export default function Layout({ children }) {
             >
               {t("logout")}
             </button>
+
+            
           </div>
         </div>
       </div>

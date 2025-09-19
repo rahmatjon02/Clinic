@@ -14,7 +14,7 @@ const inter = Inter({
 });
 
 export async function generateMetadata(props) {
-  const params = await props.params; // <-- обязательно await
+  const params = await props.params;
   const locale = params.locale;
 
   const supportedLocales = ["en", "ru", "tj"];
@@ -32,7 +32,7 @@ export async function generateMetadata(props) {
 
 export default async function RootLayout(props) {
   const { children } = props;
-  const params = await props.params; // <-- await здесь тоже
+  const params = await props.params; 
   const locale = params.locale;
 
   const supportedLocales = ["en", "ru", "tj"];

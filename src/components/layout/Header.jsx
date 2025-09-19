@@ -8,8 +8,8 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useGetContactQuery } from "@/store/api";
-import { getCurrentUser } from "@/utils/auth";
+import { useGetContactQuery, useGetUserByIdQuery } from "@/store/api";
+import { getCurrentUser, getCurrentUserId } from "@/utils/auth";
 import { useLocale, useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
 import img from "@/assets/home/logoClinic.png";
@@ -18,16 +18,19 @@ export default function Header() {
   const { data: contact, isLoading, error } = useGetContactQuery();
   const t = useTranslations("Header");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const user = getCurrentUser();
+
+  const currentUserId = getCurrentUserId();
+  const { data: user, refetch } = useGetUserByIdQuery(currentUserId);
   const locale = useLocale();
   console.log(locale);
-  
-  let pathName = usePathname();
+
   const router = useRouter();
 
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+
+  let pathName = usePathname();
 
   if (isLoading) {
     return (
@@ -124,7 +127,9 @@ export default function Header() {
             <Link
               href="/services"
               className={`${
-                pathName == "/services" ? "text-blue-700" : "text-gray-500"
+                pathName == `/${locale}/services`
+                  ? "text-blue-700"
+                  : "text-gray-500"
               } font-medium hover:text-blue-500`}
             >
               {t("services")}
@@ -132,7 +137,9 @@ export default function Header() {
             <Link
               href="/allDoctors"
               className={`${
-                pathName == "/allDoctors" ? "text-blue-700" : "text-gray-500"
+                pathName == `/${locale}/allDoctors`
+                  ? "text-blue-700"
+                  : "text-gray-500"
               } font-medium hover:text-blue-500`}
             >
               {t("doctors")}
@@ -140,7 +147,9 @@ export default function Header() {
             <Link
               href="/reviews"
               className={`${
-                pathName == "/reviews" ? "text-blue-700" : "text-gray-500"
+                pathName == `/${locale}/reviews`
+                  ? "text-blue-700"
+                  : "text-gray-500"
               } font-medium hover:text-blue-500`}
             >
               {t("reviews")}
@@ -148,7 +157,9 @@ export default function Header() {
             <Link
               href="/about"
               className={`${
-                pathName == "/about" ? "text-blue-700" : "text-gray-500"
+                pathName == `/${locale}/about`
+                  ? "text-blue-700"
+                  : "text-gray-500"
               } font-medium hover:text-blue-500`}
             >
               {t("about")}
@@ -157,7 +168,7 @@ export default function Header() {
 
           {/* Тема + Логин */}
           <div className="lg:flex items-center gap-2 hidden">
-            {user ? (
+            {currentUserId ? (
               <Link href="/profile">
                 <span
                   className={`hover:text-blue-400 text-xl ${
@@ -175,7 +186,6 @@ export default function Header() {
             <ThemeSwitcher />
             <LanguageSwitcher />
           </div>
-
           {/* Бургер */}
           <button
             className="md:hidden focus:outline-none"
@@ -250,7 +260,7 @@ export default function Header() {
           </Link>
 
           <div>
-            {user ? (
+            {currentUserId ? (
               <Link onClick={() => setIsMenuOpen(!isMenuOpen)} href="/profile">
                 <button className="py-2 text-gray-500 hover:text-blue-500">
                   {user?.userName}

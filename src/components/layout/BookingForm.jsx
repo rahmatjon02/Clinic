@@ -134,12 +134,10 @@ export default function BookingForm() {
     setSlots(slotsArr);
   }, [schedule, appointments, selectedDate, form.doctorId]);
 
-  // все специализации для текущего языка
   const specializations = [
     ...new Set(doctors.map((d) => d.specialization[locale])),
   ];
 
-  // сброс при смене языка
   useEffect(() => {
     setForm((prev) => ({
       ...prev,
