@@ -104,14 +104,14 @@ const AllDoctors = () => {
                 <div className="flex justify-center gap-3">
                   <Link
                     href={`/doctors/${doc.id}`}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full text-sm smooth-transition"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full text-xs lg:text-sm smooth-transition"
                   >
                     {t("profileButton")}
                   </Link>
                   <Link
                     href={`https://t.me/rahmatjon24`}
                     target="_blank"
-                    className="border border-blue-600 text-blue-600 px-4 py-2 rounded-full text-sm smooth-transition"
+                    className="border border-blue-600 text-blue-600 px-4 py-2 rounded-full text-xs lg:text-sm smooth-transition"
                   >
                     Telegram
                   </Link>

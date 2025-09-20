@@ -269,7 +269,7 @@ export default function Header() {
             ) : (
               <Link
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                href={`${locale}/auth/login`}
+                href={`/auth/login`}
               >
                 <button className="block py-2 text-gray-400 hover:text-blue-500">
                   {t("login")}

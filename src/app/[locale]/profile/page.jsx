@@ -43,7 +43,7 @@ export default function AppointmentsPage() {
       .sort((a, b) => {
         const dateA = new Date(`${a.date}T${a.time}`);
         const dateB = new Date(`${b.date}T${b.time}`);
-        return dateA.getTime() - dateB.getTime();
+        return dateB.getTime() - dateA.getTime();
       });
   }, [appointments, currentUserId]);
 
